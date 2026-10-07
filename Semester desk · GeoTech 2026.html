@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Semester desk · GeoTech 2026</title>
+<title>Semester Dashboard · GeoTech 2026</title>
 <meta name="description" content="Contacts, rooms, deadlines and a light grade check for GeoTech Fall 2026/27.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23214539'/%3E%3Cpath d='M8 10h16M8 16h10M8 22h14' stroke='%23e9f0ce' stroke-width='3'/%3E%3C/svg%3E">
 <!--
@@ -12,7 +12,7 @@
   Events table (the script below with id="events-table"):
   Add one row per event. Do not rename the header. Quote a field when it contains a comma.
   date        YYYY-MM-DD
-  course      sdav, stats, gis, gdm, pt, or conference
+  course      sdav, rs, stats, gis, gdm, pt, or conference
   title       short name shown on the calendar and agenda
   when        time or "Time unspecified"
   source      where the date came from. Use Conflict to flag a disputed date.
@@ -36,13 +36,14 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-09-30","gis","Quiz 1","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. 10 multiple-choice questions. Class topic: particularities of geographic information.","quiz"
 "2026-10-07","gis","Quiz 2","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class. Equal share of the 15% quiz component.","quiz"
 "2026-10-08","sdav","In-class test","19:00–21:00 class slot","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Multiple-choice test on Moodle."
-"2026-10-11","stats","Assignment 1","End of day · midnight","Calendar + syllabus",15,1,"no","deadline","15% of STAT final grade","15% · Individual PDF on Moodle. Calendar block 23:00–23:59 is a reminder; notes and class plan say midnight."
+"2026-10-11","stats","Assignment 1","End of day · midnight","Calendar + syllabus",15,1,"no","deadline","15% of STAT final grade","15% · Individual PDF on Moodle."
 "2026-10-14","gis","Quiz 3","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
 "2026-10-02","gdm","Assignment 1","17:00","Calendar",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 1. Essay"
 "2026-10-15","sdav","Individual project discussions","19:00–21:00","Calendar + syllabus",0,0,"no","milestone","Preparation milestone · no separate weight","Preparation milestone; no separate grade weight."
-"2026-10-16","conference","GeoMundus 2026 · day 1 of 2","All day","Calendar",0,0,"no","conference","Conference · ungraded","Geospatial Intelligence for Disaster Resilience. Conference runs 16–17 October. Attendance subject to confirmation by the GeoMundus team; venue details to follow."
-"2026-10-16","conference","GeoMundus conference dinner","Time to be confirmed","Calendar",0,0,"no","conference","Conference · ungraded","Dinner on 16 October. Venue and participation details to follow; no grade weight."
-"2026-10-17","conference","GeoMundus 2026 · day 2 of 2","All day","Calendar",0,0,"no","conference","Conference · ungraded","Geospatial Intelligence for Disaster Resilience. Attendance subject to confirmation by the GeoMundus team; venue details to follow."
+"2026-10-15","conference","GeoMundus welcome meetup","18:00–22:00","geomundus.org",0,0,"no","conference","Conference · ungraded","Castellón welcome meetup, the evening before the conference. Social, 18:00–22:00. Universitat Jaume I, Castellón de la Plana."
+"2026-10-16","conference","GeoMundus 2026 · day 1 of 2","All day","geomundus.org",0,0,"no","conference","Conference · ungraded","18th GeoMundus, free and organised by GeoTech students. Hosted by Universitat Jaume I, Av. de Vicent Sos Baynat s/n, 12006 Castelló de la Plana. Theme: Geospatial Intelligence for Disaster Resilience — from data to action. Tracks: hazard intelligence and risk modelling; early warning and preparedness; emergency response and humanitarian logistics; recovery and resilient reconstruction. Keynotes: Tuomo Kauranne (ARBONAUT), Mariangela Noviello (United Nations), Maria Gorzynska (TRACASA). Panel: Emmanuel Jolaiya, Somnath Chaudhuri, Eftychia Koukouraki, Alaa Bakry Abdelfattah. Workshops: OpenStreetMap disaster mapping, ML4Floods, senseBox, wildfire risk mapping. The public programme does not assign these talks to a single day. program@geomundus.org · https://www.geomundus.org/"
+"2026-10-16","conference","GeoMundus conference dinner","Time to be confirmed","Calendar",0,0,"no","conference","Conference · ungraded","Dinner on 16 October, from the calendar. geomundus.org does not list a dinner time. No grade weight."
+"2026-10-17","conference","GeoMundus 2026 · day 2 of 2","All day","geomundus.org",0,0,"no","conference","Conference · ungraded","Second conference day, 17 October 2026, same venue and theme as the 16th. Talks, workshops, and networking. 18th edition, hosted by Universitat Jaume I in Castellón de la Plana. https://www.geomundus.org/"
 "2026-10-18","sdav","Project proposal","Time unspecified","Calendar + syllabus",10,1,"no","deadline","10% of SDAV final grade","10% · Calendar month grid and syllabus say 18 Oct; all-day search display starts on 17 Oct at 23:00. Calendar notes: no time on course page. Submit via Turnitin."
 "2026-10-20","pt","Video 1 · healthy recipe","Time unspecified","Session 1 slides",10,1,"no","deadline","10% of PT A1 final grade","10% · 2–3 minutes on Moodle, in Portuguese: a healthy recipe, with ingredients, preparation steps, and a personal connection. Session 1 replaces the earlier home / dream home brief."
 "2026-10-20","sdav","Project presentations · session 1","17:00–19:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · 15% presentation component","15% presentation component. Personal slot not known; could be 20 or 22 Oct. Calendar updates the generic Tuesday 19:00 syllabus class time."
@@ -81,9 +82,29 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
   },
   "courses": [
     {
+      "id": "rs",
+      "code": "RS",
+      "name": "Remote Sensing",
+      "ects": 5,
+      "max": 20,
+      "weights": "Assessment still to come",
+      "schedule": "Replaces SDAV on the class timetable. Meeting times are still to come.",
+      "components": [],
+      "people": [],
+      "room": "Yet to come",
+      "consultation": "Yet to come",
+      "note": "Teacher, room, meeting times, and assessment have not been supplied yet.",
+      "sources": [{"label": "NOVA IMS GeoTech study plan", "url": "https://novaims.unl.pt/en/education/programs/postgraduate-programs-and-master-degree-programs/master-degree-in-geospatial-technologies/"}],
+      "rules": [
+        "Remote Sensing is a 5 ECTS elective and takes SDAV’s place on the class schedule. Syllabus and calendar entries are still to come."
+      ],
+      "source": "NOVA IMS GeoTech study plan, 1st semester. No syllabus or calendar was supplied."
+    },
+    {
       "id": "sdav",
       "code": "SDAV",
       "name": "Spatial Data Analysis & Visualization",
+      "ects": 5,
       "max": 20,
       "weights": "Hands-on 15 · Proposal 10 · Test 15 · Presentation 15 · Paper 40 · Participation 5%",
       "components": [
@@ -97,7 +118,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "people": [{"name": "Ruoyu Wang", "role": "", "email": "rwang@novaims.unl.pt"}],
       "room": "Room 9 · NOVA IMS (classroom)",
       "consultation": "By appointment via email.",
-      "note": "Professor's office / consultation room not supplied.",
+      "note": "Class meetings on the timetable are now listed under Remote Sensing. These rows remain the SDAV assessments.",
       "sources": [{"label": "SDAV syllabus + Calendar", "url": ""}],
       "rules": [
         "Submit deliverables to their Moodle sections; the Calendar proposal entry links to Turnitin. No email submissions.",
@@ -106,12 +127,13 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         "Late deliverables: 2.5% per day. The syllabus does not define the penalty basis; enter grades after penalties.",
         "If continuous evaluation is failed: second-period exam = 100%. No first-period exam. Calendar: 13 Jan 2027, time not specified."
       ],
-      "source": "SDAV-syllabus-2026(4).docx · Evaluation, Deadlines and NOTES; Calendar SDAV entries."
+      "source": "SDAV-syllabus-2026(4).docx · Evaluation, Deadlines and NOTES; Katya's Calendar SDAV entries."
     },
     {
       "id": "stats",
       "code": "STAT",
       "name": "Spatial Statistics",
+      "ects": 5,
       "max": 20,
       "weights": "Assignment 1 15 · Assignment 2 10 · Exam 30 · Oral 10 · Report 35%",
       "components": [
@@ -127,7 +149,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       ],
       "room": "Room 9 · NOVA IMS (classroom)",
       "consultation": "Sara Ribeiro: by appointment, Teams or room 21 (floor 2, IMS). Cristina Costa: by appointment, Teams or room 235 (floor 2, CAN)",
-      "note": "The university directory lists Spatial Statistics for both teachers.",
+      "note": "",
       "sources": [
         {"label": "Ana Cristina Costa", "url": "https://novaims.unl.pt/en/nova-ims/teaching-staff/d/128"},
         {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"}
@@ -145,6 +167,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "id": "gis",
       "code": "GIS",
       "name": "Geographic Information Systems & Science",
+      "ects": 5,
       "max": 20,
       "weights": "Participation 5 · Group presentations 20 · Quizzes 15 · Exam 20 · Term paper 40%",
       "components": [
@@ -170,12 +193,13 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         "Calendar gives an 11 Jan 2027 second-season exam, time unspecified. The supplied syllabus does not define its grade replacement rules.",
         "Your three group presentations share the 20% component equally. Each dated quiz takes an equal share of the 15% quiz component. Term-paper sessions are possible slots, not further slices of the 40%."
       ],
-      "source": "presentation-guidelines-3.pdf, schedule and class roster. Quizzes from the syllabus and Calendar. Each person presents three times; the 20% is split across those three rows."
+      "source": "presentation-guidelines-3.pdf, schedule and class roster. Each person presents three times; the 20% is split across those three rows."
     },
     {
       "id": "gdm",
       "code": "GDM",
       "name": "Geospatial Data Mining",
+      "ects": 5,
       "max": 20,
       "weights": "Project 1 10 · Project 2 10 · Project 3 25 · Project 4 25 · Exam 30%",
       "components": [
@@ -202,12 +226,13 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         "Calendar homework 3: 5 Nov, time unspecified. Homework 4: December, date to be announced. The 1 Dec entry is explicitly a placeholder.",
         "Final exam: 10 Dec, 17:00–19:00, confirmed by syllabus and Calendar. No resit or late-submission rule was supplied."
       ],
-      "source": "gdm_syllab.pdf pp. 3–4; Calendar GDM / Geospatial Datamining entries; your assignment 2 correction, 7 Oct 2026."
+      "source": "gdm_syllab.pdf pp. 3–4; Katya's Calendar GDM entries"
     },
     {
       "id": "pt",
       "code": "PT A1",
       "name": "Portuguese A1",
+      "ects": 4,
       "max": 100,
       "weights": "Final 30 · Midterm 20 · Oral 20 · Video 1 10 · Video 2 5* · Homework 5* · Engagement 10%",
       "schedule": "15:00–17:00. Week 1: 29–30 Sep, 1 Oct. Week 2: 6–8 Oct. Week 3: 13–15 Oct. Week 4: 20–22 Oct. Week 5: 3–5 Nov. Week 6: 10–12 Nov. Week 7: 17–19 Nov. Week 8: 24–26 Nov. Week 9: Mon 30 Nov, Wed 2 Dec, Thu 3 Dec. 27 sessions.",
@@ -224,7 +249,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "people": [],
       "room": "Room 9 · NOVA IMS (classroom)",
       "consultation": "Not supplied · confirm with the instructor.",
-      "note": "Session 1 titles the course Curso de Língua e Cultura Portuguesa. It does not name the instructor, a personal email, or an office. Room 9 is still only from Calendar. Administrative support: apoioaluno@novaims.unl.pt (not a professor email).",
+      "note": "Administrative support: apoioaluno@novaims.unl.pt",
       "sources": [{"label": "Session 1 F2026-1.pdf + earlier syllabus and Calendar", "url": ""}],
       "rules": [
         "Attendance: at least 88.9%; maximum 3 absences across 27 sessions. More than 3 makes you ineligible for final grading.",
@@ -250,16 +275,8 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "text": "Session 1’s summary slide prints video 2 and homework at 10% each and TOTAL 100%, but those lines add to 110%. The detail slides in the same deck say 5% each. The grade check uses 5% so the weights total 100%. This is a planning interpretation, not a confirmed correction."
     },
     {
-      "title": "Portuguese · video 2 date",
-      "text": "Session 1’s assessment slide dates Video 2 on 17 November, Video 1 on 20 October, the midterm on 5 November, the oral on 26 November, and the final exam on 3 December. An older requirements page said 10 November for Video 2. The dashboard follows the Session 1 date. Video 1 is now a healthy recipe, not the earlier home / dream home brief."
-    },
-    {
-      "title": "Calendar · dates and remaining unknowns",
-      "text": "GIS weekly presentations follow presentation-guidelines-3.pdf: six Wednesdays from 23 September to 4 November, with no class on 28 October. Odd weeks and even weeks are different students, and group numbers rotate, so the name menu is what places your three subtopics. Calendar also adds the GIS resit on 11 January and the SDAV resit on 13 January 2027 (times unknown). Calendar’s month grid and all-day search timestamps sometimes differ by one day; this dashboard uses the date shown in the month grid and notes. GDM/statistics resit dates, and your specific SDAV/GIS final presentation slots remain unconfirmed."
-    },
-    {
       "title": "Still undated",
-      "text": "GDM homework 4 (25%, December); Portuguese homework and engagement; participation components. GeoMundus runs 16–17 October, with dinner on the 16th. Attendance is awaiting confirmation and the venue is still to follow."
+      "text": "GDM homework 4 (25%, December); Portuguese engagement; participation components. Remote Sensing has a 5 ECTS slot in place of SDAV on the class timetable, with no syllabus yet. GeoMundus is 15–17 October in Castellón: welcome meetup on the 15th, conference on the 16th and 17th."
     }
   ]
 }
@@ -403,6 +420,7 @@ p{margin:8px 0}
 .load-stack.mark{height:6px;background:#d5ddd0}
 .load-seg{width:100%;min-height:2px}
 .load-seg[data-course="sdav"]{background:#1f4d3a}
+.load-seg[data-course="rs"]{background:#2f6f8f}
 .load-seg[data-course="stats"]{background:#7d9a62}
 .load-seg[data-course="gis"]{background:#c4a35a}
 .load-seg[data-course="gdm"]{background:#b95831}
@@ -413,6 +431,14 @@ p{margin:8px 0}
 .load-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
 .load-detail{margin:10px 0 0;font-size:12px}
 .load-detail .small{margin:4px 0 0}
+.help{position:relative;display:inline-flex;vertical-align:1px;margin-left:6px}
+button.help-mark{width:18px;height:18px;padding:0;border-radius:50%;font-size:11px;font-weight:700;line-height:16px;color:var(--muted);background:var(--soft);cursor:help}
+button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);color:var(--paper)}
+.help-tip{display:none;position:absolute;z-index:20;top:100%;left:0;width:min(420px,calc(100vw - 48px));margin-top:6px;padding:10px 12px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(36,58,49,.12);font-size:12px;font-weight:450;line-height:1.45;text-align:left}
+.help-tip:before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+.help:hover .help-tip,.help:focus-within .help-tip{display:block}
+@media(min-width:761px){.timeline .help-tip{left:auto;right:0}}
+.ects{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:99px;background:var(--soft);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.3px;vertical-align:1px}
 @media(max-width:1000px){main{padding:20px}.layout{grid-template-columns:minmax(0,1fr) 340px;gap:20px}.fields{grid-template-columns:1fr}.load-stats{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){main{padding:20px 16px}.layout{display:flex;flex-direction:column}.timeline{position:static;width:100%;order:-1}.agenda{max-height:320px}.notice{display:block}.notice strong{display:block;margin-bottom:3px}.stamp{max-width:140px}.review-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr}.subject>summary{grid-template-columns:46px 1fr 82px 12px;gap:8px}.foot{display:block}h1{font-size:25px}.calendar-layout{grid-template-columns:1fr;gap:18px}.selected-day{border-left:0;border-top:1px solid var(--line);padding:15px 0 0;max-height:260px}.calendar-panel,.load-panel{padding:14px}.date-block{min-height:67px;padding:5px}.calendar-panel>.section-head{align-items:flex-start;flex-wrap:wrap}.calendar-toolbar{gap:5px}.load-stats{gap:6px}.load-stat{padding:8px}.load-stat strong{font-size:16px}.track-switch{align-items:flex-start;text-align:left}}
 @media(max-width:460px){.fields{grid-template-columns:1fr}.equation{font-size:10px}.score{font-size:20px}.calc{padding:12px}.stamp{font-size:10px}.name{font-size:13px}.calendar-grid{gap:3px}.date-block{min-height:62px;padding:4px}.day-weight{font-size:10px}.day-mark{font-size:8px}.date-num{font-size:12px}.count-pill{min-width:14px;height:14px;line-height:14px;font-size:9px}.calendar-toolbar select{max-width:180px}.teaching dl{grid-template-columns:80px minmax(0,1fr)}}
@@ -422,12 +448,12 @@ p{margin:8px 0}
 <main>
 <header>
 <div>
-<div class="eyebrow">NOVA IMS · Fall 2026 / 27</div>
-<h1>Semester desk</h1>
+<div class="eyebrow">NOVA IMS · GeoTech · Fall 2026 / 27</div>
+<h1>Semester Dashboard</h1>
 </div>
 <div class="stamp">
-<strong>5 subjects · contacts, rooms &amp; deadlines</strong>
-<div class="small">Calendar checked 6–7 Oct 2026<br>Europe/Lisbon · snapshot, not live sync</div>
+<strong>6 subjects · contacts, rooms &amp; deadlines</strong>
+<div class="small">snapshot as of 7 October 2026<br>Europe/Lisbon</div>
 </div>
 </header>
 <div class="notice" id="notice"></div>
@@ -435,14 +461,13 @@ p{margin:8px 0}
 <div class="section-head">
 <div>
 <div class="eyebrow">Assessment pressure</div>
-<h2 id="load-title">Weekly load</h2>
+<h2 id="load-title">Weekly load<span class="help"><button type="button" class="help-mark" aria-label="About weekly load">?</button><span class="help-tip" role="tooltip">Each column is a week, Monday to Sunday. Height is known grade weight due that week, using the same points as the calendar. Ordinary class hours are left out. The figure above a bar is how many deadlines or assessments are due.</span></span></h2>
 </div>
 <label class="track-switch">Your GIS presentations
 <select id="gis-student" aria-label="Your GIS presentations"></select>
 <span class="small" id="track-note"></span>
 </label>
 </div>
-<p class="small">Each column is a week, Monday to Sunday. Height is known grade weight due that week, using the same points as the calendar. Ordinary class hours are left out. The figure above a bar is how many deadlines or assessments are due.</p>
 <div class="load-stats" id="load-stats"></div>
 <div class="load-chart" id="load-chart" role="group" aria-label="Weekly load"></div>
 <div class="load-legend" id="load-legend"></div>
@@ -452,7 +477,7 @@ p{margin:8px 0}
 <div class="section-head">
 <div>
 <div class="eyebrow">Your semester at a glance</div>
-<h2 id="calendar-title">Deadline calendar</h2>
+<h2 id="calendar-title">Deadline calendar<span class="help"><button type="button" class="help-mark" aria-label="About the deadline calendar">?</button><span class="help-tip" role="tooltip">Darker blocks mean more grade weight. Orange badges are the number of deadlines or assessments. Select a date for details. Weight points add percentages of each subject’s own grade, not a semester average. Your three GIS presentations split the 20% component evenly, and GIS quizzes split the 15% component evenly. “?” marks a date or weight that is still provisional; the number beside it is what colours the day. Term-paper presentation slots and resits stay off the confirmed-deadline count. Edit a row in the events table at the top of this file to change a date, weight, or note.</span></span></h2>
 </div>
 <div class="calendar-toolbar">
 <button type="button" id="month-prev" aria-label="Previous month">←</button>
@@ -461,7 +486,6 @@ p{margin:8px 0}
 <button type="button" id="calendar-current">Today</button>
 </div>
 </div>
-<p class="small">Darker blocks = more grade weight. Orange badges = number of deadlines or assessments. Select a date for details.</p>
 <div class="calendar-layout">
 <div>
 <div class="calendar-grid" id="calendar-grid"></div>
@@ -479,20 +503,18 @@ p{margin:8px 0}
 </div>
 <div class="selected-day" id="selected-day" aria-live="polite"></div>
 </div>
-<p class="calendar-note">Weight points add percentages of each subject’s own grade, not a semester average. Your three GIS presentations split the 20% component evenly, and GIS quizzes split the 15% component evenly. “?” marks a date or weight that is still provisional; the number beside it is what colours the day. Term-paper presentation slots and resits stay off the confirmed-deadline count. Edit a row in the events table at the top of this file to change a date, weight, or note.</p>
 </section>
 <div class="layout">
 <section aria-labelledby="subjects-title">
 <div class="section-head">
-<h2 id="subjects-title">Courses</h2>
+<h2 id="subjects-title">Courses<span class="help"><button type="button" class="help-mark" aria-label="About courses">?</button><span class="help-tip" role="tooltip">Open a course for the teaching team and a grade check. Enter grades you already have; blank rows stay out of the average. ECTS figures are from the NOVA IMS GeoTech study plan.</span></span></h2>
 <span class="small">Contacts, rooms, weights</span>
 </div>
-<p class="small" style="margin:0 0 8px">Open a course for the teaching team and a grade check. Enter grades you already have; blank rows stay out of the average.</p>
 <div id="subjects"></div>
 </section>
 <aside class="timeline" aria-labelledby="agenda-title">
 <div class="section-head">
-<h2 id="agenda-title">Coming up</h2>
+<h2 id="agenda-title">Coming up<span class="help"><button type="button" class="help-mark" aria-label="About coming up">?</button><span class="help-tip" role="tooltip">Calendar dates take priority when clear. All-day entries do not establish a submission time. Assessment dates are distinct from ordinary classes.</span></span></h2>
 <span class="small" id="today"></span>
 </div>
 <div class="timeline-controls">
@@ -505,13 +527,12 @@ p{margin:8px 0}
 <label>Subject<select id="subject-filter" aria-label="Filter by subject"></select></label>
 </div>
 <div class="agenda" id="agenda"></div>
-<p class="small" style="margin-top:12px;font-size:11px">Calendar dates take priority when clear. All-day entries do not establish a submission time. Assessment dates are distinct from ordinary classes.</p>
 </aside>
 </div>
 <section id="review" class="review"></section>
 <footer class="foot">
-<span>Sources: the six supplied course files + Apple Calendar, reviewed 6 October 2026. Assignment 2 corrected from your confirmation on 7 October 2026. GeoMundus and teaching contacts added 7 October; missing details are labelled. Source references appear inside each subject and deadline.</span>
-<span>Entered grades stay in this browser and survive refresh. Blank components are left out of the weighted average. Nothing here is submitted to Moodle or Calendar.</span>
+<span>Sources: the six supplied course files + Apple Calendar, reviewed 6 October 2026. ECTS from the NOVA IMS GeoTech study plan. GeoMundus details from geomundus.org. Remote Sensing is on the timetable in place of SDAV; its syllabus is still to come. Source references appear inside each subject and deadline.</span>
+<span>Entered grades stay in this browser and survive refresh. Blank components are left out of the weighted average.</span>
 </footer>
 </main>
 <script>
@@ -835,6 +856,11 @@ function paintScore(course) {
   const label = $('#score-label-' + course.id);
   const total = $('#total-' + course.id);
   const status = $('#status-' + course.id);
+  if (!componentsFor(course).length) {
+    score.textContent = '—';
+    label.textContent = 'Yet to come';
+    return;
+  }
   if (!result) {
     score.textContent = '—';
     label.textContent = 'No grades';
@@ -888,9 +914,13 @@ function sourceLinks(sources) {
 }
 function renderSubjects() {
   $('#subjects').innerHTML = COURSES.map((course) => {
-    const fields = componentsFor(course).map((component) => '<label class="field"><span>' + esc(component.name) + '</span><span class="weight">' + formatShare(component.weight) + '%</span><input aria-label="' + esc(course.code + ' ' + component.name + ' grade') + '" data-grade="' + esc(component.id) + '" data-course="' + esc(course.id) + '" type="number" min="0" max="' + course.max + '" step="0.1" placeholder="—" autocomplete="off" value="' + esc(storedValue(course, component)) + '"></label>').join('');
+    const components = componentsFor(course);
+    const fields = components.map((component) => '<label class="field"><span>' + esc(component.name) + '</span><span class="weight">' + formatShare(component.weight) + '%</span><input aria-label="' + esc(course.code + ' ' + component.name + ' grade') + '" data-grade="' + esc(component.id) + '" data-course="' + esc(course.id) + '" type="number" min="0" max="' + course.max + '" step="0.1" placeholder="—" autocomplete="off" value="' + esc(storedValue(course, component)) + '"></label>').join('');
     const gradeBlurb = (course.max === 100 ? 'Enter grades out of 100. The header shows that average out of 20. ' : 'Enter grades out of 20. ') + (course.gradeNote ? course.gradeNote + ' ' : '') + 'Blank rows stay out of the average.';
-    return '<details class="subject" id="course-' + course.id + '"><summary class="summary"><span class="code">' + esc(course.code) + '</span><div><div class="name">' + esc(course.name) + '</div><div class="equation">' + esc(course.weights) + '</div><div class="date-line">' + esc(nextLine(course.id)) + '</div></div><div><div class="score" id="score-' + course.id + '"></div><div class="score-label" id="score-label-' + course.id + '"></div></div><span class="chev" aria-hidden="true"></span></summary><section class="teaching" aria-label="Teaching contacts"><h3>Teaching team &amp; consultation</h3><dl><dt>Professor</dt><dd>' + personLines(course.people) + '</dd><dt>Room</dt><dd>' + esc(course.room) + '</dd><dt>Consultation</dt><dd>' + esc(course.consultation) + '</dd>' + (course.schedule ? '<dt>Classes</dt><dd>' + esc(course.schedule) + '</dd>' : '') + '</dl><p class="small">' + esc(course.note) + '</p><div class="source">' + sourceLinks(course.sources) + '</div></section><details class="rule"><summary>Evaluation rules &amp; submission requirements</summary><ul class="rules">' + course.rules.map((rule) => '<li>' + esc(rule) + '</li>').join('') + '</ul></details><div class="source">Source: ' + esc(course.source) + '</div>' + (course.warning ? '<p class="warning">' + esc(course.warning) + '</p>' : '') + '<div class="calc"><h3>Grade check' + (course.max === 100 ? ' · 0–100 inputs' : '') + '</h3><p class="small">' + esc(gradeBlurb) + '</p><div class="fields">' + fields + '</div><div class="result"><span class="small">Weighted average of entered grades</span><strong id="total-' + course.id + '"></strong></div><div class="status" id="status-' + course.id + '" aria-live="polite"></div></div></details>';
+    const ects = course.ects ? '<span class="ects">' + course.ects + ' ECTS</span>' : '';
+    const note = course.note ? '<p class="small">' + esc(course.note) + '</p>' : '';
+    const calc = components.length ? '<div class="calc"><h3>Grade check' + (course.max === 100 ? ' · 0–100 inputs' : '') + '</h3><p class="small">' + esc(gradeBlurb) + '</p><div class="fields">' + fields + '</div><div class="result"><span class="small">Weighted average of entered grades</span><strong id="total-' + course.id + '"></strong></div><div class="status" id="status-' + course.id + '" aria-live="polite"></div></div>' : '';
+    return '<details class="subject" id="course-' + course.id + '"><summary class="summary"><span class="code">' + esc(course.code) + '</span><div><div class="name">' + esc(course.name) + ects + '</div><div class="equation">' + esc(course.weights) + '</div><div class="date-line">' + esc(nextLine(course.id)) + '</div></div><div><div class="score" id="score-' + course.id + '"></div><div class="score-label" id="score-label-' + course.id + '"></div></div><span class="chev" aria-hidden="true"></span></summary><section class="teaching" aria-label="Teaching contacts"><h3>Teaching team &amp; consultation</h3><dl><dt>Professor</dt><dd>' + personLines(course.people) + '</dd><dt>Room</dt><dd>' + esc(course.room) + '</dd><dt>Consultation</dt><dd>' + esc(course.consultation) + '</dd>' + (course.schedule ? '<dt>Classes</dt><dd>' + esc(course.schedule) + '</dd>' : '') + '</dl>' + note + '<div class="source">' + sourceLinks(course.sources) + '</div></section><details class="rule"><summary>Evaluation rules &amp; submission requirements</summary><ul class="rules">' + course.rules.map((rule) => '<li>' + esc(rule) + '</li>').join('') + '</ul></details><div class="source">Source: ' + esc(course.source) + '</div>' + (course.warning ? '<p class="warning">' + esc(course.warning) + '</p>' : '') + calc + '</details>';
   }).join('');
   COURSES.forEach(paintScore);
 }
