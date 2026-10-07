@@ -22,7 +22,9 @@
   kind        deadline, quiz, milestone, slot, resit, or conference
   label       one line on the selected day. Pool rows are rewritten when the page loads.
   details     longer note
-  pool        optional. quiz or presentation on a GIS row. Weight becomes that component's percentage divided by how many rows share the pool. Leave blank otherwise. Term-paper presentation slots stay blank: you present once, so they are not extra slices of the 40%.
+  pool        optional. quiz or presentation on a GIS row. Weight becomes that component's percentage divided by how many of your own rows share the pool. Leave blank otherwise. Term-paper presentation slots stay blank: you present once, so they are not extra slices of the 40%.
+
+  GIS presentations are not rows in this table. They come from the class roster in the script (GIS_WEEKS). Pick a name on the page; that person keeps their three dates, groups and subtopics.
 
   Courses (the script with id="courses-data"):
   Edit names, emails, rooms, consultation hours, component weights, rules, and the notes list.
@@ -31,15 +33,11 @@
 <script type="text/csv" id="events-table">
 date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-09-27","sdav","Hands-on exercise","Time unspecified","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Report on Moodle. Past date does not imply submitted."
-"2026-09-28","gis","Bibliography for 30 Sep presentation","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Two selected papers/chapters on Moodle."
-"2026-09-30","gis","Quiz 1","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. 10 multiple-choice questions. Topic context: spatial heterogeneity.","quiz"
-"2026-09-30","gis","Your Group 2 presentation","18:00","Calendar + syllabus",0,1,"no","deadline","equal share","Topic: spatial heterogeneity. 15 min + 10 min discussion. Upload slides to Moodle, including a slide on the literature choice.","presentation"
+"2026-09-30","gis","Quiz 1","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. 10 multiple-choice questions. Class topic: particularities of geographic information.","quiz"
 "2026-10-07","gis","Quiz 2","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class. Equal share of the 15% quiz component.","quiz"
 "2026-10-08","sdav","In-class test","19:00–21:00 class slot","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Multiple-choice test on Moodle."
 "2026-10-11","stats","Assignment 1","End of day · midnight","Calendar + syllabus",15,1,"no","deadline","15% of STAT final grade","15% · Individual PDF on Moodle. Calendar block 23:00–23:59 is a reminder; notes and class plan say midnight."
-"2026-10-12","gis","Bibliography for 14 Oct presentation","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Submit two selected papers/chapters on Moodle before your Wednesday presentation."
 "2026-10-14","gis","Quiz 3","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
-"2026-10-14","gis","Your Group 2 presentation","18:00","Calendar + syllabus",0,1,"no","deadline","equal share","Topic: topology, geometry, databases. Presentation 15 min + 10 min discussion.","presentation"
 "2026-10-02","gdm","Assignment 1","17:00","Calendar",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 1. Essay"
 "2026-10-15","sdav","Individual project discussions","19:00–21:00","Calendar + syllabus",0,0,"no","milestone","Preparation milestone · no separate weight","Preparation milestone; no separate grade weight."
 "2026-10-16","conference","GeoMundus 2026 · day 1 of 2","All day","Calendar",0,0,"no","conference","Conference · ungraded","Geospatial Intelligence for Disaster Resilience. Conference runs 16–17 October. Attendance subject to confirmation by the GeoMundus team; venue details to follow."
@@ -51,9 +49,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-10-21","gis","Quiz 4","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
 "2026-10-22","gdm","Assignment 2","Time unspecified","Confirmed by you",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 2. Date and assignment number confirmed by you on 7 Oct 2026, correcting the duplicated Calendar title."
 "2026-10-22","sdav","Project presentations · session 2","19:00–21:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · 15% presentation component","Alternative session for the 15% presentation component; confirm your slot."
-"2026-11-02","gis","Bibliography for 4 Nov presentation","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Two selected papers/chapters on Moodle."
 "2026-11-04","gis","Quiz 5","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
-"2026-11-04","gis","Your Group 2 presentation","18:00","Calendar + syllabus",0,1,"no","deadline","equal share","Topic: data storage and management. 15 min + 10 min discussion.","presentation"
 "2026-11-05","gdm","Homework 3","Time unspecified","Calendar",25,1,"no","deadline","25% of GDM final grade","Calendar month grid: 5 Nov. Notes: same day as week 8 class, no time given. Syllabus component called project 3 (25%)."
 "2026-11-05","pt","Midterm written test","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 5 Nov, 1 hour, scored 0–100. Class slot is 15:00–17:00. An older class plan said 90 minutes."
 "2026-11-08","sdav","Final project paper","Time unspecified","Calendar + syllabus",40,1,"no","deadline","40% of SDAV final grade","40% · ≤5,000 words. Calendar month grid and syllabus: 8 Nov; all-day search shows 7 Nov at 23:00."
@@ -158,7 +154,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         {"id": "E", "name": "Exam", "weight": 20},
         {"id": "F", "name": "Individual term paper", "weight": 40}
       ],
-      "gradeNote": "Each group presentation is the 20% component divided by the number of presentation rows. Each quiz is the 15% component divided by the number of quiz rows.",
+      "gradeNote": "Your three group presentations share the 20% component equally. Each quiz is the 15% component divided by the number of quiz rows.",
       "people": [{"name": "Ruoyu Wang", "role": "", "email": "rwang@novaims.unl.pt"}],
       "room": "Room 9 · NOVA IMS (classroom)",
       "consultation": "Wednesday 17:00–18:00, or by appointment.",
@@ -166,14 +162,15 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "sources": [{"label": "GIS syllabus p. 2 + Calendar", "url": ""}],
       "rules": [
         "Six quizzes at 18:00 sharp, first 10 minutes: 10 multiple-choice questions (8 on the previous class, 2 on earlier classes). Dates: 30 Sep; 7, 14, 21 Oct; 4 and 18 Nov.",
-        "Calendar identifies Group 2 presentations on 30 Sep, 14 Oct and 4 Nov. Submit two selected papers/chapters by the preceding Monday: 28 Sep, 12 Oct and 2 Nov.",
-        "Group presentations: 15 minutes + 10 minutes discussion; upload slides to Moodle including a slide explaining literature choice. The syllabus group schedule lists more possible slots than the three Calendar entries; verify Moodle for your allocation.",
+        "Weekly presentations run on 23 Sep, 30 Sep, 7 Oct, 14 Oct, 21 Oct and 4 Nov. There is no class on 28 Oct. Two rotations: odd weeks (23 Sep, 7 Oct, 21 Oct) and even weeks (30 Sep, 14 Oct, 4 Nov). Each student presents three times. The group, and therefore the subtopic, can change from week to week. Pick your name on the weekly load panel.",
+        "Bibliography is due the Monday before your presentation. Upload four papers: the two references supplied for your subtopic and two you select.",
+        "Presentations are 15 minutes, then about 10 minutes of discussion. Upload slides to Moodle before class, including a slide on the papers you selected. The presentation is about the subtopic; the papers support it.",
         "Term paper: individual literature review, ≤5,000 words, journal/conference format. Topic abstract: 250 words with title, summary and initial references by 19 Nov.",
         "Term-paper presentations: 25 Nov; 2, 9 and 16 Dec, ≤15 minutes + 10 minutes discussion. Personal slot unknown. Final paper and presentation due 17 Dec, the day after the last session.",
         "Calendar gives an 11 Jan 2027 second-season exam, time unspecified. The supplied syllabus does not define its grade replacement rules.",
-        "Each dated group presentation takes an equal share of the 20% presentation component. Each dated quiz takes an equal share of the 15% quiz component. Term-paper sessions are possible slots, not further slices of the 40%."
+        "Your three group presentations share the 20% component equally. Each dated quiz takes an equal share of the 15% quiz component. Term-paper sessions are possible slots, not further slices of the 40%."
       ],
-      "source": "gis_syllab.pdf pp. 11–19; Calendar GIS entries (Group 2, deadlines and resit). Presentation and quiz shares are the component total divided by the number of those rows."
+      "source": "presentation-guidelines-3.pdf, schedule and class roster. Quizzes from the syllabus and Calendar. Each person presents three times; the 20% is split across those three rows."
     },
     {
       "id": "gdm",
@@ -258,7 +255,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
     },
     {
       "title": "Calendar · dates and remaining unknowns",
-      "text": "Calendar adds your GIS Group 2 presentations and bibliography deadlines, GIS resit on 11 January and SDAV resit on 13 January 2027 (times unknown). Calendar’s month grid and all-day search timestamps sometimes differ by one day; this dashboard uses the date shown in the month grid and notes. GDM/statistics resit dates, and your specific SDAV/GIS final presentation slots remain unconfirmed."
+      "text": "GIS weekly presentations follow presentation-guidelines-3.pdf: six Wednesdays from 23 September to 4 November, with no class on 28 October. Odd weeks and even weeks are different students, and group numbers rotate, so the name menu is what places your three subtopics. Calendar also adds the GIS resit on 11 January and the SDAV resit on 13 January 2027 (times unknown). Calendar’s month grid and all-day search timestamps sometimes differ by one day; this dashboard uses the date shown in the month grid and notes. GDM/statistics resit dates, and your specific SDAV/GIS final presentation slots remain unconfirmed."
     },
     {
       "title": "Still undated",
@@ -383,8 +380,41 @@ p{margin:8px 0}
 .day-detail p{font-size:11px;color:var(--muted);margin:4px 0}
 .weight-label{font-size:11px;font-weight:600}
 .calendar-note{font-size:11px;color:var(--muted);max-width:940px;margin:10px 0 0}
-@media(max-width:1000px){main{padding:20px}.layout{grid-template-columns:minmax(0,1fr) 340px;gap:20px}.fields{grid-template-columns:1fr}}
-@media(max-width:760px){main{padding:20px 16px}.layout{display:flex;flex-direction:column}.timeline{position:static;width:100%;order:-1}.agenda{max-height:320px}.notice{display:block}.notice strong{display:block;margin-bottom:3px}.stamp{max-width:140px}.review-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr}.subject>summary{grid-template-columns:46px 1fr 82px 12px;gap:8px}.foot{display:block}h1{font-size:25px}.calendar-layout{grid-template-columns:1fr;gap:18px}.selected-day{border-left:0;border-top:1px solid var(--line);padding:15px 0 0;max-height:260px}.calendar-panel{padding:14px}.date-block{min-height:67px;padding:5px}.calendar-panel>.section-head{align-items:flex-start;flex-wrap:wrap}.calendar-toolbar{gap:5px}}
+.load-panel{margin:0 0 24px;padding:18px 20px 16px;background:var(--paper);border:1px solid var(--line);border-radius:9px}
+.load-panel .section-head{align-items:flex-start;flex-wrap:wrap}
+.load-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 16px}
+.load-stat{background:#f5f5ee;border-radius:8px;padding:10px 12px;min-width:0}
+.load-stat span{display:block;font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);font-weight:650}
+.load-stat strong{display:block;margin-top:3px;font-size:20px;font-weight:550;letter-spacing:-.4px;font-variant-numeric:tabular-nums}
+.load-stat em{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px;font-style:normal;font-size:11px;color:var(--muted);line-height:1.35}
+.load-stat.behind{background:#e3e3de}
+.load-stat.behind span,.load-stat.behind strong,.load-stat.behind em{color:#8a9088}
+.track-switch{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right;font-size:12px;color:var(--muted)}
+.track-switch select{min-width:240px;max-width:320px;margin-top:2px}
+.load-chart{display:flex;align-items:flex-end;gap:4px;overflow-x:auto;padding-bottom:2px}
+.load-col{flex:1 0 36px;min-width:36px;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:transparent;padding:2px 0;border-radius:6px}
+.load-col:hover{background:#f3f4ee}
+.load-col[aria-pressed="true"]{background:var(--soft)}
+.load-count{min-height:14px;font-size:10px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;line-height:14px}
+.load-col.has-many .load-count{color:#b95831}
+.load-plot{height:104px;width:100%;display:flex;align-items:flex-end;justify-content:center;border-bottom:1px solid var(--line)}
+.load-col.is-now .load-plot{border-bottom:2px solid var(--ink)}
+.load-stack{width:16px;display:flex;flex-direction:column-reverse;overflow:hidden;border-radius:4px 4px 1px 1px}
+.load-stack.mark{height:6px;background:#d5ddd0}
+.load-seg{width:100%;min-height:2px}
+.load-seg[data-course="sdav"]{background:#1f4d3a}
+.load-seg[data-course="stats"]{background:#7d9a62}
+.load-seg[data-course="gis"]{background:#c4a35a}
+.load-seg[data-course="gdm"]{background:#b95831}
+.load-seg[data-course="pt"]{background:#65509a}
+.load-axis{height:24px;font-size:9px;line-height:1.15;text-align:center;color:var(--muted)}
+.load-col.is-now .load-axis,.load-col[aria-pressed="true"] .load-axis{color:var(--ink);font-weight:700}
+.load-legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:10px;color:var(--muted)}
+.load-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.load-detail{margin:10px 0 0;font-size:12px}
+.load-detail .small{margin:4px 0 0}
+@media(max-width:1000px){main{padding:20px}.layout{grid-template-columns:minmax(0,1fr) 340px;gap:20px}.fields{grid-template-columns:1fr}.load-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){main{padding:20px 16px}.layout{display:flex;flex-direction:column}.timeline{position:static;width:100%;order:-1}.agenda{max-height:320px}.notice{display:block}.notice strong{display:block;margin-bottom:3px}.stamp{max-width:140px}.review-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr}.subject>summary{grid-template-columns:46px 1fr 82px 12px;gap:8px}.foot{display:block}h1{font-size:25px}.calendar-layout{grid-template-columns:1fr;gap:18px}.selected-day{border-left:0;border-top:1px solid var(--line);padding:15px 0 0;max-height:260px}.calendar-panel,.load-panel{padding:14px}.date-block{min-height:67px;padding:5px}.calendar-panel>.section-head{align-items:flex-start;flex-wrap:wrap}.calendar-toolbar{gap:5px}.load-stats{gap:6px}.load-stat{padding:8px}.load-stat strong{font-size:16px}.track-switch{align-items:flex-start;text-align:left}}
 @media(max-width:460px){.fields{grid-template-columns:1fr}.equation{font-size:10px}.score{font-size:20px}.calc{padding:12px}.stamp{font-size:10px}.name{font-size:13px}.calendar-grid{gap:3px}.date-block{min-height:62px;padding:4px}.day-weight{font-size:10px}.day-mark{font-size:8px}.date-num{font-size:12px}.count-pill{min-width:14px;height:14px;line-height:14px;font-size:9px}.calendar-toolbar select{max-width:180px}.teaching dl{grid-template-columns:80px minmax(0,1fr)}}
 </style>
 </head>
@@ -401,6 +431,23 @@ p{margin:8px 0}
 </div>
 </header>
 <div class="notice" id="notice"></div>
+<section class="load-panel" aria-labelledby="load-title">
+<div class="section-head">
+<div>
+<div class="eyebrow">Assessment pressure</div>
+<h2 id="load-title">Weekly load</h2>
+</div>
+<label class="track-switch">Your GIS presentations
+<select id="gis-student" aria-label="Your GIS presentations"></select>
+<span class="small" id="track-note"></span>
+</label>
+</div>
+<p class="small">Each column is a week, Monday to Sunday. Height is known grade weight due that week, using the same points as the calendar. Ordinary class hours are left out. The figure above a bar is how many deadlines or assessments are due.</p>
+<div class="load-stats" id="load-stats"></div>
+<div class="load-chart" id="load-chart" role="group" aria-label="Weekly load"></div>
+<div class="load-legend" id="load-legend"></div>
+<p class="load-detail" id="load-detail"></p>
+</section>
 <section class="calendar-panel" aria-labelledby="calendar-title">
 <div class="section-head">
 <div>
@@ -432,7 +479,7 @@ p{margin:8px 0}
 </div>
 <div class="selected-day" id="selected-day" aria-live="polite"></div>
 </div>
-<p class="calendar-note">Weight points add percentages of each subject’s own grade, not a semester average. GIS group presentations split the 20% component evenly, and GIS quizzes split the 15% component evenly. “?” marks a date or weight that is still provisional; the number beside it is what colours the day. Term-paper presentation slots and resits stay off the confirmed-deadline count. Edit a row in the events table at the top of this file to change a date, weight, or note.</p>
+<p class="calendar-note">Weight points add percentages of each subject’s own grade, not a semester average. Your three GIS presentations split the 20% component evenly, and GIS quizzes split the 15% component evenly. “?” marks a date or weight that is still provisional; the number beside it is what colours the day. Term-paper presentation slots and resits stay off the confirmed-deadline count. Edit a row in the events table at the top of this file to change a date, weight, or note.</p>
 </section>
 <div class="layout">
 <section aria-labelledby="subjects-title">
@@ -476,6 +523,22 @@ const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;'
 const format = (n) => n.toFixed(2);
 const dateObj = (s) => new Date(s + 'T12:00:00Z');
 const dayDiff = (a, b) => Math.round((dateObj(a) - dateObj(b)) / 86400000);
+function shiftDate(iso, days) {
+  const d = dateObj(iso);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+function weekStart(iso) {
+  return shiftDate(iso, -((dateObj(iso).getUTCDay() + 6) % 7));
+}
+function weekRangeLabel(start, end) {
+  const a = dateObj(start);
+  const b = dateObj(end);
+  const ma = a.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+  const mb = b.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+  if (ma === mb) return a.getUTCDate() + '–' + b.getUTCDate() + ' ' + ma;
+  return a.getUTCDate() + ' ' + ma + ' – ' + b.getUTCDate() + ' ' + mb;
+}
 
 function showError(message) {
   const notice = $('#notice');
@@ -531,12 +594,134 @@ function parseCSV(text) {
 
 let data;
 let COURSES;
+let BASE_EVENTS;
 let EVENTS;
+const STUDENT_KEY = 'geotech-desk-gis-student';
+const DEFAULT_GIS_STUDENT = 'Ekaterina Chuprun';
+const GIS_WEEKS = [
+  { date: '2026-09-23', topic: 'What is geographic information and why is it important?', groups: [
+    { id: 1, title: 'Definitions of geographic information', subtopic: 'Definitions of geographic data and information. Geographic information is ubiquitous.', students: ['Carmen Benbow', 'Achraf Houari', 'Marco Winnendael'] },
+    { id: 2, title: 'Primitives of spatial information', subtopic: 'Primitives of spatial information and core concepts.', students: ['Camila Bonassio', 'Brooke Kearney'] },
+    { id: 3, title: 'Describing geographic information', subtopic: 'Describing geographic information: fields, objects and attributes.', students: ['Nicolò Boscherini', 'Sofiia Makhortova'] },
+    { id: 4, title: 'Geographic information and society', subtopic: 'Importance of geographic information for society.', students: ['Francisco Branco', 'Stefano Marsala'] }
+  ]},
+  { date: '2026-09-30', topic: 'What are the particularities of geographic information?', groups: [
+    { id: 1, title: 'Spatial autocorrelation and Tobler’s law', subtopic: 'Spatial autocorrelation, spatial dependence and Tobler’s first law.', students: ['Suren Chilingaryan', 'Daniele Mastrosimone', 'Maria Taehtivaara'] },
+    { id: 2, title: 'Spatial heterogeneity', subtopic: 'Geographic space and spatial heterogeneity.', students: ['Ekaterina Chuprun', 'Ludovico Piras', 'Jose Vaz Serra Crespo'] },
+    { id: 3, title: 'Fractals and scale', subtopic: 'Fractal principle in geographic concepts and representations.', students: ['Adrian Därr', 'Maria Teresa Silva Correia', 'Diego Fernandes'] },
+    { id: 4, title: 'Uncertainty in geographic information', subtopic: 'Uncertainty in geographic information.', students: ['Michael Dresner', 'Youssef Stini'] }
+  ]},
+  { date: '2026-10-07', topic: 'The science behind the systems', groups: [
+    { id: 1, title: 'What GIScience is concerned about', subtopic: 'What is GIScience concerned about?', students: ['Carmen Benbow', 'Stefano Marsala'] },
+    { id: 2, title: 'Definitions of GIScience', subtopic: 'Definitions of Geographic Information Science.', students: ['Camila Bonassio', 'Achraf Houari'] },
+    { id: 3, title: 'Nature and cycle of GIScience', subtopic: 'The nature and cycle of Geographic Information Science.', students: ['Nicolò Boscherini', 'Brooke Kearney', 'Marco Winnendael'] },
+    { id: 4, title: 'Brief history of GIS', subtopic: 'Brief history of Geographic Information Systems and Science.', students: ['Francisco Branco', 'Sofiia Makhortova'] }
+  ]},
+  { date: '2026-10-14', topic: 'Components of Geographic Information Science (I)', groups: [
+    { id: 1, title: 'Ontologies, categories and models', subtopic: 'Geographic representation: ontologies, categories and models.', students: ['Suren Chilingaryan', 'Maria Teresa Silva Correia', 'Youssef Stini'] },
+    { id: 2, title: 'Topology, geometry and databases', subtopic: 'Computation: topology, geometry and databases.', students: ['Ekaterina Chuprun', 'Daniele Mastrosimone', 'Diego Fernandes'] },
+    { id: 3, title: 'Spatial statistics', subtopic: 'Spatial statistics.', students: ['Adrian Därr', 'Ludovico Piras'] },
+    { id: 4, title: 'Cognition and interaction', subtopic: 'Cognition: geographic concepts and human-computer interaction.', students: ['Michael Dresner', 'Maria Taehtivaara', 'Jose Vaz Serra Crespo'] }
+  ]},
+  { date: '2026-10-21', topic: 'Components of Geographic Information Science (II)', groups: [
+    { id: 1, title: 'GIS components', subtopic: 'Information system perspective: people, software, hardware, methods and data.', students: ['Carmen Benbow', 'Sofiia Makhortova'] },
+    { id: 2, title: 'Data quality', subtopic: 'Data quality: precision, accuracy, error and uncertainty.', students: ['Camila Bonassio', 'Stefano Marsala'] },
+    { id: 3, title: 'MAUP and ecological fallacy', subtopic: 'Modifiable areal unit problem (MAUP) and ecological fallacy.', students: ['Nicolò Boscherini', 'Achraf Houari'] },
+    { id: 4, title: 'Scale and time', subtopic: 'Scale and time: crosscutting research themes.', students: ['Francisco Branco', 'Brooke Kearney', 'Marco Winnendael'] }
+  ]},
+  { date: '2026-11-04', topic: 'Components of Geographic Information Science (II)', groups: [
+    { id: 1, title: 'Data input', subtopic: 'Data input.', students: ['Suren Chilingaryan', 'Youssef Stini', 'Jose Vaz Serra Crespo'] },
+    { id: 2, title: 'Data storage and management', subtopic: 'Data storage and management.', students: ['Ekaterina Chuprun', 'Maria Teresa Silva Correia', 'Maria Taehtivaara'] },
+    { id: 3, title: 'Data manipulation and analysis', subtopic: 'Data manipulation and analysis.', students: ['Adrian Därr', 'Daniele Mastrosimone'] },
+    { id: 4, title: 'Data output', subtopic: 'Data output.', students: ['Michael Dresner', 'Ludovico Piras', 'Diego Fernandes'] }
+  ]}
+];
+let gisStudent = DEFAULT_GIS_STUDENT;
+function gisStudents() {
+  const odd = [];
+  const even = [];
+  GIS_WEEKS.forEach((week, index) => {
+    const bucket = index % 2 === 0 ? odd : even;
+    week.groups.forEach((group) => {
+      group.students.forEach((name) => { if (!bucket.includes(name)) bucket.push(name); });
+    });
+  });
+  const byName = (a, b) => a.localeCompare(b, 'en');
+  odd.sort(byName);
+  even.sort(byName);
+  return { odd, even };
+}
+function slotsFor(name) {
+  const slots = [];
+  GIS_WEEKS.forEach((week) => {
+    week.groups.forEach((group) => {
+      if (group.students.includes(name)) slots.push({ week, group });
+    });
+  });
+  return slots;
+}
+function loadStudent() {
+  try {
+    const saved = localStorage.getItem(STUDENT_KEY);
+    const lists = gisStudents();
+    if (saved && (lists.odd.includes(saved) || lists.even.includes(saved))) return saved;
+  } catch (err) {}
+  return DEFAULT_GIS_STUDENT;
+}
+function stampDate(iso) {
+  const when = dateObj(iso);
+  return when.getUTCDate() + ' ' + when.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+}
+function personalEvents(name) {
+  return slotsFor(name).flatMap(({ week, group }) => {
+    const stamp = stampDate(week.date);
+    return [
+      {
+        date: shiftDate(week.date, -2),
+        course: 'gis',
+        title: 'Bibliography for ' + stamp + ' presentation',
+        when: 'Time unspecified',
+        source: 'Presentation guidelines',
+        weight: 0,
+        counts: 1,
+        uncertain: false,
+        kind: 'deadline',
+        label: 'Administrative deadline · no separate weight',
+        details: 'Due the Monday before class. Upload four papers: the two references supplied for this subtopic and two you select. Subtopic: ' + group.subtopic,
+        pool: ''
+      },
+      {
+        date: week.date,
+        course: 'gis',
+        title: 'Group ' + group.id + ' · ' + group.title,
+        when: '18:00',
+        source: 'Presentation guidelines',
+        weight: 0,
+        counts: 1,
+        uncertain: false,
+        kind: 'deadline',
+        label: 'equal share',
+        details: week.topic + '. ' + group.subtopic + ' 15 minutes, then about 10 minutes of discussion. Upload slides to Moodle before class, including a slide on the papers you selected.',
+        pool: 'presentation'
+      }
+    ];
+  });
+}
+function assertRoster() {
+  const lists = gisStudents();
+  lists.odd.concat(lists.even).forEach((name) => {
+    const count = slotsFor(name).length;
+    if (count !== 3) throw new Error(name + ' has ' + count + ' GIS presentations, not 3.');
+  });
+}
 try {
   data = JSON.parse($('#courses-data').textContent);
   COURSES = data.courses;
   if (!Array.isArray(COURSES) || !COURSES.length) throw new Error('The courses block needs a courses list.');
-  EVENTS = parseCSV($('#events-table').textContent);
+  BASE_EVENTS = parseCSV($('#events-table').textContent);
+  assertRoster();
+  gisStudent = loadStudent();
+  EVENTS = BASE_EVENTS.concat(personalEvents(gisStudent));
   applyPools(EVENTS, COURSES);
 } catch (err) {
   showError(err.message || 'The events table or courses block could not be read.');
@@ -763,6 +948,133 @@ function renderAgenda() {
     return heading + '<article class="event"><div class="day">' + date.getUTCDate() + '<small>' + date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'UTC' }) + '</small></div><div><div class="event-title">' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</div><div class="event-info">' + esc(event.when) + ' · ' + when + '</div><div><span class="badge' + (event.source === 'Conflict' ? ' warn' : '') + '">' + esc(event.source) + '</span></div><details><summary>Details &amp; source</summary><p>' + esc(event.details) + '</p></details></div></article>';
   }).join('') : '<p class="small">No dated assessments in this selection. Choose All upcoming to see later entries.</p>';
 }
+function buildWeeks() {
+  const dates = EVENTS.map((event) => event.date).sort();
+  let cursor = weekStart(dates[0]);
+  const last = weekStart(dates[dates.length - 1]);
+  const weeks = [];
+  while (cursor <= last) {
+    const end = shiftDate(cursor, 6);
+    const events = EVENTS.filter((event) => event.date >= cursor && event.date <= end)
+      .slice()
+      .sort((a, b) => a.date.localeCompare(b.date) || a.title.localeCompare(b.title));
+    weeks.push({
+      start: cursor,
+      end,
+      events,
+      weight: events.reduce((sum, event) => sum + event.weight, 0),
+      count: events.reduce((sum, event) => sum + event.counts, 0),
+      uncertain: events.some((event) => event.uncertain),
+      conference: events.some((event) => event.kind === 'conference')
+    });
+    cursor = shiftDate(cursor, 7);
+  }
+  return weeks;
+}
+let WEEKS = buildWeeks();
+let loadWeek = weekStart(today);
+if (!WEEKS.some((week) => week.start === loadWeek)) {
+  const later = WEEKS.find((week) => week.start >= loadWeek);
+  loadWeek = later ? later.start : WEEKS[WEEKS.length - 1].start;
+}
+function loadStat(label, value, note, extraClass) {
+  return '<div class="load-stat' + (extraClass ? ' ' + extraClass : '') + '"><span>' + esc(label) + '</span><strong>' + esc(value) + '</strong><em>' + esc(note) + '</em></div>';
+}
+function renderStudentMenu() {
+  const menu = $('#gis-student');
+  if (!menu.options.length) {
+    const lists = gisStudents();
+    const options = (names) => names.map((name) => '<option value="' + esc(name) + '">' + esc(name) + '</option>').join('');
+    menu.innerHTML = '<optgroup label="Odd weeks · 23 Sep, 7 Oct, 21 Oct">' + options(lists.odd) + '</optgroup><optgroup label="Even weeks · 30 Sep, 14 Oct, 4 Nov">' + options(lists.even) + '</optgroup>';
+  }
+  menu.value = gisStudent;
+  const note = $('#track-note');
+  if (note) note.textContent = slotsFor(gisStudent).map(({ week, group }) => stampDate(week.date) + ' · Group ' + group.id + ' · ' + group.title).join('  ·  ');
+}
+function deadlinePhrase(count) {
+  return count + ' deadline' + (count === 1 ? '' : 's');
+}
+function eventLoadLabel(event, withWeight) {
+  const name = event.course === 'conference' ? event.title : courseCode(event.course) + ' · ' + event.title;
+  return name + (withWeight && event.weight ? ' (' + formatShare(event.weight) + ' pts)' : '');
+}
+function courseSegments(week) {
+  const totals = {};
+  for (const event of week.events) {
+    if (!event.weight) continue;
+    totals[event.course] = (totals[event.course] || 0) + event.weight;
+  }
+  return COURSES.map((course) => course.id).filter((id) => totals[id]).map((id) => '<span class="load-seg" data-course="' + esc(id) + '" style="flex:' + totals[id] + '"></span>').join('');
+}
+function renderLoadDetail() {
+  const week = WEEKS.find((item) => item.start === loadWeek);
+  const box = $('#load-detail');
+  if (!week) { box.textContent = ''; return; }
+  const when = 'Week of ' + weekRangeLabel(week.start, week.end);
+  if (!week.events.length) {
+    box.innerHTML = '<strong>' + esc(when) + '.</strong> No dated deadlines.';
+    return;
+  }
+  const items = week.events.map((event) => esc(eventLoadLabel(event, true))).join('<br>');
+  const summary = deadlinePhrase(week.count) + ' · ' + formatShare(week.weight) + ' pts' + (week.uncertain ? ' · includes a provisional date' : '');
+  box.innerHTML = '<strong>' + esc(when) + '</strong> · ' + esc(summary) + '<div class="small">' + items + '</div>';
+}
+function renderLoad() {
+  const maxWeight = Math.max(...WEEKS.map((week) => week.weight), 1);
+  const peak = WEEKS.reduce((best, week) => (week.weight > best.weight ? week : best), WEEKS[0]);
+  const ahead = EVENTS.filter((event) => event.date >= today);
+  const aheadWeight = ahead.reduce((sum, event) => sum + event.weight, 0);
+  const aheadCount = ahead.reduce((sum, event) => sum + event.counts, 0);
+  const behind = EVENTS.filter((event) => event.date < today);
+  const behindWeight = behind.reduce((sum, event) => sum + event.weight, 0);
+  const behindCount = behind.reduce((sum, event) => sum + event.counts, 0);
+  const current = WEEKS.find((week) => week.start === weekStart(today));
+  const currentValue = current && current.weight ? formatShare(current.weight) + ' pts' : 'Quiet';
+  const currentNote = current && current.count ? deadlinePhrase(current.count) + ' this week' : 'Nothing dated this week';
+  const aheadNote = aheadCount ? deadlinePhrase(aheadCount) + ' from today' : 'Dated work from today is clear';
+  const behindValue = behindWeight ? formatShare(behindWeight) + ' pts' : '0 pts';
+  const behindNote = behindCount ? deadlinePhrase(behindCount) + ' already due' : 'Nothing dated has passed';
+  $('#load-stats').innerHTML = [
+    loadStat('This week', currentValue, currentNote),
+    loadStat('Heaviest week', formatShare(peak.weight) + ' pts', weekRangeLabel(peak.start, peak.end)),
+    loadStat('Still ahead', formatShare(aheadWeight) + ' pts', aheadNote),
+    loadStat('Already behind', behindValue, behindNote, 'behind')
+  ].join('');
+  $('#load-chart').innerHTML = WEEKS.map((week) => {
+    const height = week.weight ? Math.max(4, Math.round(week.weight / maxWeight * 100)) : 0;
+    const stack = week.weight
+      ? '<span class="load-stack" style="height:' + height + '%">' + courseSegments(week) + '</span>'
+      : (week.events.length ? '<span class="load-stack mark"></span>' : '');
+    const countLabel = week.count ? String(week.count) : (week.conference ? '◆' : (week.uncertain ? '?' : ''));
+    const axis = dateObj(week.start);
+    const label = axis.getUTCDate() + '<br>' + axis.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+    const names = week.events.map((event) => eventLoadLabel(event, false)).join(', ');
+    const pressed = week.start === loadWeek;
+    const described = 'Week of ' + weekRangeLabel(week.start, week.end) + ', ' + formatShare(week.weight) + ' points, ' + deadlinePhrase(week.count) + (names ? ': ' + names : '');
+    return '<button type="button" class="load-col' + (week.start === weekStart(today) ? ' is-now' : '') + (week.count > 1 ? ' has-many' : '') + '" data-week="' + week.start + '" aria-pressed="' + pressed + '" aria-label="' + esc(described) + '"><span class="load-count">' + esc(countLabel) + '</span><span class="load-plot">' + stack + '</span><span class="load-axis">' + label + '</span></button>';
+  }).join('');
+  $('#load-legend').innerHTML = COURSES.map((course) => '<span><i class="load-seg" data-course="' + esc(course.id) + '"></i>' + esc(course.code) + '</span>').join('') + '<span>Number = deadlines</span><span>? or a short mark = provisional or ungraded</span>';
+  renderStudentMenu();
+  renderLoadDetail();
+}
+function applyStudent() {
+  EVENTS = BASE_EVENTS.concat(personalEvents(gisStudent));
+  applyPools(EVENTS, COURSES);
+  const openIds = [...document.querySelectorAll('details[open]')].map((el) => el.id).filter(Boolean);
+  WEEKS = buildWeeks();
+  if (!WEEKS.some((week) => week.start === loadWeek)) {
+    const later = WEEKS.find((week) => week.start >= loadWeek);
+    loadWeek = later ? later.start : WEEKS[WEEKS.length - 1].start;
+  }
+  renderSubjects();
+  renderAgenda();
+  renderCalendar();
+  renderLoad();
+  openIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.open = true;
+  });
+}
 function renderReview() {
   const notes = Array.isArray(data.notes) ? data.notes : [];
   $('#review').innerHTML = '<h2>Source differences &amp; open dates</h2><div class="review-grid">' + notes.map((note) => '<div class="review-item"><strong>' + esc(note.title) + '</strong><p>' + esc(note.text) + '</p></div>').join('') + '</div>';
@@ -779,6 +1091,7 @@ renderBanner();
 renderSubjects();
 renderAgenda();
 renderCalendar();
+renderLoad();
 renderReview();
 $('#month-prev').addEventListener('click', () => moveMonth(-1));
 $('#month-next').addEventListener('click', () => moveMonth(1));
@@ -791,6 +1104,27 @@ $('#calendar-current').addEventListener('click', () => {
   selectedDate = today >= rangeStart && today <= rangeEnd ? today : EVENTS[0].date;
   calendarMonth = selectedDate.slice(0, 7);
   renderCalendar();
+});
+$('#gis-student').addEventListener('change', (event) => {
+  gisStudent = event.target.value;
+  try { localStorage.setItem(STUDENT_KEY, gisStudent); } catch (err) {}
+  applyStudent();
+});
+$('#load-chart').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-week]');
+  if (!button) return;
+  loadWeek = button.dataset.week;
+  const week = WEEKS.find((item) => item.start === loadWeek);
+  const first = week && week.events.length ? week.events[0].date : loadWeek;
+  if (first >= rangeStart && first <= rangeEnd) {
+    selectedDate = first;
+    calendarMonth = selectedDate.slice(0, 7);
+    renderCalendar();
+  }
+  document.querySelectorAll('#load-chart [data-week]').forEach((item) => {
+    item.setAttribute('aria-pressed', item.dataset.week === loadWeek ? 'true' : 'false');
+  });
+  renderLoadDetail();
 });
 $('#calendar-grid').addEventListener('click', (event) => {
   const button = event.target.closest('[data-date]');
