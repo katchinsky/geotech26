@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semester desk · GeoTech 2026</title>
+<meta name="description" content="Contacts, rooms, deadlines and a light grade check for GeoTech Fall 2026/27.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23214539'/%3E%3Cpath d='M8 10h16M8 16h10M8 22h14' stroke='%23e9f0ce' stroke-width='3'/%3E%3C/svg%3E">
+<!--
+  HOW TO EDIT
+
+  Events table (the script below with id="events-table"):
+  Add one row per event. Do not rename the header. Quote a field when it contains a comma.
+  date        YYYY-MM-DD
+  course      sdav, stats, gis, gdm, pt, or conference
+  title       short name shown on the calendar and agenda
+  when        time or "Time unspecified"
+  source      where the date came from. Use Conflict to flag a disputed date.
+  weight      known grade points for the heat map. Use 0 when a pool column sets the weight, or when there is no separate weight.
+  counts      orange badge: 0, 1, or 2. Use 0 for milestones, slots, resits, and conference days.
+  uncertain   yes or no. yes draws the ? next to the points.
+  kind        deadline, quiz, milestone, slot, resit, or conference
+  label       one line on the selected day. Pool rows are rewritten when the page loads.
+  details     longer note
+  pool        optional. quiz or presentation on a GIS row. Weight becomes that component's percentage divided by how many rows share the pool. Leave blank otherwise. Term-paper presentation slots stay blank: you present once, so they are not extra slices of the 40%.
+
+  Courses (the script with id="courses-data"):
+  Edit names, emails, rooms, consultation hours, component weights, rules, and the notes list.
+  Keep each course "weights" line in step with its components. Undated work belongs in notes, not as a fake date.
+-->
+<script type="text/csv" id="events-table">
+date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
+"2026-09-27","sdav","Hands-on exercise","Time unspecified","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Report on Moodle. Past date does not imply submitted."
+"2026-09-28","gis","Bibliography for 30 Sep presentation","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Two selected papers/chapters on Moodle."
+"2026-09-30","gis","Quiz 1","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. 10 multiple-choice questions. Topic context: spatial heterogeneity.","quiz"
+"2026-09-30","gis","Your Group 2 presentation","18:00","Calendar + syllabus",0,1,"no","deadline","equal share","Topic: spatial heterogeneity. 15 min + 10 min discussion. Upload slides to Moodle, including a slide on the literature choice.","presentation"
+"2026-10-07","gis","Quiz 2","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class. Equal share of the 15% quiz component.","quiz"
+"2026-10-08","sdav","In-class test","19:00–21:00 class slot","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Multiple-choice test on Moodle."
+"2026-10-11","stats","Assignment 1","End of day · midnight","Calendar + syllabus",15,1,"no","deadline","15% of STAT final grade","15% · Individual PDF on Moodle. Calendar block 23:00–23:59 is a reminder; notes and class plan say midnight."
+"2026-10-12","gis","Bibliography for 14 Oct presentation","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Submit two selected papers/chapters on Moodle before your Wednesday presentation."
+"2026-10-14","gis","Quiz 3","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
+"2026-10-14","gis","Your Group 2 presentation","18:00","Calendar + syllabus",0,1,"no","deadline","equal share","Topic: topology, geometry, databases. Presentation 15 min + 10 min discussion.","presentation"
+"2026-10-02","gdm","Assignment 1","17:00","Calendar",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 1. Essay"
+"2026-10-15","sdav","Individual project discussions","19:00–21:00","Calendar + syllabus",0,0,"no","milestone","Preparation milestone · no separate weight","Preparation milestone; no separate grade weight."
+"2026-10-16","conference","GeoMundus 2026 · day 1 of 2","All day","Calendar",0,0,"no","conference","Conference · ungraded","Geospatial Intelligence for Disaster Resilience. Conference runs 16–17 October. Attendance subject to confirmation by the GeoMundus team; venue details to follow."
+"2026-10-16","conference","GeoMundus conference dinner","Time to be confirmed","Calendar",0,0,"no","conference","Conference · ungraded","Dinner on 16 October. Venue and participation details to follow; no grade weight."
+"2026-10-17","conference","GeoMundus 2026 · day 2 of 2","All day","Calendar",0,0,"no","conference","Conference · ungraded","Geospatial Intelligence for Disaster Resilience. Attendance subject to confirmation by the GeoMundus team; venue details to follow."
+"2026-10-18","sdav","Project proposal","Time unspecified","Calendar + syllabus",10,1,"no","deadline","10% of SDAV final grade","10% · Calendar month grid and syllabus say 18 Oct; all-day search display starts on 17 Oct at 23:00. Calendar notes: no time on course page. Submit via Turnitin."
+"2026-10-20","pt","Video 1 · healthy recipe","Time unspecified","Session 1 slides",10,1,"no","deadline","10% of PT A1 final grade","10% · 2–3 minutes on Moodle, in Portuguese: a healthy recipe, with ingredients, preparation steps, and a personal connection. Session 1 replaces the earlier home / dream home brief."
+"2026-10-20","sdav","Project presentations · session 1","17:00–19:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · 15% presentation component","15% presentation component. Personal slot not known; could be 20 or 22 Oct. Calendar updates the generic Tuesday 19:00 syllabus class time."
+"2026-10-21","gis","Quiz 4","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
+"2026-10-22","gdm","Assignment 2","Time unspecified","Confirmed by you",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 2. Date and assignment number confirmed by you on 7 Oct 2026, correcting the duplicated Calendar title."
+"2026-10-22","sdav","Project presentations · session 2","19:00–21:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · 15% presentation component","Alternative session for the 15% presentation component; confirm your slot."
+"2026-11-02","gis","Bibliography for 4 Nov presentation","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Two selected papers/chapters on Moodle."
+"2026-11-04","gis","Quiz 5","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
+"2026-11-04","gis","Your Group 2 presentation","18:00","Calendar + syllabus",0,1,"no","deadline","equal share","Topic: data storage and management. 15 min + 10 min discussion.","presentation"
+"2026-11-05","gdm","Homework 3","Time unspecified","Calendar",25,1,"no","deadline","25% of GDM final grade","Calendar month grid: 5 Nov. Notes: same day as week 8 class, no time given. Syllabus component called project 3 (25%)."
+"2026-11-05","pt","Midterm written test","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 5 Nov, 1 hour, scored 0–100. Class slot is 15:00–17:00. An older class plan said 90 minutes."
+"2026-11-08","sdav","Final project paper","Time unspecified","Calendar + syllabus",40,1,"no","deadline","40% of SDAV final grade","40% · ≤5,000 words. Calendar month grid and syllabus: 8 Nov; all-day search shows 7 Nov at 23:00."
+"2026-11-15","stats","Assignment 2","End of day · midnight","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · Individual PDF on Moodle. Calendar reminder 23:00–23:59, class plan says midnight."
+"2026-11-17","pt","Video 2 · festival or celebration","Time unspecified","Session 1 slides",5,1,"yes","deadline","5% provisional · summary slide also prints 10%","Session 1 assessment slide: 17 Nov. Detail slide: 5%. Summary slide: 10%, while still printing TOTAL 100%. 2–3 minutes on Moodle about a festival or celebration. An older requirements page said 10 Nov."
+"2026-11-18","gis","Quiz 6","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. The exam follows in the same class slot.","quiz"
+"2026-11-18","gis","Exam","18:00–20:00 class slot","Calendar + syllabus",20,1,"no","deadline","20% of GIS final grade","20% exam. Quiz 6 is a separate equal share of the 15% quiz component."
+"2026-11-19","gis","Term-paper topic abstract","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Preparation for the 40% term paper · no separate weight","250 words with title, summary and initial references; Moodle. Calendar month grid: 19 Nov."
+"2026-11-25","stats","Email project topic & group members","End of day · midnight","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Administrative milestone. Calendar notes and class plan; no separate weight."
+"2026-11-25","gis","Term-paper presentations · session 1","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions; personal slot unknown. ≤15 min + 10 min discussion."
+"2026-11-26","pt","Individual oral presentation","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 26 Nov. Expands Video 2 and is delivered without reading from notes or scripts. Syllabus length: 5–7 minutes."
+"2026-11-30","stats","Exam","17:00 · about 75 minutes","Calendar + syllabus",30,1,"no","deadline","30% of STAT final grade","30% · Followed by project work until 19:00. Replaces 1 Dec class."
+"2026-12-02","gis","Term-paper presentations · session 2","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Personal presentation slot unknown."
+"2026-12-03","pt","Final written exam","In class · 15:00–17:00","Session 1 slides",30,1,"no","deadline","30% of PT A1 final grade","30% · 3 Dec. 90 minutes plus 30 minutes of tolerance. Class slot is 15:00–17:00."
+"2026-12-09","gis","Term-paper presentations · session 3","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Personal presentation slot unknown."
+"2026-12-10","gdm","Final exam","17:00–19:00","Calendar + syllabus",30,1,"no","deadline","30% of GDM final grade","30% · Exam grade must be at least 8/20."
+"2026-12-15","stats","Oral project presentation","17:00","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · All authors present. 7 minutes + 3 minutes discussion."
+"2026-12-16","gis","Term-paper presentations · final session","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Personal slot unknown. Final paper and slides due the next day."
+"2026-12-17","gis","Final term paper & presentation file","Time unspecified","Calendar + syllabus rule",40,1,"no","deadline","40% of GIS final grade","40% term-paper component. Calendar month-grid date: 17 Dec; syllabus says day after last presentation session (16 Dec). ≤5,000 words."
+"2026-12-27","stats","Project report","End of day · midnight","Calendar + syllabus",35,1,"no","deadline","35% of STAT final grade","35% · DOC/PDF on Moodle. No late reports. Duplicate all-day and 23:00–23:59 reminder entries represent the same deadline."
+"2027-01-11","gis","Second-season exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit · replacement weight unconfirmed","Calendar month-grid date: 11 Jan 2027. Notes say check exam timetable. Grade replacement rules not supplied."
+"2027-01-13","sdav","Second-period exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit · 100% replacement","100% replacement if continuous evaluation is failed. Calendar month-grid date: 13 Jan 2027."
+</script>
+<script type="application/json" id="courses-data">
+{
+  "banner": {
+    "title": "One thing to confirm",
+    "text": "Portuguese homework and video 2 are 5% on the Session 1 detail slides and 10% on the summary."
+  },
+  "courses": [
+    {
+      "id": "sdav",
+      "code": "SDAV",
+      "name": "Spatial Data Analysis & Visualization",
+      "max": 20,
+      "weights": "Hands-on 15 · Proposal 10 · Test 15 · Presentation 15 · Paper 40 · Participation 5%",
+      "components": [
+        {"id": "H", "name": "Hands-on exercise", "weight": 15},
+        {"id": "P", "name": "Project proposal", "weight": 10},
+        {"id": "T", "name": "In-class test", "weight": 15},
+        {"id": "O", "name": "Project presentation", "weight": 15},
+        {"id": "F", "name": "Final project paper", "weight": 40},
+        {"id": "C", "name": "Participation", "weight": 5}
+      ],
+      "people": [{"name": "Ruoyu Wang", "role": "", "email": "rwang@novaims.unl.pt"}],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "By appointment via email.",
+      "note": "Professor's office / consultation room not supplied.",
+      "sources": [{"label": "SDAV syllabus + Calendar", "url": ""}],
+      "rules": [
+        "Submit deliverables to their Moodle sections; the Calendar proposal entry links to Turnitin. No email submissions.",
+        "Hands-on: pairs. Final project: one or two students; paper ≤5,000 words in conference/journal format.",
+        "Proposal: title, authors, abstract ≤200 words, problem/objectives, data/methods and ≥3 references to similar published work. Presentation ≤10 minutes, shared in a pair.",
+        "Late deliverables: 2.5% per day. The syllabus does not define the penalty basis; enter grades after penalties.",
+        "If continuous evaluation is failed: second-period exam = 100%. No first-period exam. Calendar: 13 Jan 2027, time not specified."
+      ],
+      "source": "SDAV-syllabus-2026(4).docx · Evaluation, Deadlines and NOTES; Calendar SDAV entries."
+    },
+    {
+      "id": "stats",
+      "code": "STAT",
+      "name": "Spatial Statistics",
+      "max": 20,
+      "weights": "Assignment 1 15 · Assignment 2 10 · Exam 30 · Oral 10 · Report 35%",
+      "components": [
+        {"id": "A1", "name": "Assignment 1", "weight": 15},
+        {"id": "A2", "name": "Assignment 2", "weight": 10},
+        {"id": "E", "name": "Exam", "weight": 30},
+        {"id": "O", "name": "Oral presentation", "weight": 10},
+        {"id": "R", "name": "Project report", "weight": 35}
+      ],
+      "people": [
+        {"name": "Ana Cristina Costa", "role": "coordinator", "email": "cristina@novaims.unl.pt"},
+        {"name": "Sara Ribeiro", "role": "professor", "email": "sribeiro@novaims.unl.pt"}
+      ],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "Sara Ribeiro: by appointment, Teams or room 21 (floor 2, IMS). Cristina Costa: by appointment, Teams or room 235 (floor 2, CAN)",
+      "note": "The university directory lists Spatial Statistics for both teachers.",
+      "sources": [
+        {"label": "Ana Cristina Costa", "url": "https://novaims.unl.pt/en/nova-ims/teaching-staff/d/128"},
+        {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"}
+      ],
+      "rules": [
+        "Exam, oral presentation and project report are mandatory for approval; assignments are optional, but their weights remain in the final formula. Enter 0 for an omitted assignment.",
+        "Assignments: individual PDF reports on Moodle; penalty of 0.5 grade points per day late. Enter post-penalty grades.",
+        "Project: individual or preferably pairs. Oral presentation by all authors in English: 7 minutes + 3 minutes discussion.",
+        "Report: conference-paper format, Portuguese or English, DOC or PDF on Moodle by 27 Dec midnight. Late reports or reports outside Moodle are rejected.",
+        "Resit replaces only the 30% exam. Other grades carry over; the resit final grade prevails only if higher. NetPA exam enrolment required; improvement fee for previously approved students. Date not found."
+      ],
+      "source": "spatial_stat_grades.pdf pp. 1–2; SpatialStatistics_ClassesPlan_202627.pdf p. 1; Calendar."
+    },
+    {
+      "id": "gis",
+      "code": "GIS",
+      "name": "Geographic Information Systems & Science",
+      "max": 20,
+      "weights": "Participation 5 · Group presentations 20 · Quizzes 15 · Exam 20 · Term paper 40%",
+      "components": [
+        {"id": "C", "name": "Class participation", "weight": 5},
+        {"id": "P", "name": "Group presentations", "weight": 20, "pool": "presentation"},
+        {"id": "Q", "name": "Quizzes", "weight": 15, "pool": "quiz"},
+        {"id": "E", "name": "Exam", "weight": 20},
+        {"id": "F", "name": "Individual term paper", "weight": 40}
+      ],
+      "gradeNote": "Each group presentation is the 20% component divided by the number of presentation rows. Each quiz is the 15% component divided by the number of quiz rows.",
+      "people": [{"name": "Ruoyu Wang", "role": "", "email": "rwang@novaims.unl.pt"}],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "Wednesday 17:00–18:00, or by appointment.",
+      "note": "Professor's office / consultation room not supplied.",
+      "sources": [{"label": "GIS syllabus p. 2 + Calendar", "url": ""}],
+      "rules": [
+        "Six quizzes at 18:00 sharp, first 10 minutes: 10 multiple-choice questions (8 on the previous class, 2 on earlier classes). Dates: 30 Sep; 7, 14, 21 Oct; 4 and 18 Nov.",
+        "Calendar identifies Group 2 presentations on 30 Sep, 14 Oct and 4 Nov. Submit two selected papers/chapters by the preceding Monday: 28 Sep, 12 Oct and 2 Nov.",
+        "Group presentations: 15 minutes + 10 minutes discussion; upload slides to Moodle including a slide explaining literature choice. The syllabus group schedule lists more possible slots than the three Calendar entries; verify Moodle for your allocation.",
+        "Term paper: individual literature review, ≤5,000 words, journal/conference format. Topic abstract: 250 words with title, summary and initial references by 19 Nov.",
+        "Term-paper presentations: 25 Nov; 2, 9 and 16 Dec, ≤15 minutes + 10 minutes discussion. Personal slot unknown. Final paper and presentation due 17 Dec, the day after the last session.",
+        "Calendar gives an 11 Jan 2027 second-season exam, time unspecified. The supplied syllabus does not define its grade replacement rules.",
+        "Each dated group presentation takes an equal share of the 20% presentation component. Each dated quiz takes an equal share of the 15% quiz component. Term-paper sessions are possible slots, not further slices of the 40%."
+      ],
+      "source": "gis_syllab.pdf pp. 11–19; Calendar GIS entries (Group 2, deadlines and resit). Presentation and quiz shares are the component total divided by the number of those rows."
+    },
+    {
+      "id": "gdm",
+      "code": "GDM",
+      "name": "Geospatial Data Mining",
+      "max": 20,
+      "weights": "Project 1 10 · Project 2 10 · Project 3 25 · Project 4 25 · Exam 30%",
+      "components": [
+        {"id": "P1", "name": "Project 1", "weight": 10},
+        {"id": "P2", "name": "Project 2", "weight": 10},
+        {"id": "P3", "name": "Project 3", "weight": 25},
+        {"id": "P4", "name": "Project 4", "weight": 25},
+        {"id": "E", "name": "Final exam", "weight": 30}
+      ],
+      "people": [
+        {"name": "Roberto Henriques", "role": "responsible teacher", "email": "roberto@novaims.unl.pt"},
+        {"name": "Sara Ribeiro", "role": "teaching staff", "email": "sribeiro@novaims.unl.pt"}
+      ],
+      "room": "Classroom and professor offices not supplied.",
+      "consultation": "Friday 09:00 · appointment required.",
+      "note": "Teaching team and consultation slot from the course syllabus; emails from NOVA IMS directories.",
+      "sources": [
+        {"label": "NOVA contacts", "url": "https://novaims.unl.pt/en/nova-ims/contacts/"},
+        {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"}
+      ],
+      "rules": [
+        "Exam minimum: 8.0/20, regardless of the weighted total.",
+        "Assignment 1: 15 Oct. Assignment 2: 22 Oct (confirmed by you on 7 Oct). Each carries 10% in the syllabus, where they are called projects 1 and 2. Submission times are unspecified.",
+        "Calendar homework 3: 5 Nov, time unspecified. Homework 4: December, date to be announced. The 1 Dec entry is explicitly a placeholder.",
+        "Final exam: 10 Dec, 17:00–19:00, confirmed by syllabus and Calendar. No resit or late-submission rule was supplied."
+      ],
+      "source": "gdm_syllab.pdf pp. 3–4; Calendar GDM / Geospatial Datamining entries; your assignment 2 correction, 7 Oct 2026."
+    },
+    {
+      "id": "pt",
+      "code": "PT A1",
+      "name": "Portuguese A1",
+      "max": 100,
+      "weights": "Final 30 · Midterm 20 · Oral 20 · Video 1 10 · Video 2 5* · Homework 5* · Engagement 10%",
+      "schedule": "15:00–17:00. Week 1: 29–30 Sep, 1 Oct. Week 2: 6–8 Oct. Week 3: 13–15 Oct. Week 4: 20–22 Oct. Week 5: 3–5 Nov. Week 6: 10–12 Nov. Week 7: 17–19 Nov. Week 8: 24–26 Nov. Week 9: Mon 30 Nov, Wed 2 Dec, Thu 3 Dec. 27 sessions.",
+      "warning": "Session 1 detail slides give homework and video 2 5% each. The summary slide prints 10% each and TOTAL 100%, but those figures add to 110%. The grade check uses 5% so the weights total 100%. Confirm with the instructor.",
+      "components": [
+        {"id": "E", "name": "Final written exam", "weight": 30},
+        {"id": "M", "name": "Midterm written test", "weight": 20},
+        {"id": "O", "name": "In-class oral presentation", "weight": 20},
+        {"id": "V1", "name": "Video 1", "weight": 10},
+        {"id": "V2", "name": "Video 2", "weight": 5},
+        {"id": "H", "name": "Homework average", "weight": 5},
+        {"id": "C", "name": "In-class engagement", "weight": 10}
+      ],
+      "people": [],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "Not supplied · confirm with the instructor.",
+      "note": "Session 1 titles the course Curso de Língua e Cultura Portuguesa. It does not name the instructor, a personal email, or an office. Room 9 is still only from Calendar. Administrative support: apoioaluno@novaims.unl.pt (not a professor email).",
+      "sources": [{"label": "Session 1 F2026-1.pdf + earlier syllabus and Calendar", "url": ""}],
+      "rules": [
+        "Attendance: at least 88.9%; maximum 3 absences across 27 sessions. More than 3 makes you ineligible for final grading.",
+        "Classes are Tuesday, Wednesday and Thursday, 15:00–17:00, except week 9, which meets Monday 30 Nov, Wednesday 2 Dec and Thursday 3 Dec.",
+        "Homework is weekly on Moodle. A missing assignment is zero and stays in the average. The detail slide says this average is 5% of the course; the summary slide says 10%.",
+        "Engagement is assessed every two weeks from attendance and participation, and is 10%.",
+        "Video 1: a healthy recipe, 2–3 minutes, in Portuguese, on Moodle by 20 Oct. Ingredients, preparation steps, and a personal connection. Worth 10%.",
+        "Video 2: a festival or celebration, 2–3 minutes, on Moodle by 17 Nov (Session 1 assessment slide). Detail slide says 5%; summary slide says 10%. An older requirements page said 10 Nov.",
+        "Oral presentation: 26 Nov, expands Video 2, without reading from notes or scripts. Syllabus length is 5–7 minutes.",
+        "Midterm: 5 Nov, 1 hour, scored 0–100. An older class plan said 90 minutes. Final: 3 Dec, 90 minutes plus 30 minutes of tolerance.",
+        "No late submissions except instructor-approved exceptional circumstances. The syllabus prohibits copied or AI-generated assessment work."
+      ],
+      "source": "Session 1 F2026-1.pdf (calendar, assessment, and requirements); portuguese_syllab.pdf where Session 1 is silent; Calendar for the classroom."
+    }
+  ],
+  "notes": [
+    {
+      "title": "GDM · assignment dates confirmed",
+      "text": "Assignment 1 is on 15 October. Assignment 2 is on 22 October, as confirmed by you on 7 October. The dashboard uses your correction to the duplicated Calendar title. Homework 3 is 5 November. Homework 4 is only “sometime in December”; 1 December is a placeholder."
+    },
+    {
+      "title": "Portuguese · provisional weights",
+      "text": "Session 1’s summary slide prints video 2 and homework at 10% each and TOTAL 100%, but those lines add to 110%. The detail slides in the same deck say 5% each. The grade check uses 5% so the weights total 100%. This is a planning interpretation, not a confirmed correction."
+    },
+    {
+      "title": "Portuguese · video 2 date",
+      "text": "Session 1’s assessment slide dates Video 2 on 17 November, Video 1 on 20 October, the midterm on 5 November, the oral on 26 November, and the final exam on 3 December. An older requirements page said 10 November for Video 2. The dashboard follows the Session 1 date. Video 1 is now a healthy recipe, not the earlier home / dream home brief."
+    },
+    {
+      "title": "Calendar · dates and remaining unknowns",
+      "text": "Calendar adds your GIS Group 2 presentations and bibliography deadlines, GIS resit on 11 January and SDAV resit on 13 January 2027 (times unknown). Calendar’s month grid and all-day search timestamps sometimes differ by one day; this dashboard uses the date shown in the month grid and notes. GDM/statistics resit dates, and your specific SDAV/GIS final presentation slots remain unconfirmed."
+    },
+    {
+      "title": "Still undated",
+      "text": "GDM homework 4 (25%, December); Portuguese homework and engagement; participation components. GeoMundus runs 16–17 October, with dinner on the 16th. Attendance is awaiting confirmation and the venue is still to follow."
+    }
+  ]
+}
+</script>
+<style>
+:root{color-scheme:light;--bg:#f4f3ed;--paper:#fffefa;--ink:#243a31;--muted:#647168;--line:#d6dcd2;--accent:#254d3d;--soft:#e5ebdf;--yellow:#f5e8bf;--warn:#745212;--bad:#993c2a;--good:#315f3b;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.45}
+button,input,select{font:inherit}
+button,select,summary{cursor:pointer}
+button,input,select{border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink)}
+button{padding:6px 10px}
+button:hover{background:var(--soft)}
+button:disabled{opacity:.45;cursor:default}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=number]{width:76px;padding:6px 7px;text-align:right;font-variant-numeric:tabular-nums}
+select{padding:6px;max-width:100%}
+a{color:var(--accent)}
+main{max-width:1500px;margin:auto;padding:28px 32px}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:11px;letter-spacing:1.7px;text-transform:uppercase;font-weight:650;color:var(--muted)}
+h1{font-size:28px;letter-spacing:-1px;line-height:1.1;margin:5px 0 0;font-weight:600}
+h2{font-size:18px;margin:0;font-weight:600}
+h3{font-size:15px;margin:0;font-weight:600}
+p{margin:8px 0}
+.small{font-size:12px;color:var(--muted)}
+.stamp{text-align:right}
+.stamp strong{font-size:12px;font-weight:600}
+.notice{display:flex;align-items:baseline;gap:15px;background:var(--yellow);padding:12px 16px;margin:20px 0 24px;border-radius:7px;color:var(--warn);font-size:12px}
+.notice strong{white-space:nowrap}
+.notice a{color:inherit}
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(340px,1fr);gap:32px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
+.subject{border-bottom:1px solid var(--line)}
+.subject>summary{list-style:none;display:grid;grid-template-columns:52px 1fr 96px 14px;gap:12px;align-items:center;padding:17px 0}
+.subject>summary::-webkit-details-marker{display:none}
+.code{background:var(--soft);border-radius:7px;min-width:42px;height:42px;padding:0 6px;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:.3px}
+.subject[open]>summary .code{background:var(--accent);color:var(--paper)}
+.subject>summary .chev::after{content:'+';font-size:22px;color:var(--muted)}
+.subject[open]>summary .chev::after{content:'−'}
+.name{font-size:14px;font-weight:600;margin-bottom:3px}
+.equation{font-size:11px;color:var(--muted)}
+.score{white-space:nowrap;text-align:right;font-size:23px;font-weight:550;letter-spacing:-.6px;font-variant-numeric:tabular-nums}
+.score small{font-size:11px;font-weight:400;letter-spacing:0}
+.score-label{font-size:10px;color:var(--muted);text-align:right;letter-spacing:.5px;text-transform:uppercase}
+.calc{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0}
+.fields{display:grid;grid-template-columns:1fr 1fr;column-gap:20px}
+.field{display:grid;grid-template-columns:1fr 52px 76px;align-items:center;gap:7px;margin:5px 0;font-size:12px}
+.weight{color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.result{font-size:12px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.result strong{font-size:17px;display:block;font-weight:550;font-variant-numeric:tabular-nums}
+.rule{font-size:12px;margin:12px 0 0}
+.rules{padding-left:17px;margin:9px 0}
+.rules li{font-size:12px;margin:5px 0}
+.warning{color:var(--warn);background:var(--yellow);border-radius:5px;padding:9px 10px;font-size:12px;margin-top:12px}
+.status{font-size:12px;padding-top:8px;color:var(--muted)}
+.source{font-size:11px;color:var(--muted);margin-top:12px}
+.date-line{font-size:11px;margin-top:5px;color:var(--accent)}
+.badge{display:inline-block;border-radius:4px;background:var(--soft);padding:2px 5px;font-size:10px;white-space:nowrap}
+.badge.warn{background:var(--yellow);color:var(--warn)}
+.timeline{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:16px;align-self:start;position:sticky;top:16px}
+.timeline .section-head{margin-bottom:14px}
+.timeline-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.timeline-controls label{font-size:11px;color:var(--muted)}
+.timeline-controls select{display:block;width:100%;margin-top:4px;color:var(--ink)}
+.agenda{max-height:660px;overflow:auto;margin-top:15px;padding-right:5px}
+.month{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 0 5px;color:var(--muted)}
+.month:first-child{padding-top:0}
+.event{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+.event:last-child{border-bottom:0}
+.day{font-size:22px;line-height:1.1;font-weight:500;letter-spacing:-.5px}
+.day small{display:block;font-size:10px;letter-spacing:.5px;margin-top:4px;text-transform:uppercase;color:var(--muted)}
+.event-title{font-size:12px;font-weight:600}
+.event-info{font-size:11px;color:var(--muted);margin-top:3px}
+.event details summary{font-size:11px;color:var(--muted);margin-top:5px}
+.event details p{font-size:11px;color:var(--muted);margin:5px 0}
+.review{margin-top:24px;border-top:1px solid var(--line);padding-top:20px}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.review-item{font-size:12px;padding-top:10px}
+.review-item strong{display:block;font-weight:600;margin-bottom:4px}
+.review-item p{color:var(--muted);margin:0}
+.foot{margin-top:25px;border-top:1px solid var(--line);padding-top:14px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:20px}
+.teaching{margin:4px 0 0;padding-top:4px}
+.teaching h3{font-size:13px;margin-bottom:8px}
+.teaching dl{display:grid;grid-template-columns:96px minmax(0,1fr);gap:7px 12px;font-size:12px;margin:0}
+.teaching dt{color:var(--muted)}
+.teaching dd{margin:0;overflow-wrap:anywhere}
+.teaching .source a{margin-right:10px}
+.calendar-panel{margin:0 0 28px;padding:20px;background:var(--paper);border:1px solid var(--line);border-radius:9px}
+.calendar-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.calendar-toolbar select{font-weight:600}
+.calendar-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.8fr);gap:24px;margin-top:14px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.weekday{text-align:center;font-size:10px;text-transform:uppercase;color:var(--muted);padding-bottom:5px}
+.date-block{min-height:72px;border-radius:6px;padding:7px;text-align:left;display:flex;flex-direction:column;gap:4px;position:relative;background:#f5f5ee;border-color:transparent}
+.date-block:hover{outline:1px solid var(--accent);background:#f5f5ee}
+.heat-1,.heat-1:hover{background:#e5edd6}
+.heat-2,.heat-2:hover{background:#bfd3a8}
+.heat-3,.heat-3:hover{background:#83a579}
+.heat-4,.heat-4:hover{background:#345c45;color:#fffefa}
+.date-block.selected{outline:2px solid var(--ink);outline-offset:1px}
+.date-block.today .date-num{text-decoration:underline;text-underline-offset:4px}
+.date-top{display:flex;align-items:center;justify-content:space-between;gap:2px}
+.date-num{font-size:13px;font-weight:600}
+.count-pill{background:#f1d69c;color:#593c17;min-width:17px;height:17px;border-radius:50%;text-align:center;font-size:10px;line-height:17px;font-weight:700}
+.count-pill.multiple{background:#b95831;color:white}
+.day-weight{font-size:11px;font-weight:600;line-height:1.2}
+.day-mark{font-size:9px;line-height:1.2}
+.conference-mark{color:#65509a;font-weight:650}
+.heat-4 .conference-mark{color:#e4d8ff}
+.calendar-legend{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:14px;font-size:10px;color:var(--muted)}
+.swatch{width:15px;height:15px;border:1px solid #b4c0aa;border-radius:3px;display:inline-block;vertical-align:middle}
+.selected-day{border-left:1px solid var(--line);padding-left:22px;max-height:375px;overflow:auto}
+.selected-day h3{font-size:18px}
+.day-detail{padding:11px 0;border-bottom:1px solid var(--line)}
+.day-detail:last-child{border:0}
+.day-detail strong{display:block;font-size:12px}
+.day-detail p{font-size:11px;color:var(--muted);margin:4px 0}
+.weight-label{font-size:11px;font-weight:600}
+.calendar-note{font-size:11px;color:var(--muted);max-width:940px;margin:10px 0 0}
+@media(max-width:1000px){main{padding:20px}.layout{grid-template-columns:minmax(0,1fr) 340px;gap:20px}.fields{grid-template-columns:1fr}}
+@media(max-width:760px){main{padding:20px 16px}.layout{display:flex;flex-direction:column}.timeline{position:static;width:100%;order:-1}.agenda{max-height:320px}.notice{display:block}.notice strong{display:block;margin-bottom:3px}.stamp{max-width:140px}.review-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr}.subject>summary{grid-template-columns:46px 1fr 82px 12px;gap:8px}.foot{display:block}h1{font-size:25px}.calendar-layout{grid-template-columns:1fr;gap:18px}.selected-day{border-left:0;border-top:1px solid var(--line);padding:15px 0 0;max-height:260px}.calendar-panel{padding:14px}.date-block{min-height:67px;padding:5px}.calendar-panel>.section-head{align-items:flex-start;flex-wrap:wrap}.calendar-toolbar{gap:5px}}
+@media(max-width:460px){.fields{grid-template-columns:1fr}.equation{font-size:10px}.score{font-size:20px}.calc{padding:12px}.stamp{font-size:10px}.name{font-size:13px}.calendar-grid{gap:3px}.date-block{min-height:62px;padding:4px}.day-weight{font-size:10px}.day-mark{font-size:8px}.date-num{font-size:12px}.count-pill{min-width:14px;height:14px;line-height:14px;font-size:9px}.calendar-toolbar select{max-width:180px}.teaching dl{grid-template-columns:80px minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<div class="eyebrow">NOVA IMS · Fall 2026 / 27</div>
+<h1>Semester desk</h1>
+</div>
+<div class="stamp">
+<strong>5 subjects · contacts, rooms &amp; deadlines</strong>
+<div class="small">Calendar checked 6–7 Oct 2026<br>Europe/Lisbon · snapshot, not live sync</div>
+</div>
+</header>
+<div class="notice" id="notice"></div>
+<section class="calendar-panel" aria-labelledby="calendar-title">
+<div class="section-head">
+<div>
+<div class="eyebrow">Your semester at a glance</div>
+<h2 id="calendar-title">Deadline calendar</h2>
+</div>
+<div class="calendar-toolbar">
+<button type="button" id="month-prev" aria-label="Previous month">←</button>
+<label><span class="gone" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Calendar month</span><select id="calendar-month" aria-label="Calendar month"></select></label>
+<button type="button" id="month-next" aria-label="Next month">→</button>
+<button type="button" id="calendar-current">Today</button>
+</div>
+</div>
+<p class="small">Darker blocks = more grade weight. Orange badges = number of deadlines or assessments. Select a date for details.</p>
+<div class="calendar-layout">
+<div>
+<div class="calendar-grid" id="calendar-grid"></div>
+<div class="calendar-legend">
+<span>Known weight:</span>
+<span><i class="swatch" style="background:#f5f5ee"></i> 0</span>
+<span><i class="swatch heat-1"></i> 1–10</span>
+<span><i class="swatch heat-2"></i> 11–20</span>
+<span><i class="swatch heat-3"></i> 21–35</span>
+<span><i class="swatch heat-4"></i> 36+ points</span>
+<span><b class="count-pill">1</b> one due</span>
+<span><b class="count-pill multiple">2</b> multiple due</span>
+<span class="conference-mark">◆ GeoMundus</span>
+</div>
+</div>
+<div class="selected-day" id="selected-day" aria-live="polite"></div>
+</div>
+<p class="calendar-note">Weight points add percentages of each subject’s own grade, not a semester average. GIS group presentations split the 20% component evenly, and GIS quizzes split the 15% component evenly. “?” marks a date or weight that is still provisional; the number beside it is what colours the day. Term-paper presentation slots and resits stay off the confirmed-deadline count. Edit a row in the events table at the top of this file to change a date, weight, or note.</p>
+</section>
+<div class="layout">
+<section aria-labelledby="subjects-title">
+<div class="section-head">
+<h2 id="subjects-title">Courses</h2>
+<span class="small">Contacts, rooms, weights</span>
+</div>
+<p class="small" style="margin:0 0 8px">Open a course for the teaching team and a grade check. Enter grades you already have; blank rows stay out of the average.</p>
+<div id="subjects"></div>
+</section>
+<aside class="timeline" aria-labelledby="agenda-title">
+<div class="section-head">
+<h2 id="agenda-title">Coming up</h2>
+<span class="small" id="today"></span>
+</div>
+<div class="timeline-controls">
+<label>Period<select id="period">
+<option value="14" selected>Next 14 days</option>
+<option value="30">Next 30 days</option>
+<option value="upcoming">All upcoming</option>
+<option value="semester">Full semester</option>
+</select></label>
+<label>Subject<select id="subject-filter" aria-label="Filter by subject"></select></label>
+</div>
+<div class="agenda" id="agenda"></div>
+<p class="small" style="margin-top:12px;font-size:11px">Calendar dates take priority when clear. All-day entries do not establish a submission time. Assessment dates are distinct from ordinary classes.</p>
+</aside>
+</div>
+<section id="review" class="review"></section>
+<footer class="foot">
+<span>Sources: the six supplied course files + Apple Calendar, reviewed 6 October 2026. Assignment 2 corrected from your confirmation on 7 October 2026. GeoMundus and teaching contacts added 7 October; missing details are labelled. Source references appear inside each subject and deadline.</span>
+<span>Entered grades stay in this browser and survive refresh. Blank components are left out of the weighted average. Nothing here is submitted to Moodle or Calendar.</span>
+</footer>
+</main>
+<script>
+'use strict';
+const STORAGE_KEY = 'geotech-desk-grades-v1';
+const KINDS = new Set(['deadline', 'quiz', 'milestone', 'slot', 'resit', 'conference']);
+const $ = (sel) => document.querySelector(sel);
+const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+const format = (n) => n.toFixed(2);
+const dateObj = (s) => new Date(s + 'T12:00:00Z');
+const dayDiff = (a, b) => Math.round((dateObj(a) - dateObj(b)) / 86400000);
+
+function showError(message) {
+  const notice = $('#notice');
+  notice.hidden = false;
+  notice.innerHTML = '<strong>Table needs a fix</strong><span>' + esc(message) + '</span>';
+}
+
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let field = '';
+  let quoted = false;
+  const src = text.replace(/^\uFEFF/, '');
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i];
+    if (quoted) {
+      if (ch === '"') {
+        if (src[i + 1] === '"') { field += '"'; i += 1; }
+        else quoted = false;
+      } else field += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === ',') { row.push(field); field = ''; }
+    else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && src[i + 1] === '\n') i += 1;
+      row.push(field);
+      field = '';
+      if (row.some((cell) => cell.trim() !== '')) rows.push(row);
+      row = [];
+    } else field += ch;
+  }
+  if (field.length || row.length) {
+    row.push(field);
+    if (row.some((cell) => cell.trim() !== '')) rows.push(row);
+  }
+  if (!rows.length) throw new Error('The events table is empty.');
+  const header = rows[0].map((cell) => cell.trim());
+  for (const name of ['date', 'course', 'title', 'when', 'source', 'weight', 'counts', 'uncertain', 'kind', 'label', 'details', 'pool']) {
+    if (!header.includes(name)) throw new Error('The events table is missing the ' + name + ' column.');
+  }
+  return rows.slice(1).map((cells, index) => {
+    const raw = Object.fromEntries(header.map((name, i) => [name, (cells[i] ?? '').trim()]));
+    const line = index + 2;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(raw.date)) throw new Error('Row ' + line + ' has a date that is not YYYY-MM-DD.');
+    const weight = Number(raw.weight);
+    const counts = Number(raw.counts);
+    if (!Number.isFinite(weight) || weight < 0) throw new Error('Row ' + line + ' has a weight that is not a number of 0 or more.');
+    if (!Number.isInteger(counts) || counts < 0) throw new Error('Row ' + line + ' has a counts value that is not a whole number of 0 or more.');
+    if (raw.uncertain !== 'yes' && raw.uncertain !== 'no') throw new Error('Row ' + line + ' must set uncertain to yes or no.');
+    if (!KINDS.has(raw.kind)) throw new Error('Row ' + line + ' has a kind outside deadline, quiz, milestone, slot, resit, conference.');
+    return Object.assign(raw, { weight, counts, uncertain: raw.uncertain === 'yes' });
+  });
+}
+
+let data;
+let COURSES;
+let EVENTS;
+try {
+  data = JSON.parse($('#courses-data').textContent);
+  COURSES = data.courses;
+  if (!Array.isArray(COURSES) || !COURSES.length) throw new Error('The courses block needs a courses list.');
+  EVENTS = parseCSV($('#events-table').textContent);
+  applyPools(EVENTS, COURSES);
+} catch (err) {
+  showError(err.message || 'The events table or courses block could not be read.');
+  throw err;
+}
+
+function formatShare(n) {
+  const rounded = Math.round(n * 100) / 100;
+  if (Number.isInteger(rounded)) return String(rounded);
+  return rounded.toFixed(2).replace(/0$/, '');
+}
+function applyPools(events, courses) {
+  for (const event of events) {
+    if (!event.pool) continue;
+    const course = courses.find((item) => item.id === event.course);
+    const component = course && course.components.find((item) => item.pool === event.pool);
+    if (!component) throw new Error(event.date + ' ' + event.title + ' uses pool "' + event.pool + '", and that course has no matching component.');
+  }
+  for (const course of courses) {
+    for (const component of course.components) {
+      if (!component.pool) continue;
+      const matching = events.filter((event) => event.course === course.id && event.pool === component.pool);
+      if (!matching.length) continue;
+      const share = component.weight / matching.length;
+      const label = formatShare(share) + '% of ' + course.code + ' · ' + component.weight + '% ' + component.name.toLowerCase() + ' ÷ ' + matching.length;
+      matching.forEach((event) => { event.weight = share; event.label = label; });
+    }
+  }
+}
+function componentsFor(course) {
+  const rows = [];
+  for (const component of course.components) {
+    if (!component.pool) { rows.push(component); continue; }
+    const matching = EVENTS.filter((event) => event.course === course.id && event.pool === component.pool);
+    const share = matching.length ? component.weight / matching.length : component.weight;
+    matching.forEach((event) => {
+      const when = dateObj(event.date);
+      const stamp = when.getUTCDate() + ' ' + when.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+      rows.push({ id: component.pool + ':' + event.date, name: event.title + ' · ' + stamp, weight: share });
+    });
+  }
+  return rows;
+}
+function weightsClose(a, b) { return Math.abs(a - b) < 0.05; }
+
+const courseById = Object.fromEntries(COURSES.map((course) => [course.id, course]));
+function courseCode(id) {
+  if (id === 'conference') return 'EVENT';
+  return courseById[id] ? courseById[id].code : id;
+}
+function monthsBetween(events) {
+  const keys = events.map((event) => event.date.slice(0, 7)).sort();
+  let year = Number(keys[0].slice(0, 4));
+  let month = Number(keys[0].slice(5, 7));
+  const endYear = Number(keys[keys.length - 1].slice(0, 4));
+  const endMonth = Number(keys[keys.length - 1].slice(5, 7));
+  const months = [];
+  while (year < endYear || (year === endYear && month <= endMonth)) {
+    months.push(year + '-' + String(month).padStart(2, '0'));
+    month += 1;
+    if (month === 13) { month = 1; year += 1; }
+  }
+  return months;
+}
+const CALENDAR_MONTHS = monthsBetween(EVENTS);
+const isoToday = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Lisbon', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+const today = /^\d{4}-\d{2}-\d{2}$/.test(isoToday) ? isoToday : '2026-10-07';
+const rangeStart = CALENDAR_MONTHS[0] + '-01';
+const lastMonth = CALENDAR_MONTHS[CALENDAR_MONTHS.length - 1];
+const rangeEnd = lastMonth + '-' + String(new Date(Date.UTC(Number(lastMonth.slice(0, 4)), Number(lastMonth.slice(5, 7)), 0)).getUTCDate()).padStart(2, '0');
+let selectedDate = today >= rangeStart && today <= rangeEnd ? today : (today >= '2026-09-01' && today <= '2027-01-31' ? '2026-10-07' : EVENTS[0].date);
+if (selectedDate < rangeStart || selectedDate > rangeEnd) selectedDate = EVENTS[0].date;
+let calendarMonth = selectedDate.slice(0, 7);
+
+function loadGrades() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    return saved && typeof saved === 'object' ? saved : {};
+  } catch (err) {
+    return {};
+  }
+}
+const grades = loadGrades();
+function saveGrades() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(grades)); } catch (err) {}
+}
+function storedValue(course, component) {
+  const bag = grades[course.id];
+  const raw = bag ? bag[component.id] : undefined;
+  if (raw === undefined || raw === '') return '';
+  const number = Number(raw);
+  if (!Number.isFinite(number) || number < 0 || number > course.max) return '';
+  return String(raw);
+}
+function projection(course) {
+  let points = 0;
+  let weight = 0;
+  for (const component of componentsFor(course)) {
+    const raw = storedValue(course, component);
+    if (raw === '') continue;
+    points += Number(raw) * component.weight;
+    weight += component.weight;
+  }
+  if (!weight) return null;
+  const average = points / weight;
+  return { average, weight, outOf20: average * 20 / course.max };
+}
+function paintScore(course) {
+  const result = projection(course);
+  const score = $('#score-' + course.id);
+  const label = $('#score-label-' + course.id);
+  const total = $('#total-' + course.id);
+  const status = $('#status-' + course.id);
+  if (!result) {
+    score.textContent = '—';
+    label.textContent = 'No grades';
+    total.textContent = '—';
+    status.textContent = 'No grades entered.';
+    return;
+  }
+  score.innerHTML = format(result.outOf20) + '<small> /20</small>';
+  label.textContent = course.max === 100 ? 'Provisional' : (weightsClose(result.weight, 100) ? 'Total' : 'So far');
+  total.textContent = format(result.average) + ' /' + course.max;
+  const sum = componentsFor(course).reduce((totalWeight, component) => totalWeight + component.weight, 0);
+  const entered = formatShare(result.weight) + '% of the weight has a grade.';
+  status.textContent = weightsClose(sum, 100) ? entered : 'Component weights total ' + formatShare(sum) + '%, not 100%. ' + entered;
+}
+
+function daySummary(date) {
+  const events = EVENTS.filter((event) => event.date === date);
+  return {
+    events,
+    count: events.reduce((sum, event) => sum + event.counts, 0),
+    weight: events.reduce((sum, event) => sum + event.weight, 0),
+    uncertain: events.some((event) => event.uncertain),
+    conference: events.some((event) => event.kind === 'conference')
+  };
+}
+function nextLine(courseId) {
+  const event = EVENTS.find((item) => item.course === courseId && item.date >= today);
+  if (!event) return 'Nothing dated ahead';
+  const date = dateObj(event.date);
+  const stamp = date.getUTCDate() + ' ' + date.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+  const when = event.when === 'Time unspecified' ? '' : ' · ' + event.when;
+  return event.title + ' · ' + stamp + when;
+}
+function personLines(people) {
+  if (!people.length) return 'Not named in the supplied sources';
+  return people.map((person) => {
+    const name = esc(person.role ? person.name + ' · ' + person.role : person.name);
+    const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(person.email)
+      ? '<br><a href="mailto:' + esc(person.email) + '">' + esc(person.email) + '</a>'
+      : '';
+    return name + email;
+  }).join('<br>');
+}
+function sourceLinks(sources) {
+  return (sources || []).map((source) => {
+    if (source.url && /^https:\/\//.test(source.url)) {
+      return '<a href="' + esc(source.url) + '" target="_blank" rel="noopener noreferrer">' + esc(source.label) + ' ↗</a>';
+    }
+    return esc(source.label);
+  }).join(' · ');
+}
+function renderSubjects() {
+  $('#subjects').innerHTML = COURSES.map((course) => {
+    const fields = componentsFor(course).map((component) => '<label class="field"><span>' + esc(component.name) + '</span><span class="weight">' + formatShare(component.weight) + '%</span><input aria-label="' + esc(course.code + ' ' + component.name + ' grade') + '" data-grade="' + esc(component.id) + '" data-course="' + esc(course.id) + '" type="number" min="0" max="' + course.max + '" step="0.1" placeholder="—" autocomplete="off" value="' + esc(storedValue(course, component)) + '"></label>').join('');
+    const gradeBlurb = (course.max === 100 ? 'Enter grades out of 100. The header shows that average out of 20. ' : 'Enter grades out of 20. ') + (course.gradeNote ? course.gradeNote + ' ' : '') + 'Blank rows stay out of the average.';
+    return '<details class="subject" id="course-' + course.id + '"><summary class="summary"><span class="code">' + esc(course.code) + '</span><div><div class="name">' + esc(course.name) + '</div><div class="equation">' + esc(course.weights) + '</div><div class="date-line">' + esc(nextLine(course.id)) + '</div></div><div><div class="score" id="score-' + course.id + '"></div><div class="score-label" id="score-label-' + course.id + '"></div></div><span class="chev" aria-hidden="true"></span></summary><section class="teaching" aria-label="Teaching contacts"><h3>Teaching team &amp; consultation</h3><dl><dt>Professor</dt><dd>' + personLines(course.people) + '</dd><dt>Room</dt><dd>' + esc(course.room) + '</dd><dt>Consultation</dt><dd>' + esc(course.consultation) + '</dd>' + (course.schedule ? '<dt>Classes</dt><dd>' + esc(course.schedule) + '</dd>' : '') + '</dl><p class="small">' + esc(course.note) + '</p><div class="source">' + sourceLinks(course.sources) + '</div></section><details class="rule"><summary>Evaluation rules &amp; submission requirements</summary><ul class="rules">' + course.rules.map((rule) => '<li>' + esc(rule) + '</li>').join('') + '</ul></details><div class="source">Source: ' + esc(course.source) + '</div>' + (course.warning ? '<p class="warning">' + esc(course.warning) + '</p>' : '') + '<div class="calc"><h3>Grade check' + (course.max === 100 ? ' · 0–100 inputs' : '') + '</h3><p class="small">' + esc(gradeBlurb) + '</p><div class="fields">' + fields + '</div><div class="result"><span class="small">Weighted average of entered grades</span><strong id="total-' + course.id + '"></strong></div><div class="status" id="status-' + course.id + '" aria-live="polite"></div></div></details>';
+  }).join('');
+  COURSES.forEach(paintScore);
+}
+function renderCalendar() {
+  $('#calendar-month').value = calendarMonth;
+  $('#month-prev').disabled = calendarMonth === CALENDAR_MONTHS[0];
+  $('#month-next').disabled = calendarMonth === CALENDAR_MONTHS[CALENDAR_MONTHS.length - 1];
+  const first = dateObj(calendarMonth + '-01');
+  const offset = (first.getUTCDay() + 6) % 7;
+  const days = new Date(Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0)).getUTCDate();
+  let cells = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => '<span class="weekday">' + day + '</span>').join('') + '<span aria-hidden="true"></span>'.repeat(offset);
+  for (let day = 1; day <= days; day++) {
+    const date = calendarMonth + '-' + String(day).padStart(2, '0');
+    const summary = daySummary(date);
+    const heat = summary.weight > 35 ? 4 : summary.weight > 20 ? 3 : summary.weight > 10 ? 2 : summary.weight > 0 ? 1 : 0;
+    const full = dateObj(date).toLocaleDateString('en-GB', { dateStyle: 'full', timeZone: 'UTC' });
+    const weightHtml = (summary.weight || summary.uncertain) ? '<span class="day-weight">' + (summary.weight ? formatShare(summary.weight) + ' pts' : '') + (summary.uncertain ? ' ?' : '') + '</span>' : '';
+    const markHtml = summary.conference ? '<span class="day-mark conference-mark">◆ GeoMundus</span>' : (summary.events.length && !summary.count && !summary.uncertain ? '<span class="day-mark">Milestone</span>' : '');
+    cells += '<button type="button" class="date-block heat-' + heat + (date === selectedDate ? ' selected' : '') + (date === today ? ' today' : '') + '" data-date="' + date + '" aria-pressed="' + (date === selectedDate) + '" aria-label="' + esc(full) + ': ' + summary.count + ' deadlines or assessments, ' + formatShare(summary.weight) + ' known course-grade points' + (summary.uncertain ? ', additional weight or slot uncertain' : '') + (summary.conference ? ', GeoMundus' : '') + '"><span class="date-top"><span class="date-num">' + day + '</span>' + (summary.count ? '<span class="count-pill' + (summary.count > 1 ? ' multiple' : '') + '">' + summary.count + '</span>' : '') + '</span>' + weightHtml + markHtml + '</button>';
+  }
+  $('#calendar-grid').innerHTML = cells;
+  renderSelectedDay();
+}
+function renderSelectedDay() {
+  const summary = daySummary(selectedDate);
+  const items = summary.events.length ? summary.events.map((event) => '<article class="day-detail"><strong>' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</strong><div class="weight-label">' + esc(event.label) + '</div><p>' + esc(event.when) + ' · ' + esc(event.source) + '</p><p>' + esc(event.details) + '</p></article>').join('') : '<p class="small">No dated deadlines or events in the table.</p>';
+  $('#selected-day').innerHTML = '<div class="eyebrow">' + dateObj(selectedDate).toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' }) + '</div><h3>' + dateObj(selectedDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) + '</h3><p class="small">' + summary.count + ' deadline' + (summary.count === 1 ? '' : 's') + ' / assessment' + (summary.count === 1 ? '' : 's') + ' · ' + formatShare(summary.weight) + ' known weight points' + (summary.uncertain ? ' + unallocated weight' : '') + '</p>' + items;
+}
+function moveMonth(delta) {
+  const index = CALENDAR_MONTHS.indexOf(calendarMonth) + delta;
+  if (index < 0 || index >= CALENDAR_MONTHS.length) return;
+  calendarMonth = CALENDAR_MONTHS[index];
+  selectedDate = calendarMonth + '-01';
+  renderCalendar();
+}
+function renderAgenda() {
+  const period = $('#period').value;
+  const subject = $('#subject-filter').value;
+  const events = EVENTS.filter((event) => {
+    if (subject !== 'all' && event.course !== subject) return false;
+    const delta = dayDiff(event.date, today);
+    if (period === 'semester') return true;
+    if (delta < 0) return false;
+    if (period === 'upcoming') return true;
+    return delta <= Number(period);
+  });
+  let month = '';
+  $('#agenda').innerHTML = events.length ? events.map((event) => {
+    const date = dateObj(event.date);
+    const monthLabel = date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+    const delta = dayDiff(event.date, today);
+    const heading = monthLabel === month ? '' : '<div class="month">' + monthLabel + '</div>';
+    month = monthLabel;
+    const when = delta === 0 ? 'Today' : delta < 0 ? 'Past date' : delta === 1 ? 'Tomorrow' : 'in ' + delta + ' days';
+    return heading + '<article class="event"><div class="day">' + date.getUTCDate() + '<small>' + date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'UTC' }) + '</small></div><div><div class="event-title">' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</div><div class="event-info">' + esc(event.when) + ' · ' + when + '</div><div><span class="badge' + (event.source === 'Conflict' ? ' warn' : '') + '">' + esc(event.source) + '</span></div><details><summary>Details &amp; source</summary><p>' + esc(event.details) + '</p></details></div></article>';
+  }).join('') : '<p class="small">No dated assessments in this selection. Choose All upcoming to see later entries.</p>';
+}
+function renderReview() {
+  const notes = Array.isArray(data.notes) ? data.notes : [];
+  $('#review').innerHTML = '<h2>Source differences &amp; open dates</h2><div class="review-grid">' + notes.map((note) => '<div class="review-item"><strong>' + esc(note.title) + '</strong><p>' + esc(note.text) + '</p></div>').join('') + '</div>';
+}
+function renderBanner() {
+  if (!data.banner) { $('#notice').hidden = true; return; }
+  $('#notice').innerHTML = '<strong>' + esc(data.banner.title) + '</strong><span>' + esc(data.banner.text) + ' <a href="#review">See source differences ↓</a></span>';
+}
+
+$('#today').textContent = dateObj(today).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+$('#subject-filter').innerHTML = '<option value="all">All subjects</option>' + COURSES.map((course) => '<option value="' + esc(course.id) + '">' + esc(course.code) + '</option>').join('') + '<option value="conference">GeoMundus</option>';
+$('#calendar-month').innerHTML = CALENDAR_MONTHS.map((month) => '<option value="' + month + '">' + dateObj(month + '-01').toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }) + '</option>').join('');
+renderBanner();
+renderSubjects();
+renderAgenda();
+renderCalendar();
+renderReview();
+$('#month-prev').addEventListener('click', () => moveMonth(-1));
+$('#month-next').addEventListener('click', () => moveMonth(1));
+$('#calendar-month').addEventListener('change', (event) => {
+  calendarMonth = event.target.value;
+  selectedDate = calendarMonth + '-01';
+  renderCalendar();
+});
+$('#calendar-current').addEventListener('click', () => {
+  selectedDate = today >= rangeStart && today <= rangeEnd ? today : EVENTS[0].date;
+  calendarMonth = selectedDate.slice(0, 7);
+  renderCalendar();
+});
+$('#calendar-grid').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-date]');
+  if (!button) return;
+  selectedDate = button.dataset.date;
+  renderCalendar();
+});
+$('#period').addEventListener('change', renderAgenda);
+$('#subject-filter').addEventListener('change', renderAgenda);
+document.addEventListener('input', (event) => {
+  const input = event.target;
+  if (!input.dataset || !input.dataset.grade) return;
+  const course = courseById[input.dataset.course];
+  if (!course) return;
+  if (!grades[course.id]) grades[course.id] = {};
+  if (input.value === '') {
+    delete grades[course.id][input.dataset.grade];
+    input.setCustomValidity('');
+    saveGrades();
+    paintScore(course);
+    return;
+  }
+  const number = Number(input.value);
+  if (!Number.isFinite(number) || number < 0 || number > course.max) {
+    input.setCustomValidity('Use a grade from 0 to ' + course.max);
+    input.reportValidity();
+    return;
+  }
+  input.setCustomValidity('');
+  grades[course.id][input.dataset.grade] = input.value;
+  saveGrades();
+  paintScore(course);
+});
+</script>
+</body>
+</html>
