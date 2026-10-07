@@ -37,6 +37,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-10-07","gis","Quiz 2","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class. Equal share of the 15% quiz component.","quiz"
 "2026-10-08","sdav","In-class test","19:00–21:00 class slot","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Multiple-choice test on Moodle."
 "2026-10-11","stats","Assignment 1","End of day · midnight","Calendar + syllabus",15,1,"no","deadline","15% of STAT final grade","15% · Individual PDF on Moodle."
+"2026-10-11","pt","Quiz 1","21:23","Moodle",0,1,"yes","quiz","Quiz · no separate percentage in Session 1","Moodle: Quiz 1 closes Sunday 11 October 2026 at 21:23. Course: 202627 - Portuguese as Foreign Language - Turma TP1 - S1. Session 1 assessment slides do not give this quiz its own percentage."
 "2026-10-14","gis","Quiz 3","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
 "2026-10-02","gdm","Assignment 1","17:00","Calendar",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 1. Essay"
 "2026-10-15","sdav","Individual project discussions","19:00–21:00","Calendar + syllabus",0,0,"no","milestone","Preparation milestone · no separate weight","Preparation milestone; no separate grade weight."
@@ -168,7 +169,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "id": "gis",
       "code": "GIS",
       "name": "Geographic Information Systems & Science",
-      "ects": 7.5,
+      "ects": 5,
       "schedule": "Wednesday 18:00–19:45.",
       "max": 20,
       "weights": "Participation 5 · Group presentations 20 · Quizzes 15 · Exam 20 · Term paper 40%",
@@ -189,7 +190,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         {"label": "GIS syllabus p. 2 + Calendar", "url": ""}
       ],
       "rules": [
-        "Course introduction: 7.5 ECTS. The GeoTech study plan lists Geographic Information Science at 5 ECTS. The desk uses 7.5.",
+        "GeoTech study plan: 5 ECTS. The course introduction prints 7.5 ECTS. The desk uses 5.",
         "Six quizzes at 18:00 sharp, first 10 minutes: 10 multiple-choice questions (8 on the previous class, 2 on earlier classes). Dates: 30 Sep; 7, 14, 21 Oct; 4 and 18 Nov.",
         "Weekly presentations run on 23 Sep, 30 Sep, 7 Oct, 14 Oct, 21 Oct and 4 Nov. There is no class on 28 Oct. Two rotations: odd weeks (23 Sep, 7 Oct, 21 Oct) and even weeks (30 Sep, 14 Oct, 4 Nov). Each student presents three times. The group, and therefore the subtopic, can change from week to week. Pick your name on the weekly load panel.",
         "Bibliography is due the Monday before your presentation. Upload four papers: the two references supplied for your subtopic and two you select.",
@@ -199,7 +200,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         "Calendar gives an 11 Jan 2027 second-season exam, time unspecified. The supplied syllabus does not define its grade replacement rules.",
         "Your three group presentations share the 20% component equally. Each dated quiz takes an equal share of the 15% quiz component. Term-paper sessions are possible slots, not further slices of the 40%."
       ],
-      "source": "Course introduction (7.5 ECTS, Wednesday 18:00–19:45, 11 Nov literature-review class). presentation-guidelines-3.pdf, schedule and class roster. Each person presents three times; the 20% is split across those three rows."
+      "source": "NOVA IMS GeoTech study plan (5 ECTS). Course introduction prints 7.5 ECTS and gives Wednesday 18:00–19:45 plus the 11 Nov literature-review class. presentation-guidelines-3.pdf, schedule and class roster. Each person presents three times; the 20% is split across those three rows."
     },
     {
       "id": "gdm",
@@ -252,15 +253,19 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         {"id": "H", "name": "Homework average", "weight": 5},
         {"id": "C", "name": "In-class engagement", "weight": 10}
       ],
-      "people": [],
+      "people": [{"name": "Miguel Magalhães", "role": "teacher", "email": "migmaglit@yahoo.com"}],
       "room": "Room 9 · NOVA IMS (classroom)",
       "consultation": "Not supplied · confirm with the instructor.",
       "note": "Administrative support: apoioaluno@novaims.unl.pt",
-      "sources": [{"label": "Session 1 F2026-1.pdf + earlier syllabus and Calendar", "url": ""}],
+      "sources": [
+        {"label": "Miguel Magalhães", "url": "https://novaresearch.unl.pt/en/persons/miguel-magalh%C3%A3es/"},
+        {"label": "Session 1 F2026-1.pdf + earlier syllabus and Calendar", "url": ""}
+      ],
       "rules": [
         "Attendance: at least 88.9%; maximum 3 absences across 27 sessions. More than 3 makes you ineligible for final grading.",
         "Classes are Tuesday, Wednesday and Thursday, 15:00–17:00, except week 9, which meets Monday 30 Nov, Wednesday 2 Dec and Thursday 3 Dec.",
         "Homework is weekly on Moodle. A missing assignment is zero and stays in the average. The detail slide says this average is 5% of the course; the summary slide says 10%.",
+        "Quiz 1 closes on Moodle on Sunday 11 October 2026 at 21:23, for Turma TP1. Session 1 does not give it a separate percentage, so it is not in the grade check.",
         "Engagement is assessed every two weeks from attendance and participation, and is 10%.",
         "Video 1: a healthy recipe, 2–3 minutes, in Portuguese, on Moodle by 20 Oct. Ingredients, preparation steps, and a personal connection. Worth 10%.",
         "Video 2: a festival or celebration, 2–3 minutes, on Moodle by 17 Nov (Session 1 assessment slide). Detail slide says 5%; summary slide says 10%. An older requirements page said 10 Nov.",
@@ -281,8 +286,8 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "text": "Session 1’s summary slide prints video 2 and homework at 10% each and TOTAL 100%, but those lines add to 110%. The detail slides in the same deck say 5% each. The grade check uses 5% so the weights total 100%. This is a planning interpretation, not a confirmed correction."
     },
     {
-      "title": "GIS · 7.5 ECTS",
-      "text": "The course introduction states 7.5 ECTS and a Wednesday class of 18:00–19:45. The GeoTech study plan lists Geographic Information Science at 5 ECTS. The desk uses 7.5. The calendar exam entry stays 18:00–20:00. 11 November is a literature-review class, with no quiz and no group presentation."
+      "title": "GIS · 5 ECTS",
+      "text": "The GeoTech study plan lists Geographic Information Science at 5 ECTS, and the desk uses 5. The course introduction prints 7.5 ECTS and a Wednesday class of 18:00–19:45. The calendar exam entry stays 18:00–20:00. 11 November is a literature-review class, with no quiz and no group presentation."
     },
     {
       "title": "Still undated",
@@ -517,7 +522,7 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <div class="layout">
 <section aria-labelledby="subjects-title">
 <div class="section-head">
-<h2 id="subjects-title">Courses<span class="help"><button type="button" class="help-mark" aria-label="About courses">?</button><span class="help-tip" role="tooltip">Open a course for the teaching team and a grade check. Enter grades you already have; blank rows stay out of the average. ECTS figures are from the NOVA IMS GeoTech study plan. GIS is 7.5 ECTS on the course introduction.</span></span></h2>
+<h2 id="subjects-title">Courses<span class="help"><button type="button" class="help-mark" aria-label="About courses">?</button><span class="help-tip" role="tooltip">Open a course for the teaching team and a grade check. Enter grades you already have; blank rows stay out of the average. ECTS figures are from the NOVA IMS GeoTech study plan. The GIS course introduction prints 7.5; the desk uses 5.</span></span></h2>
 <span class="small">Contacts, rooms, weights</span>
 </div>
 <div id="subjects"></div>
@@ -541,7 +546,7 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 </div>
 <section id="review" class="review"></section>
 <footer class="foot">
-<span>Sources: the six supplied course files + Apple Calendar, reviewed 6 October 2026. ECTS from the NOVA IMS GeoTech study plan, with GIS set to 7.5 from the course introduction. GeoMundus details from geomundus.org. Remote Sensing is on the timetable in place of SDAV; its syllabus is still to come. Source references appear inside each subject and deadline.</span>
+<span>Sources: the six supplied course files + Apple Calendar, reviewed 6 October 2026. ECTS from the NOVA IMS GeoTech study plan (GIS 5; the course introduction prints 7.5). GeoMundus details from geomundus.org. Remote Sensing is on the timetable in place of SDAV; its syllabus is still to come. Source references appear inside each subject and deadline.</span>
 <span>Entered grades stay in this browser and survive refresh. Blank components are left out of the weighted average.</span>
 </footer>
 </main>
