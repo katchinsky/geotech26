@@ -383,8 +383,36 @@ p{margin:8px 0}
 .day-detail p{font-size:11px;color:var(--muted);margin:4px 0}
 .weight-label{font-size:11px;font-weight:600}
 .calendar-note{font-size:11px;color:var(--muted);max-width:940px;margin:10px 0 0}
+.load-panel{margin:0 0 24px;padding:18px 20px 16px;background:var(--paper);border:1px solid var(--line);border-radius:9px}
+.load-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 16px}
+.load-stat{background:#f5f5ee;border-radius:8px;padding:10px 12px;min-width:0}
+.load-stat span{display:block;font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);font-weight:650}
+.load-stat strong{display:block;margin-top:3px;font-size:20px;font-weight:550;letter-spacing:-.4px;font-variant-numeric:tabular-nums}
+.load-stat em{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px;font-style:normal;font-size:11px;color:var(--muted);line-height:1.35}
+.load-chart{display:flex;align-items:flex-end;gap:4px;overflow-x:auto;padding-bottom:2px}
+.load-col{flex:1 0 36px;min-width:36px;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:transparent;padding:2px 0;border-radius:6px}
+.load-col:hover{background:#f3f4ee}
+.load-col[aria-pressed="true"]{background:var(--soft)}
+.load-count{min-height:14px;font-size:10px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;line-height:14px}
+.load-col.has-many .load-count{color:#b95831}
+.load-plot{height:104px;width:100%;display:flex;align-items:flex-end;justify-content:center;border-bottom:1px solid var(--line)}
+.load-col.is-now .load-plot{border-bottom:2px solid var(--ink)}
+.load-stack{width:16px;display:flex;flex-direction:column-reverse;overflow:hidden;border-radius:4px 4px 1px 1px}
+.load-stack.mark{height:6px;background:#d5ddd0}
+.load-seg{width:100%;min-height:2px}
+.load-seg[data-course="sdav"]{background:#1f4d3a}
+.load-seg[data-course="stats"]{background:#7d9a62}
+.load-seg[data-course="gis"]{background:#c4a35a}
+.load-seg[data-course="gdm"]{background:#b95831}
+.load-seg[data-course="pt"]{background:#65509a}
+.load-axis{height:24px;font-size:9px;line-height:1.15;text-align:center;color:var(--muted)}
+.load-col.is-now .load-axis,.load-col[aria-pressed="true"] .load-axis{color:var(--ink);font-weight:700}
+.load-legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:10px;color:var(--muted)}
+.load-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.load-detail{margin:10px 0 0;font-size:12px}
+.load-detail .small{margin:4px 0 0}
 @media(max-width:1000px){main{padding:20px}.layout{grid-template-columns:minmax(0,1fr) 340px;gap:20px}.fields{grid-template-columns:1fr}}
-@media(max-width:760px){main{padding:20px 16px}.layout{display:flex;flex-direction:column}.timeline{position:static;width:100%;order:-1}.agenda{max-height:320px}.notice{display:block}.notice strong{display:block;margin-bottom:3px}.stamp{max-width:140px}.review-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr}.subject>summary{grid-template-columns:46px 1fr 82px 12px;gap:8px}.foot{display:block}h1{font-size:25px}.calendar-layout{grid-template-columns:1fr;gap:18px}.selected-day{border-left:0;border-top:1px solid var(--line);padding:15px 0 0;max-height:260px}.calendar-panel{padding:14px}.date-block{min-height:67px;padding:5px}.calendar-panel>.section-head{align-items:flex-start;flex-wrap:wrap}.calendar-toolbar{gap:5px}}
+@media(max-width:760px){main{padding:20px 16px}.layout{display:flex;flex-direction:column}.timeline{position:static;width:100%;order:-1}.agenda{max-height:320px}.notice{display:block}.notice strong{display:block;margin-bottom:3px}.stamp{max-width:140px}.review-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr}.subject>summary{grid-template-columns:46px 1fr 82px 12px;gap:8px}.foot{display:block}h1{font-size:25px}.calendar-layout{grid-template-columns:1fr;gap:18px}.selected-day{border-left:0;border-top:1px solid var(--line);padding:15px 0 0;max-height:260px}.calendar-panel,.load-panel{padding:14px}.date-block{min-height:67px;padding:5px}.calendar-panel>.section-head{align-items:flex-start;flex-wrap:wrap}.calendar-toolbar{gap:5px}.load-stats{gap:6px}.load-stat{padding:8px}.load-stat strong{font-size:16px}}
 @media(max-width:460px){.fields{grid-template-columns:1fr}.equation{font-size:10px}.score{font-size:20px}.calc{padding:12px}.stamp{font-size:10px}.name{font-size:13px}.calendar-grid{gap:3px}.date-block{min-height:62px;padding:4px}.day-weight{font-size:10px}.day-mark{font-size:8px}.date-num{font-size:12px}.count-pill{min-width:14px;height:14px;line-height:14px;font-size:9px}.calendar-toolbar select{max-width:180px}.teaching dl{grid-template-columns:80px minmax(0,1fr)}}
 </style>
 </head>
@@ -401,6 +429,19 @@ p{margin:8px 0}
 </div>
 </header>
 <div class="notice" id="notice"></div>
+<section class="load-panel" aria-labelledby="load-title">
+<div class="section-head">
+<div>
+<div class="eyebrow">Assessment pressure</div>
+<h2 id="load-title">Weekly load</h2>
+</div>
+</div>
+<p class="small">Each column is a week, Monday to Sunday. Height is known grade weight due that week, using the same points as the calendar. Ordinary class hours are left out. The figure above a bar is how many deadlines or assessments are due.</p>
+<div class="load-stats" id="load-stats"></div>
+<div class="load-chart" id="load-chart" role="group" aria-label="Weekly load"></div>
+<div class="load-legend" id="load-legend"></div>
+<p class="load-detail" id="load-detail"></p>
+</section>
 <section class="calendar-panel" aria-labelledby="calendar-title">
 <div class="section-head">
 <div>
@@ -476,6 +517,22 @@ const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;'
 const format = (n) => n.toFixed(2);
 const dateObj = (s) => new Date(s + 'T12:00:00Z');
 const dayDiff = (a, b) => Math.round((dateObj(a) - dateObj(b)) / 86400000);
+function shiftDate(iso, days) {
+  const d = dateObj(iso);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+function weekStart(iso) {
+  return shiftDate(iso, -((dateObj(iso).getUTCDay() + 6) % 7));
+}
+function weekRangeLabel(start, end) {
+  const a = dateObj(start);
+  const b = dateObj(end);
+  const ma = a.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+  const mb = b.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+  if (ma === mb) return a.getUTCDate() + '–' + b.getUTCDate() + ' ' + ma;
+  return a.getUTCDate() + ' ' + ma + ' – ' + b.getUTCDate() + ' ' + mb;
+}
 
 function showError(message) {
   const notice = $('#notice');
@@ -763,6 +820,97 @@ function renderAgenda() {
     return heading + '<article class="event"><div class="day">' + date.getUTCDate() + '<small>' + date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'UTC' }) + '</small></div><div><div class="event-title">' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</div><div class="event-info">' + esc(event.when) + ' · ' + when + '</div><div><span class="badge' + (event.source === 'Conflict' ? ' warn' : '') + '">' + esc(event.source) + '</span></div><details><summary>Details &amp; source</summary><p>' + esc(event.details) + '</p></details></div></article>';
   }).join('') : '<p class="small">No dated assessments in this selection. Choose All upcoming to see later entries.</p>';
 }
+function buildWeeks() {
+  const dates = EVENTS.map((event) => event.date).sort();
+  let cursor = weekStart(dates[0]);
+  const last = weekStart(dates[dates.length - 1]);
+  const weeks = [];
+  while (cursor <= last) {
+    const end = shiftDate(cursor, 6);
+    const events = EVENTS.filter((event) => event.date >= cursor && event.date <= end)
+      .slice()
+      .sort((a, b) => a.date.localeCompare(b.date) || a.title.localeCompare(b.title));
+    weeks.push({
+      start: cursor,
+      end,
+      events,
+      weight: events.reduce((sum, event) => sum + event.weight, 0),
+      count: events.reduce((sum, event) => sum + event.counts, 0),
+      uncertain: events.some((event) => event.uncertain),
+      conference: events.some((event) => event.kind === 'conference')
+    });
+    cursor = shiftDate(cursor, 7);
+  }
+  return weeks;
+}
+const WEEKS = buildWeeks();
+let loadWeek = weekStart(today);
+if (!WEEKS.some((week) => week.start === loadWeek)) {
+  const later = WEEKS.find((week) => week.start >= loadWeek);
+  loadWeek = later ? later.start : WEEKS[WEEKS.length - 1].start;
+}
+function loadStat(label, value, note) {
+  return '<div class="load-stat"><span>' + esc(label) + '</span><strong>' + esc(value) + '</strong><em>' + esc(note) + '</em></div>';
+}
+function deadlinePhrase(count) {
+  return count + ' deadline' + (count === 1 ? '' : 's');
+}
+function eventLoadLabel(event, withWeight) {
+  const name = event.course === 'conference' ? event.title : courseCode(event.course) + ' · ' + event.title;
+  return name + (withWeight && event.weight ? ' (' + formatShare(event.weight) + ' pts)' : '');
+}
+function courseSegments(week) {
+  const totals = {};
+  for (const event of week.events) {
+    if (!event.weight) continue;
+    totals[event.course] = (totals[event.course] || 0) + event.weight;
+  }
+  return COURSES.map((course) => course.id).filter((id) => totals[id]).map((id) => '<span class="load-seg" data-course="' + esc(id) + '" style="flex:' + totals[id] + '"></span>').join('');
+}
+function renderLoadDetail() {
+  const week = WEEKS.find((item) => item.start === loadWeek);
+  const box = $('#load-detail');
+  if (!week) { box.textContent = ''; return; }
+  const when = 'Week of ' + weekRangeLabel(week.start, week.end);
+  if (!week.events.length) {
+    box.innerHTML = '<strong>' + esc(when) + '.</strong> No dated deadlines.';
+    return;
+  }
+  const items = week.events.map((event) => esc(eventLoadLabel(event, true))).join('<br>');
+  const summary = deadlinePhrase(week.count) + ' · ' + formatShare(week.weight) + ' pts' + (week.uncertain ? ' · includes a provisional date' : '');
+  box.innerHTML = '<strong>' + esc(when) + '</strong> · ' + esc(summary) + '<div class="small">' + items + '</div>';
+}
+function renderLoad() {
+  const maxWeight = Math.max(...WEEKS.map((week) => week.weight), 1);
+  const peak = WEEKS.reduce((best, week) => (week.weight > best.weight ? week : best), WEEKS[0]);
+  const ahead = EVENTS.filter((event) => event.date >= today);
+  const aheadWeight = ahead.reduce((sum, event) => sum + event.weight, 0);
+  const aheadCount = ahead.reduce((sum, event) => sum + event.counts, 0);
+  const current = WEEKS.find((week) => week.start === weekStart(today));
+  const currentValue = current && current.weight ? formatShare(current.weight) + ' pts' : 'Quiet';
+  const currentNote = current && current.count ? deadlinePhrase(current.count) + ' this week' : 'Nothing dated this week';
+  const aheadNote = aheadCount ? deadlinePhrase(aheadCount) + ' from today' : 'Dated work from today is clear';
+  $('#load-stats').innerHTML = [
+    loadStat('This week', currentValue, currentNote),
+    loadStat('Heaviest week', formatShare(peak.weight) + ' pts', weekRangeLabel(peak.start, peak.end)),
+    loadStat('Still ahead', formatShare(aheadWeight) + ' pts', aheadNote)
+  ].join('');
+  $('#load-chart').innerHTML = WEEKS.map((week) => {
+    const height = week.weight ? Math.max(4, Math.round(week.weight / maxWeight * 100)) : 0;
+    const stack = week.weight
+      ? '<span class="load-stack" style="height:' + height + '%">' + courseSegments(week) + '</span>'
+      : (week.events.length ? '<span class="load-stack mark"></span>' : '');
+    const countLabel = week.count ? String(week.count) : (week.conference ? '◆' : (week.uncertain ? '?' : ''));
+    const axis = dateObj(week.start);
+    const label = axis.getUTCDate() + '<br>' + axis.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+    const names = week.events.map((event) => eventLoadLabel(event, false)).join(', ');
+    const pressed = week.start === loadWeek;
+    const described = 'Week of ' + weekRangeLabel(week.start, week.end) + ', ' + formatShare(week.weight) + ' points, ' + deadlinePhrase(week.count) + (names ? ': ' + names : '');
+    return '<button type="button" class="load-col' + (week.start === weekStart(today) ? ' is-now' : '') + (week.count > 1 ? ' has-many' : '') + '" data-week="' + week.start + '" aria-pressed="' + pressed + '" aria-label="' + esc(described) + '"><span class="load-count">' + esc(countLabel) + '</span><span class="load-plot">' + stack + '</span><span class="load-axis">' + label + '</span></button>';
+  }).join('');
+  $('#load-legend').innerHTML = COURSES.map((course) => '<span><i class="load-seg" data-course="' + esc(course.id) + '"></i>' + esc(course.code) + '</span>').join('') + '<span>Number = deadlines</span><span>? or a short mark = provisional or ungraded</span>';
+  renderLoadDetail();
+}
 function renderReview() {
   const notes = Array.isArray(data.notes) ? data.notes : [];
   $('#review').innerHTML = '<h2>Source differences &amp; open dates</h2><div class="review-grid">' + notes.map((note) => '<div class="review-item"><strong>' + esc(note.title) + '</strong><p>' + esc(note.text) + '</p></div>').join('') + '</div>';
@@ -779,6 +927,7 @@ renderBanner();
 renderSubjects();
 renderAgenda();
 renderCalendar();
+renderLoad();
 renderReview();
 $('#month-prev').addEventListener('click', () => moveMonth(-1));
 $('#month-next').addEventListener('click', () => moveMonth(1));
@@ -791,6 +940,22 @@ $('#calendar-current').addEventListener('click', () => {
   selectedDate = today >= rangeStart && today <= rangeEnd ? today : EVENTS[0].date;
   calendarMonth = selectedDate.slice(0, 7);
   renderCalendar();
+});
+$('#load-chart').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-week]');
+  if (!button) return;
+  loadWeek = button.dataset.week;
+  const week = WEEKS.find((item) => item.start === loadWeek);
+  const first = week && week.events.length ? week.events[0].date : loadWeek;
+  if (first >= rangeStart && first <= rangeEnd) {
+    selectedDate = first;
+    calendarMonth = selectedDate.slice(0, 7);
+    renderCalendar();
+  }
+  document.querySelectorAll('#load-chart [data-week]').forEach((item) => {
+    item.setAttribute('aria-pressed', item.dataset.week === loadWeek ? 'true' : 'false');
+  });
+  renderLoadDetail();
 });
 $('#calendar-grid').addEventListener('click', (event) => {
   const button = event.target.closest('[data-date]');
