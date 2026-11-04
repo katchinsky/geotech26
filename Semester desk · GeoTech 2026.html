@@ -15,7 +15,7 @@
   course      sdav, rs, stats, gis, gdm, pt, or conference
   title       short name shown on the calendar and agenda
   when        time or "Time unspecified"
-  source      where the date came from. Use Conflict to flag a disputed date.
+  source      where the date came from. Not shown on the page, except Conflict, which flags a disputed date.
   weight      known grade points for the heat map. Use 0 when a pool column sets the weight, or when there is no separate weight.
   counts      orange badge: 0, 1, or 2. Use 0 for milestones, slots, resits, and conference days.
   uncertain   yes or no. yes draws the ? next to the points.
@@ -28,60 +28,63 @@
 
   Courses (the script with id="courses-data"):
   Edit names, emails, rooms, consultation hours, component weights, rules, and the notes list.
+  room, consultation, note and sources are optional; leave them out when unknown.
   Keep each course "weights" line in step with its components. Undated work belongs in notes, not as a fake date.
 -->
 <script type="text/csv" id="events-table">
 date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
-"2026-09-27","sdav","Hands-on exercise","Time unspecified","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Report on Moodle. Past date does not imply submitted."
-"2026-09-30","gis","Quiz 1","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. 10 multiple-choice questions. Class topic: particularities of geographic information.","quiz"
-"2026-10-07","gis","Quiz 2","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class. Equal share of the 15% quiz component.","quiz"
+"2026-09-27","sdav","Hands-on exercise","Time unspecified","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Report on Moodle."
+"2026-09-30","gis","Quiz 1","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. 10 multiple-choice questions.","quiz"
+"2026-10-02","gdm","Assignment 1","17:00","Calendar",10,1,"no","deadline","10% of GDM final grade","10% · Essay."
+"2026-10-07","gis","Quiz 2","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
 "2026-10-08","sdav","In-class test","19:00–21:00 class slot","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Multiple-choice test on Moodle."
 "2026-10-11","stats","Assignment 1","End of day · midnight","Calendar + syllabus",15,1,"no","deadline","15% of STAT final grade","15% · Individual PDF on Moodle."
-"2026-10-11","pt","Quiz 1","21:23","Moodle",0,1,"yes","quiz","Quiz · no separate percentage in Session 1","Moodle: Quiz 1 closes Sunday 11 October 2026 at 21:23. Course: 202627 - Portuguese as Foreign Language - Turma TP1 - S1. Session 1 assessment slides do not give this quiz its own percentage."
+"2026-10-11","pt","Quiz 1","21:23","Moodle",0,1,"yes","quiz","Quiz · no separate weight","Closes on Moodle at 21:23."
 "2026-10-14","gis","Quiz 3","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
-"2026-10-02","gdm","Assignment 1","17:00","Calendar",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 1. Essay"
-"2026-10-15","conference","GeoMundus welcome meetup","18:00–22:00","geomundus.org",0,0,"no","conference","Conference · ungraded","Castellón welcome meetup, the evening before the conference. Social, 18:00–22:00. Universitat Jaume I, Castellón de la Plana."
-"2026-10-16","conference","GeoMundus 2026 · day 1 of 2","All day","geomundus.org",0,0,"no","conference","Conference · ungraded","18th GeoMundus, free and organised by GeoTech students. Hosted by Universitat Jaume I, Av. de Vicent Sos Baynat s/n, 12006 Castelló de la Plana. Theme: Geospatial Intelligence for Disaster Resilience — from data to action. Tracks: hazard intelligence and risk modelling; early warning and preparedness; emergency response and humanitarian logistics; recovery and resilient reconstruction. Keynotes: Tuomo Kauranne (ARBONAUT), Mariangela Noviello (United Nations), Maria Gorzynska (TRACASA). Panel: Emmanuel Jolaiya, Somnath Chaudhuri, Eftychia Koukouraki, Alaa Bakry Abdelfattah. Workshops: OpenStreetMap disaster mapping, ML4Floods, senseBox, wildfire risk mapping. The public programme does not assign these talks to a single day. program@geomundus.org · https://www.geomundus.org/"
-"2026-10-16","conference","GeoMundus conference dinner","Time to be confirmed","Calendar",0,0,"no","conference","Conference · ungraded","Dinner on 16 October, from the calendar. geomundus.org does not list a dinner time. No grade weight."
-"2026-10-17","conference","GeoMundus 2026 · day 2 of 2","All day","geomundus.org",0,0,"no","conference","Conference · ungraded","Second conference day, 17 October 2026, same venue and theme as the 16th. Talks, workshops, and networking. 18th edition, hosted by Universitat Jaume I in Castellón de la Plana. https://www.geomundus.org/"
-"2026-10-18","sdav","Project proposal","Time unspecified","Moodle · Ruoyu Wang, 8 Oct 2026",10,1,"no","deadline","10% of SDAV final grade","10% · Still due 18 Oct. Ruoyu Wang, Moodle, 8 Oct 2026 20:50: focus on introducing the idea of the analysis. Whether the method is correct is not assessed. Guidance is on Moodle. Submit via Turnitin. Calendar month grid and syllabus also say 18 Oct."
-"2026-10-20","pt","Video 1 · healthy recipe","Time unspecified","Session 1 slides",10,1,"no","deadline","10% of PT A1 final grade","10% · 2–3 minutes on Moodle, in Portuguese: a healthy recipe, with ingredients, preparation steps, and a personal connection. Session 1 replaces the earlier home / dream home brief."
-"2026-10-20","sdav","Individual project discussion","In class · time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"no","milestone","In-class discussion · no separate weight","Replaces the 15 Oct discussion. Discuss whether the project is feasible and how the work should be done. Posted by Ruoyu Wang in SAaV-200411-TP1-202627-S1 on 8 Oct 2026 at 20:50."
+"2026-10-15","conference","GeoMundus welcome meetup","18:00–22:00","geomundus.org",0,0,"no","conference","Conference · ungraded","Welcome meetup the evening before the conference, in Castellón."
+"2026-10-16","conference","GeoMundus 2026 · day 1 of 2","All day","geomundus.org",0,0,"no","conference","Conference · ungraded","18th GeoMundus at Universitat Jaume I, Castellón. Theme: Geospatial Intelligence for Disaster Resilience."
+"2026-10-16","conference","GeoMundus conference dinner","Time to be confirmed","Calendar",0,0,"no","conference","Conference · ungraded","Conference dinner."
+"2026-10-17","conference","GeoMundus 2026 · day 2 of 2","All day","geomundus.org",0,0,"no","conference","Conference · ungraded","Second conference day, same venue."
+"2026-10-18","sdav","Project proposal","Time unspecified","Moodle · Ruoyu Wang, 8 Oct 2026",10,1,"no","deadline","10% of SDAV final grade","10% · Introduce the idea of the analysis; whether the method is correct is not assessed. Submit via Turnitin."
+"2026-10-20","pt","Video 1 · healthy recipe","Time unspecified","Session 1 slides",10,1,"no","deadline","10% of PT A1 final grade","10% · 2–3 minutes on Moodle, in Portuguese: a healthy recipe, with ingredients, preparation steps and a personal connection."
+"2026-10-20","sdav","Individual project discussion","In class · time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"no","milestone","In-class discussion · no separate weight","Discuss whether the project is feasible and how the work should be done."
 "2026-10-21","gis","Quiz 4","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
-"2026-10-22","gdm","Assignment 2","Time unspecified","Confirmed by you",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 2. Date and assignment number confirmed by you on 7 Oct 2026, correcting the duplicated Calendar title."
-"2026-10-22","sdav","Project presentations","Time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"yes","slot","Presentation day · 15% component · personal slot not known","Present the proposal and some expected results. The other presentation day is 23 Oct. An earlier calendar listed 19:00–21:00; the 8 Oct message does not restate a time."
-"2026-10-23","sdav","Project presentations · class moved from 15 Oct","Time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"yes","slot","Presentation day · class moved from 15 Oct","The 15 Oct class moves to 23 Oct. That class was previously listed as 19:00–21:00; the 8 Oct message does not restate a time. This day is also a presentation day: the proposal and some expected results. The other presentation day is 22 Oct."
+"2026-10-22","gdm","Assignment 2","Time unspecified","Confirmed by you",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 2."
+"2026-10-22","sdav","Project presentations","Time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"yes","slot","Presentation day · part of the 15% component","Present the proposal and some expected results. The other presentation day is 23 Oct."
+"2026-10-23","sdav","Project presentations","Time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"yes","slot","Presentation day · part of the 15% component","Present the proposal and some expected results. The other presentation day is 22 Oct."
 "2026-11-04","gis","Quiz 5","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
-"2026-11-22","gdm","Project 3","23:59","Confirmed by Sara",25,1,"no","deadline","25% of GDM final grade","25% · Syllabus project 3 (calendar homework 3). Due 13 Nov 2026 at 23:59, confirmed by Sara. Calendar previously listed 5 Nov with no time."
-"2026-11-05","pt","Midterm written test","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 5 Nov, 1 hour, scored 0–100. Class slot is 15:00–17:00. An older class plan said 90 minutes."
-"2026-11-08","sdav","Final project paper","Time unspecified","Calendar + syllabus",40,1,"no","deadline","40% of SDAV final grade","40% · ≤5,000 words. Calendar month grid and syllabus: 8 Nov; all-day search shows 7 Nov at 23:00."
-"2026-11-11","gis","Writing a literature review","18:00–19:45","Course introduction",0,0,"no","milestone","Class · no separate weight","Wednesday class from the course introduction. No quiz and no group presentation this week. Weekly slot on that sheet is 18:00–19:45."
-"2026-11-15","stats","Assignment 2","End of day · midnight","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · Individual PDF on Moodle. Calendar reminder 23:00–23:59, class plan says midnight."
-"2026-11-17","pt","Video 2 · festival or celebration","Time unspecified","Session 1 slides",5,1,"yes","deadline","5% provisional · summary slide also prints 10%","Session 1 assessment slide: 17 Nov. Detail slide: 5%. Summary slide: 10%, while still printing TOTAL 100%. 2–3 minutes on Moodle about a festival or celebration. An older requirements page said 10 Nov."
+"2026-11-05","pt","Midterm written test","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 1 hour, scored 0–100."
+"2026-11-08","sdav","Final project paper","Time unspecified","Calendar + syllabus",40,1,"no","deadline","40% of SDAV final grade","40% · ≤5,000 words, conference/journal format. One calendar entry shows 7 Nov at 23:00, so submit by then to be safe."
+"2026-11-11","gis","Writing a literature review","18:00–19:45","Course introduction",0,0,"no","milestone","Class · no separate weight","No quiz and no group presentation this week."
+"2026-11-15","stats","Assignment 2","End of day · midnight","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · Individual PDF on Moodle."
+"2026-11-17","pt","Video 2 · festival or celebration","Time unspecified","Session 1 slides",5,1,"no","deadline","5% of PT A1 final grade","5% · 2–3 minutes on Moodle about a festival or celebration."
 "2026-11-18","gis","Quiz 6","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. The exam follows in the same class slot.","quiz"
-"2026-11-18","gis","Exam","18:00–20:00 class slot","Calendar + syllabus",20,1,"no","deadline","20% of GIS final grade","20% exam. Quiz 6 is a separate equal share of the 15% quiz component."
-"2026-11-19","gis","Term-paper topic abstract","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Preparation for the 40% term paper · no separate weight","250 words with title, summary and initial references; Moodle. Calendar month grid: 19 Nov."
-"2026-11-25","stats","Email project topic & group members","End of day · midnight","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Administrative milestone. Calendar notes and class plan; no separate weight."
-"2026-11-25","gis","Term-paper presentations · session 1","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions; personal slot unknown. ≤15 min + 10 min discussion."
-"2026-11-26","pt","Individual oral presentation","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 26 Nov. Expands Video 2 and is delivered without reading from notes or scripts. Syllabus length: 5–7 minutes."
+"2026-11-18","gis","Exam","18:00–20:00 class slot","Calendar + syllabus",20,1,"no","deadline","20% of GIS final grade","20% · Follows Quiz 6 in the same class slot."
+"2026-11-19","gis","Term-paper topic abstract","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Preparation for the 40% term paper · no separate weight","250 words with title, summary and initial references, on Moodle."
+"2026-11-22","gdm","Project 3","23:59","Confirmed by Sara",25,1,"no","deadline","25% of GDM final grade","25% · Syllabus project 3."
+"2026-11-24","rs","Midterm exam","In class","Assessments + Planning",15,1,"no","deadline","15% of RS final grade","15% · Paper-based true/false questions on fundamentals, image processing and machine learning."
+"2026-11-25","stats","Email project topic & group members","End of day · midnight","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Email the project topic and group members."
+"2026-11-25","gis","Term-paper presentations · session 1","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions. ≤15 minutes + 10 minutes discussion."
+"2026-11-26","pt","Individual oral presentation","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 5–7 minutes, expanding Video 2, without reading from notes or scripts."
 "2026-11-30","stats","Exam","17:00 · about 75 minutes","Calendar + syllabus",30,1,"no","deadline","30% of STAT final grade","30% · Followed by project work until 19:00. Replaces 1 Dec class."
-"2026-12-02","gis","Term-paper presentations · session 2","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Personal presentation slot unknown."
-"2026-12-03","pt","Final written exam","In class · 15:00–17:00","Session 1 slides",30,1,"no","deadline","30% of PT A1 final grade","30% · 3 Dec. 90 minutes plus 30 minutes of tolerance. Class slot is 15:00–17:00."
-"2026-12-09","gis","Term-paper presentations · session 3","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Personal presentation slot unknown."
+"2026-11-30","rs","Assignment · land cover classification","23:59","Assessments",15,1,"no","deadline","15% of RS final grade","15% · Classification map in GeoTIFF plus a report of at most 2 pages on the steps taken. Late: minus 10% of the assignment grade per day; not accepted after 5 days."
+"2026-12-02","gis","Term-paper presentations · session 2","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
+"2026-12-03","pt","Final written exam","In class · 15:00–17:00","Session 1 slides",30,1,"no","deadline","30% of PT A1 final grade","30% · 90 minutes plus 30 minutes of tolerance."
+"2026-12-09","gis","Term-paper presentations · session 3","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
 "2026-12-10","gdm","Final exam","17:00–19:00","Calendar + syllabus",30,1,"no","deadline","30% of GDM final grade","30% · Exam grade must be at least 8/20."
+"2026-12-13","rs","Project presentation file","23:59","Assessments",50,1,"no","deadline","50% of RS final grade · presentation & discussion","50% · Submit the slides (PPT or similar) before the seminars. Graded on your talk and Q&A on 15 or 17 Dec."
 "2026-12-15","stats","Oral project presentation","17:00","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · All authors present. 7 minutes + 3 minutes discussion."
-"2026-12-16","gis","Term-paper presentations · final session","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Personal slot unknown. Final paper and slides due the next day."
-"2026-12-17","gis","Final term paper & presentation file","Time unspecified","Calendar + syllabus rule",40,1,"no","deadline","40% of GIS final grade","40% term-paper component. Calendar month-grid date: 17 Dec; syllabus says day after last presentation session (16 Dec). ≤5,000 words."
-"2026-12-27","stats","Project report","End of day · midnight","Calendar + syllabus",35,1,"no","deadline","35% of STAT final grade","35% · DOC/PDF on Moodle. No late reports. Duplicate all-day and 23:00–23:59 reminder entries represent the same deadline."
-"2027-01-11","gis","Second-season exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit · replacement weight unconfirmed","Calendar month-grid date: 11 Jan 2027. Notes say check exam timetable. Grade replacement rules not supplied."
-"2027-01-13","sdav","Second-period exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit · 100% replacement","100% replacement if continuous evaluation is failed. Calendar month-grid date: 13 Jan 2027."
+"2026-12-15","rs","Project seminar · session 1","In class","Planning",0,0,"yes","slot","Possible slot · part of the 50% presentation component","Oral presentation and discussion of student projects. You present on 15 or 17 Dec."
+"2026-12-16","gis","Term-paper presentations · final session","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Last session. Final paper and slides are due the next day."
+"2026-12-17","gis","Final term paper & presentation file","Time unspecified","Calendar + syllabus rule",40,1,"no","deadline","40% of GIS final grade","40% · Literature review, ≤5,000 words, plus the presentation file."
+"2026-12-17","rs","Project seminar · session 2","In class","Planning",0,0,"yes","slot","Possible slot · part of the 50% presentation component","Oral presentation and discussion of student projects. Last class of the course."
+"2026-12-18","rs","Project report","23:59","Assessments",20,1,"no","deadline","20% of RS final grade","20% · Up to 10 pages: introduction (background and motivation), study area and data, methodology, results and discussion, conclusion. Submit through Turnitin."
+"2026-12-27","stats","Project report","End of day · midnight","Calendar + syllabus",35,1,"no","deadline","35% of STAT final grade","35% · DOC/PDF on Moodle. No late reports."
+"2027-01-11","gis","Second-season exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit","Check the exam timetable."
+"2027-01-13","sdav","Second-period exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit · 100% replacement","100% replacement if continuous evaluation is failed."
 </script>
 <script type="application/json" id="courses-data">
 {
-  "banner": {
-    "title": "One thing to confirm",
-    "text": "Portuguese homework and video 2 are 5% on the Session 1 detail slides and 10% on the summary."
-  },
   "courses": [
     {
       "id": "rs",
@@ -89,18 +92,32 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "name": "Remote Sensing",
       "ects": 5,
       "max": 20,
-      "weights": "Assessment still to come",
-      "schedule": "Replaces SDAV on the class timetable. Meeting times are still to come.",
-      "components": [],
-      "people": [],
-      "room": "Yet to come",
-      "consultation": "Yet to come",
-      "note": "Teacher, room, meeting times, and assessment have not been supplied yet.",
-      "sources": [{"label": "NOVA IMS GeoTech study plan", "url": "https://novaims.unl.pt/en/education/programs/postgraduate-programs-and-master-degree-programs/master-degree-in-geospatial-technologies/"}],
-      "rules": [
-        "Remote Sensing is a 5 ECTS elective and takes SDAV’s place on the class schedule. Syllabus and calendar entries are still to come."
+      "weights": "Midterm 15 · Assignment 15 · Project report 20 · Presentation & discussion 50%",
+      "schedule": "Tuesday and Thursday, 3 Nov – 17 Dec, 14 classes. Monday 30 Nov and Monday 7 Dec are compensation classes for holidays.",
+      "components": [
+        {"id": "M", "name": "Midterm exam", "weight": 15},
+        {"id": "A", "name": "Assignment", "weight": 15},
+        {"id": "R", "name": "Project report", "weight": 20},
+        {"id": "O", "name": "Presentation & discussion", "weight": 50}
       ],
-      "source": "NOVA IMS GeoTech study plan, 1st semester. No syllabus or calendar was supplied."
+      "people": [{"name": "Daniel Moraes", "role": "professor", "email": "dmoraes@novaims.unl.pt"}],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "By email.",
+      "note": "Bring a laptop to practical sessions. Software: ArcGIS Pro, QGIS and Python.",
+      "sources": [
+        {"label": "NOVA IMS GeoTech study plan", "url": "https://novaims.unl.pt/en/education/programs/postgraduate-programs-and-master-degree-programs/master-degree-in-geospatial-technologies/"}
+      ],
+      "rules": [
+        "Pass mark: 9.5/20.",
+        "Midterm, Tue 24 Nov, in class: paper-based true/false questions on fundamentals, image processing and machine learning.",
+        "Assignment: land cover classification. Deliver the classification map in GeoTIFF format and a report of at most 2 pages describing the steps. Due Mon 30 Nov, 23:59. Late: minus 10% of the assignment grade per day; not accepted after 5 days. Orientation and Q&A in class on 19 Nov.",
+        "Practical project: apply remote sensing to a real-world problem in a domain you choose, such as land cover, floods, wildfires, urban growth or agriculture. Choose imagery by spatial, spectral and temporal resolution, and a matching processing or machine-learning workflow. Orientation and Q&A in class on 12 Nov.",
+        "Presentation file (PPT or similar) due Sun 13 Dec, 23:59. Present on 15 or 17 Dec, then Q&A on the remote sensing and image-processing fundamentals your project uses.",
+        "Project report: up to 10 pages with introduction, study area and data, methodology, results and discussion, and conclusion. Due Fri 18 Dec, 23:59, through Turnitin.",
+        "AI is allowed. The professor asks you to use it for English, code and studying, and never to outsource your thinking. Always cite sources.",
+        "Class plan: 3 Nov intro · 5 Nov fundamentals · 10 Nov image processing · 12 Nov ML basics · 17 Nov data preparation · 19 Nov Random Forest classification · 24 Nov midterm · 26 Nov deep learning I · Mon 30 Nov deep learning II · 3 Dec regression, post-processing, advanced ML · Mon 7 Dec change detection, time series, cloud platforms · 10 Dec MLOps and ethics · 15 and 17 Dec project seminars.",
+        "Books: Richards, Remote Sensing Digital Image Analysis, 6th ed. (2022); Giri, Remote Sensing of Land Use and Land Cover (2012); Jensen, Introductory Digital Image Processing (2016); Jensen, Remote Sensing of the Environment (2014). Tutorial: Natural Resources Canada, Fundamentals of Remote Sensing."
+      ]
     },
     {
       "id": "sdav",
@@ -120,18 +137,12 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "people": [{"name": "Ruoyu Wang", "role": "", "email": "rwang@novaims.unl.pt"}],
       "room": "Room 9 · NOVA IMS (classroom)",
       "consultation": "By appointment via email.",
-      "note": "Class meetings on the regular timetable are listed under Remote Sensing. On 8 Oct 2026 Ruoyu Wang moved the 15 Oct class to 23 Oct and reset the project dates.",
-      "sources": [{"label": "SDAV syllabus + Calendar", "url": ""}],
       "rules": [
-        "Submit deliverables to their Moodle sections; the Calendar proposal entry links to Turnitin. No email submissions.",
-        "Hands-on: pairs. Final project: one or two students; paper ≤5,000 words in conference/journal format.",
-        "Proposal, 18 Oct: title, authors, abstract ≤200 words, problem/objectives, data/methods and ≥3 references to similar published work. The 8 Oct Moodle message says this submission introduces the idea of the analysis, and whether the method is correct is not assessed.",
-        "Individual discussion in class, 20 Oct: feasibility, and feedback on how the work should be done. The 15 Oct class is moved to 23 Oct.",
-        "Presentations, 22 and 23 Oct: the proposal and some expected results. ≤10 minutes, shared in a pair. Personal day is not assigned in the message.",
-        "Late deliverables: 2.5% per day. The syllabus does not define the penalty basis; enter grades after penalties.",
-        "If continuous evaluation is failed: second-period exam = 100%. No first-period exam. Calendar: 13 Jan 2027, time not specified."
-      ],
-      "source": "SDAV-syllabus-2026(4).docx · Evaluation, Deadlines and NOTES; Katya's Calendar SDAV entries. Project dates updated from Ruoyu Wang, Moodle SAaV-200411-TP1-202627-S1, 8 Oct 2026, 20:50."
+        "Submit on Moodle, not by email.",
+        "Final project: one or two students; paper ≤5,000 words in conference/journal format.",
+        "Late deliverables: 2.5% per day. Enter grades after penalties.",
+        "If continuous evaluation is failed, the second-period exam on 13 Jan 2027 counts 100%. There is no first-period exam."
+      ]
     },
     {
       "id": "stats",
@@ -153,7 +164,6 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       ],
       "room": "Room 9 · NOVA IMS (classroom)",
       "consultation": "Sara Ribeiro: by appointment, Teams or room 21 (floor 2, IMS). Cristina Costa: by appointment, Teams or room 235 (floor 2, CAN)",
-      "note": "",
       "sources": [
         {"label": "Ana Cristina Costa", "url": "https://novaims.unl.pt/en/nova-ims/teaching-staff/d/128"},
         {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"}
@@ -163,9 +173,8 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         "Assignments: individual PDF reports on Moodle; penalty of 0.5 grade points per day late. Enter post-penalty grades.",
         "Project: individual or preferably pairs. Oral presentation by all authors in English: 7 minutes + 3 minutes discussion.",
         "Report: conference-paper format, Portuguese or English, DOC or PDF on Moodle by 27 Dec midnight. Late reports or reports outside Moodle are rejected.",
-        "Resit replaces only the 30% exam. Other grades carry over; the resit final grade prevails only if higher. NetPA exam enrolment required; improvement fee for previously approved students. Date not found."
-      ],
-      "source": "spatial_stat_grades.pdf pp. 1–2; SpatialStatistics_ClassesPlan_202627.pdf p. 1; Calendar."
+        "Resit replaces only the 30% exam. Other grades carry over; the resit final grade prevails only if higher. NetPA exam enrolment required; improvement fee for previously approved students."
+      ]
     },
     {
       "id": "gis",
@@ -182,27 +191,20 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         {"id": "E", "name": "Exam", "weight": 20},
         {"id": "F", "name": "Individual term paper", "weight": 40}
       ],
-      "gradeNote": "Your three group presentations share the 20% component equally. Each quiz is the 15% component divided by the number of quiz rows.",
+      "gradeNote": "Your three presentations share the 20%; each quiz is an equal share of the 15%.",
       "people": [{"name": "Ruoyu Wang", "role": "", "email": "rwang@novaims.unl.pt"}],
       "room": "Room 9 · NOVA IMS (classroom)",
       "consultation": "Wednesday 17:00–18:00, or by appointment.",
-      "note": "Professor's office / consultation room not supplied. Main textbook: Longley, Goodchild, Maguire and Rhind (2015), Geographic Information Systems and Science, 3rd ed.",
+      "note": "Main textbook: Longley, Goodchild, Maguire and Rhind (2015), Geographic Information Systems and Science, 3rd ed.",
       "sources": [
-        {"label": "Course introduction", "url": "https://elearning.novaims.unl.pt/pluginfile.php/328221/mod_resource/content/25/Course%20introduction.pdf"},
-        {"label": "GIS syllabus p. 2 + Calendar", "url": ""}
+        {"label": "Course introduction", "url": "https://elearning.novaims.unl.pt/pluginfile.php/328221/mod_resource/content/25/Course%20introduction.pdf"}
       ],
       "rules": [
-        "GeoTech study plan: 5 ECTS. The course introduction prints 7.5 ECTS. The desk uses 5.",
-        "Six quizzes at 18:00 sharp, first 10 minutes: 10 multiple-choice questions (8 on the previous class, 2 on earlier classes). Dates: 30 Sep; 7, 14, 21 Oct; 4 and 18 Nov.",
-        "Weekly presentations run on 23 Sep, 30 Sep, 7 Oct, 14 Oct, 21 Oct and 4 Nov. There is no class on 28 Oct. Two rotations: odd weeks (23 Sep, 7 Oct, 21 Oct) and even weeks (30 Sep, 14 Oct, 4 Nov). Each student presents three times. The group, and therefore the subtopic, can change from week to week. Pick your name on the weekly load panel.",
-        "Bibliography is due the Monday before your presentation. Upload four papers: the two references supplied for your subtopic and two you select.",
-        "Presentations are 15 minutes, then about 10 minutes of discussion. Upload slides to Moodle before class, including a slide on the papers you selected. The presentation is about the subtopic; the papers support it.",
-        "Term paper: individual literature review, ≤5,000 words, journal/conference format. Topic abstract: 250 words with title, summary and initial references by 19 Nov.",
-        "Term-paper presentations: 25 Nov; 2, 9 and 16 Dec, ≤15 minutes + 10 minutes discussion. Personal slot unknown. Final paper and presentation due 17 Dec, the day after the last session.",
-        "Calendar gives an 11 Jan 2027 second-season exam, time unspecified. The supplied syllabus does not define its grade replacement rules.",
-        "Your three group presentations share the 20% component equally. Each dated quiz takes an equal share of the 15% quiz component. Term-paper sessions are possible slots, not further slices of the 40%."
-      ],
-      "source": "NOVA IMS GeoTech study plan (5 ECTS). Course introduction prints 7.5 ECTS and gives Wednesday 18:00–19:45 plus the 11 Nov literature-review class. presentation-guidelines-3.pdf, schedule and class roster. Each person presents three times; the 20% is split across those three rows."
+        "Quizzes at 18:00 sharp, first 10 minutes: 10 multiple-choice questions (8 on the previous class, 2 on earlier classes). The last one is 18 Nov, before the exam.",
+        "Term paper: individual literature review, ≤5,000 words, journal/conference format. Topic abstract by 19 Nov: 250 words with title, summary and initial references.",
+        "Term-paper presentations: 25 Nov, 2, 9 or 16 Dec; ≤15 minutes + 10 minutes discussion. Final paper and slides due 17 Dec.",
+        "Second-season exam: 11 Jan 2027."
+      ]
     },
     {
       "id": "gdm",
@@ -222,20 +224,16 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         {"name": "Roberto Henriques", "role": "responsible teacher", "email": "roberto@novaims.unl.pt"},
         {"name": "Sara Ribeiro", "role": "teaching staff", "email": "sribeiro@novaims.unl.pt"}
       ],
-      "room": "Classroom and professor offices not supplied.",
       "consultation": "Friday 09:00 · appointment required.",
-      "note": "Teaching team and consultation slot from the course syllabus; emails from NOVA IMS directories.",
       "sources": [
         {"label": "NOVA contacts", "url": "https://novaims.unl.pt/en/nova-ims/contacts/"},
         {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"}
       ],
       "rules": [
         "Exam minimum: 8.0/20, regardless of the weighted total.",
-        "Assignment 1: 15 Oct. Assignment 2: 22 Oct (confirmed by you on 7 Oct). Each carries 10% in the syllabus, where they are called projects 1 and 2. Submission times are unspecified.",
-        "Project 3 (homework 3): 13 Nov at 23:59, confirmed by Sara. Homework 4: December, date to be announced. The 1 Dec entry is explicitly a placeholder.",
-        "Final exam: 10 Dec, 17:00–19:00, confirmed by syllabus and Calendar. No resit or late-submission rule was supplied."
-      ],
-      "source": "gdm_syllab.pdf pp. 3–4; Katya's Calendar GDM entries"
+        "Project 3: 22 Nov at 23:59. Project 4: December, date to be announced.",
+        "Final exam: 10 Dec, 17:00–19:00."
+      ]
     },
     {
       "id": "pt",
@@ -243,9 +241,9 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "name": "Portuguese A1",
       "ects": 4,
       "max": 100,
-      "weights": "Final 30 · Midterm 20 · Oral 20 · Video 1 10 · Video 2 5* · Homework 5* · Engagement 10%",
-      "schedule": "15:00–17:00. Week 1: 29–30 Sep, 1 Oct. Week 2: 6–8 Oct. Week 3: 13–15 Oct. Week 4: 20–22 Oct. Week 5: 3–5 Nov. Week 6: 10–12 Nov. Week 7: 17–19 Nov. Week 8: 24–26 Nov. Week 9: Mon 30 Nov, Wed 2 Dec, Thu 3 Dec. 27 sessions.",
-      "warning": "Session 1 detail slides give homework and video 2 5% each. The summary slide prints 10% each and TOTAL 100%, but those figures add to 110%. The grade check uses 5% so the weights total 100%. Confirm with the instructor.",
+      "weights": "Final 30 · Midterm 20 · Oral 20 · Video 1 10 · Video 2 5 · Homework 5 · Engagement 10%",
+      "schedule": "Tuesday to Thursday, 15:00–17:00, 27 sessions. Week 9 meets Monday 30 Nov, Wednesday 2 Dec and Thursday 3 Dec.",
+      "warning": "Homework and video 2 are 5% each on the detail slides but 10% each on the summary slide, which would total 110%. The grade check uses 5%. Confirm with the instructor.",
       "components": [
         {"id": "E", "name": "Final written exam", "weight": 30},
         {"id": "M", "name": "Midterm written test", "weight": 20},
@@ -257,39 +255,29 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       ],
       "people": [{"name": "Miguel Magalhães", "role": "teacher", "email": "migmaglit@yahoo.com"}],
       "room": "Room 9 · NOVA IMS (classroom)",
-      "consultation": "Not supplied · confirm with the instructor.",
       "note": "Administrative support: apoioaluno@novaims.unl.pt",
       "sources": [
-        {"label": "Miguel Magalhães", "url": "https://novaresearch.unl.pt/en/persons/miguel-magalh%C3%A3es/"},
-        {"label": "Session 1 F2026-1.pdf + earlier syllabus and Calendar", "url": ""}
+        {"label": "Miguel Magalhães", "url": "https://novaresearch.unl.pt/en/persons/miguel-magalh%C3%A3es/"}
       ],
       "rules": [
         "Attendance: at least 88.9%; maximum 3 absences across 27 sessions. More than 3 makes you ineligible for final grading.",
-        "Classes are Tuesday, Wednesday and Thursday, 15:00–17:00, except week 9, which meets Monday 30 Nov, Wednesday 2 Dec and Thursday 3 Dec.",
-        "Homework is weekly on Moodle. A missing assignment is zero and stays in the average. The detail slide says this average is 5% of the course; the summary slide says 10%.",
-        "Quiz 1 closes on Moodle on Sunday 11 October 2026 at 21:23, for Turma TP1. Session 1 does not give it a separate percentage, so it is not in the grade check.",
+        "Homework is weekly on Moodle. A missing assignment is zero and stays in the average.",
         "Engagement is assessed every two weeks from attendance and participation, and is 10%.",
-        "Video 1: a healthy recipe, 2–3 minutes, in Portuguese, on Moodle by 20 Oct. Ingredients, preparation steps, and a personal connection. Worth 10%.",
-        "Video 2: a festival or celebration, 2–3 minutes, on Moodle by 17 Nov (Session 1 assessment slide). Detail slide says 5%; summary slide says 10%. An older requirements page said 10 Nov.",
-        "Oral presentation: 26 Nov, expands Video 2, without reading from notes or scripts. Syllabus length is 5–7 minutes.",
-        "Midterm: 5 Nov, 1 hour, scored 0–100. An older class plan said 90 minutes. Final: 3 Dec, 90 minutes plus 30 minutes of tolerance.",
+        "Video 2: a festival or celebration, 2–3 minutes, on Moodle by 17 Nov.",
+        "Oral presentation: 26 Nov, 5–7 minutes, expanding Video 2, without reading from notes or scripts.",
+        "Midterm: 5 Nov, 1 hour, scored 0–100. Final: 3 Dec, 90 minutes plus 30 minutes of tolerance.",
         "No late submissions except instructor-approved exceptional circumstances. The syllabus prohibits copied or AI-generated assessment work."
-      ],
-      "source": "Session 1 F2026-1.pdf (calendar, assessment, and requirements); portuguese_syllab.pdf where Session 1 is silent; Calendar for the classroom."
+      ]
     }
   ],
   "notes": [
     {
-      "title": "GDM · assignment dates",
-      "text": "Assignment 1 is on 15 October. Assignment 2 is on 22 October, as confirmed by you on 7 October. Project 3 (homework 3) is 20 November at 23:59, confirmed by Sara. Homework 4 is only “sometime in December”; 1 December is a placeholder."
-    },
-    {
-      "title": "GIS · 5 ECTS",
-      "text": "The GeoTech study plan lists Geographic Information Science at 5 ECTS, and the desk uses 5. The course introduction prints 7.5 ECTS and a Wednesday class of 18:00–19:45. The calendar exam entry stays 18:00–20:00. 11 November is a literature-review class, with no quiz and no group presentation."
+      "title": "Remote Sensing · Monday classes",
+      "text": "Monday 30 Nov and Monday 7 Dec are compensation classes for holidays."
     },
     {
       "title": "Still undated",
-      "text": "GDM homework 4 (25%, December);"
+      "text": "GDM project 4 (25%), sometime in December."
     }
   ]
 }
@@ -319,6 +307,7 @@ p{margin:8px 0}
 .stamp{text-align:right}
 .stamp strong{font-size:12px;font-weight:600}
 .notice{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:12px 0 16px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;color:var(--muted);font-size:12px;line-height:1.4}
+.notice[hidden]{display:none}
 .notice strong{white-space:nowrap;font-weight:600}
 .notice a{color:var(--accent)}
 .layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(340px,1fr);gap:32px}
@@ -397,7 +386,7 @@ p{margin:8px 0}
 .date-block.today .date-num{text-decoration:underline;text-underline-offset:4px}
 .date-top{display:flex;align-items:center;justify-content:space-between;gap:2px}
 .date-num{font-size:13px;font-weight:600}
-.count-pill{background:#f1d69c;color:#593c17;min-width:17px;height:17px;border-radius:50%;text-align:center;font-size:10px;line-height:17px;font-weight:700}
+.count-pill{display:inline-block;background:#f1d69c;color:#593c17;min-width:17px;height:17px;border-radius:50%;text-align:center;font-size:10px;line-height:17px;font-weight:700}
 .count-pill.multiple{background:#b95831;color:white}
 .day-weight{font-size:11px;font-weight:600;line-height:1.2}
 .day-mark{font-size:9px;line-height:1.2}
@@ -468,8 +457,7 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <h1>Semester Dashboard</h1>
 </div>
 <div class="stamp">
-<strong>6 subjects · contacts, rooms &amp; deadlines</strong>
-<div class="small">snapshot as of 7 October 2026<br>Europe/Lisbon</div>
+<div class="small">snapshot as of 4 November 2026<br>Europe/Lisbon</div>
 </div>
 </header>
 <div class="notice" id="notice"></div>
@@ -493,7 +481,7 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <div class="section-head">
 <div>
 <div class="eyebrow">Your semester at a glance</div>
-<h2 id="calendar-title">Deadline calendar<span class="help"><button type="button" class="help-mark" aria-label="About the deadline calendar">?</button><span class="help-tip" role="tooltip">Darker blocks mean more grade weight. Orange badges are the number of deadlines or assessments. Select a date for details. Weight points add percentages of each subject’s own grade, not a semester average. Your three GIS presentations split the 20% component evenly, and GIS quizzes split the 15% component evenly. “?” marks a date or weight that is still provisional; the number beside it is what colours the day. Term-paper presentation slots and resits stay off the confirmed-deadline count. Edit a row in the events table at the top of this file to change a date, weight, or note.</span></span></h2>
+<h2 id="calendar-title">Deadline calendar<span class="help"><button type="button" class="help-mark" aria-label="About the deadline calendar">?</button><span class="help-tip" role="tooltip">Darker blocks mean more grade weight. Orange badges count deadlines and assessments. Points are percentages of each course’s own grade, not a semester average. “?” marks a date or weight that is still provisional. Select a date for details.</span></span></h2>
 </div>
 <div class="calendar-toolbar">
 <button type="button" id="month-prev" aria-label="Previous month">←</button>
@@ -523,14 +511,12 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <div class="layout">
 <section aria-labelledby="subjects-title">
 <div class="section-head">
-<h2 id="subjects-title">Courses<span class="help"><button type="button" class="help-mark" aria-label="About courses">?</button><span class="help-tip" role="tooltip">Open a course for the teaching team and a grade check. Enter grades you already have; blank rows stay out of the average. ECTS figures are from the NOVA IMS GeoTech study plan. The GIS course introduction prints 7.5; the desk uses 5.</span></span></h2>
-<span class="small">Contacts, rooms, weights</span>
+<h2 id="subjects-title">Courses<span class="help"><button type="button" class="help-mark" aria-label="About courses">?</button><span class="help-tip" role="tooltip">Open a course for the teaching team, rules and a grade check. Enter grades you already have; blank rows stay out of the average.</span></span></h2>
 </div>
 <div class="scale">
 <h3>Grades in Portugal · 0–20</h3>
-<p class="small">The scale used for higher education in Portugal. Averages on this desk are shown out of 20. Portuguese A1 is entered out of 100, then converted.</p>
 <ul class="rules">
-<li><strong>18–20</strong> Excellent (<em>Excelente</em>) — Extremely rare for individual exams or final degrees.</li>
+<li><strong>18–20</strong> Excellent (<em>Excelente</em>)</li>
 <li><strong>16–17</strong> Very Good (<em>Muito Bom</em>)</li>
 <li><strong>14–15</strong> Good (<em>Bom</em>)</li>
 <li><strong>10–13</strong> Sufficient (<em>Suficiente</em>)</li>
@@ -541,7 +527,7 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 </section>
 <aside class="timeline" aria-labelledby="agenda-title">
 <div class="section-head">
-<h2 id="agenda-title">Coming up<span class="help"><button type="button" class="help-mark" aria-label="About coming up">?</button><span class="help-tip" role="tooltip">Calendar dates take priority when clear. All-day entries do not establish a submission time. Assessment dates are distinct from ordinary classes.</span></span></h2>
+<h2 id="agenda-title">Coming up</h2>
 <span class="small" id="today"></span>
 </div>
 <div class="timeline-controls">
@@ -557,10 +543,6 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 </aside>
 </div>
 <section id="review" class="review"></section>
-<footer class="foot">
-<span>Sources: the six supplied course files + Apple Calendar, reviewed 6 October 2026. ECTS from the NOVA IMS GeoTech study plan (GIS 5; the course introduction prints 7.5). GeoMundus details from geomundus.org. Remote Sensing is on the timetable in place of SDAV; its syllabus is still to come. Source references appear inside each subject and deadline.</span>
-<span>Entered grades stay in this browser and survive refresh. Blank components are left out of the weighted average.</span>
-</footer>
 </main>
 <script>
 'use strict';
@@ -708,6 +690,7 @@ function slotsFor(name) {
   });
   return slots;
 }
+const byDate = (a, b) => a.date.localeCompare(b.date);
 function loadStudent() {
   try {
     const saved = localStorage.getItem(STUDENT_KEY);
@@ -769,7 +752,7 @@ try {
   BASE_EVENTS = parseCSV($('#events-table').textContent);
   assertRoster();
   gisStudent = loadStudent();
-  EVENTS = BASE_EVENTS.concat(personalEvents(gisStudent));
+  EVENTS = BASE_EVENTS.concat(personalEvents(gisStudent)).sort(byDate);
   applyPools(EVENTS, COURSES);
 } catch (err) {
   showError(err.message || 'The events table or courses block could not be read.');
@@ -943,11 +926,11 @@ function renderSubjects() {
   $('#subjects').innerHTML = COURSES.map((course) => {
     const components = componentsFor(course);
     const fields = components.map((component) => '<label class="field"><span>' + esc(component.name) + '</span><span class="weight">' + formatShare(component.weight) + '%</span><input aria-label="' + esc(course.code + ' ' + component.name + ' grade') + '" data-grade="' + esc(component.id) + '" data-course="' + esc(course.id) + '" type="number" min="0" max="' + course.max + '" step="0.1" placeholder="—" autocomplete="off" value="' + esc(storedValue(course, component)) + '"></label>').join('');
-    const gradeBlurb = (course.max === 100 ? 'Enter grades out of 100. The header shows that average out of 20. ' : 'Enter grades out of 20. ') + (course.gradeNote ? course.gradeNote + ' ' : '') + 'Blank rows stay out of the average.';
+    const gradeBlurb = (course.max === 100 ? 'Enter grades out of 100. The header shows that average out of 20.' : 'Enter grades out of 20.') + (course.gradeNote ? ' ' + course.gradeNote : '');
     const ects = course.ects ? '<span class="ects">' + course.ects + ' ECTS</span>' : '';
     const note = course.note ? '<p class="small">' + esc(course.note) + '</p>' : '';
     const calc = components.length ? '<div class="calc"><h3>Grade check' + (course.max === 100 ? ' · 0–100 inputs' : '') + '</h3><p class="small">' + esc(gradeBlurb) + '</p><div class="fields">' + fields + '</div><div class="result"><span class="small">Weighted average of entered grades</span><strong id="total-' + course.id + '"></strong></div><div class="status" id="status-' + course.id + '" aria-live="polite"></div></div>' : '';
-    return '<details class="subject" id="course-' + course.id + '"><summary class="summary"><span class="code">' + esc(course.code) + '</span><div><div class="name">' + esc(course.name) + ects + '</div><div class="equation">' + esc(course.weights) + '</div><div class="date-line">' + esc(nextLine(course.id)) + '</div></div><div><div class="score" id="score-' + course.id + '"></div><div class="score-label" id="score-label-' + course.id + '"></div></div><span class="chev" aria-hidden="true"></span></summary><section class="teaching" aria-label="Teaching contacts"><h3>Teaching team &amp; consultation</h3><dl><dt>Professor</dt><dd>' + personLines(course.people) + '</dd><dt>Room</dt><dd>' + esc(course.room) + '</dd><dt>Consultation</dt><dd>' + esc(course.consultation) + '</dd>' + (course.schedule ? '<dt>Classes</dt><dd>' + esc(course.schedule) + '</dd>' : '') + '</dl>' + note + '<div class="source">' + sourceLinks(course.sources) + '</div></section><details class="rule"><summary>Evaluation rules &amp; submission requirements</summary><ul class="rules">' + course.rules.map((rule) => '<li>' + esc(rule) + '</li>').join('') + '</ul></details><div class="source">Source: ' + esc(course.source) + '</div>' + (course.warning ? '<p class="warning">' + esc(course.warning) + '</p>' : '') + calc + '</details>';
+    return '<details class="subject" id="course-' + course.id + '"><summary class="summary"><span class="code">' + esc(course.code) + '</span><div><div class="name">' + esc(course.name) + ects + '</div><div class="equation">' + esc(course.weights) + '</div><div class="date-line">' + esc(nextLine(course.id)) + '</div></div><div><div class="score" id="score-' + course.id + '"></div><div class="score-label" id="score-label-' + course.id + '"></div></div><span class="chev" aria-hidden="true"></span></summary><section class="teaching" aria-label="Teaching contacts"><h3>Teaching team &amp; consultation</h3><dl><dt>Professor</dt><dd>' + personLines(course.people) + '</dd>' + (course.room ? '<dt>Room</dt><dd>' + esc(course.room) + '</dd>' : '') + (course.consultation ? '<dt>Consultation</dt><dd>' + esc(course.consultation) + '</dd>' : '') + (course.schedule ? '<dt>Classes</dt><dd>' + esc(course.schedule) + '</dd>' : '') + '</dl>' + note + (course.sources && course.sources.length ? '<div class="source">' + sourceLinks(course.sources) + '</div>' : '') + '</section><details class="rule"><summary>Evaluation rules &amp; submission requirements</summary><ul class="rules">' + course.rules.map((rule) => '<li>' + esc(rule) + '</li>').join('') + '</ul></details>' + (course.warning ? '<p class="warning">' + esc(course.warning) + '</p>' : '') + calc + '</details>';
   }).join('');
   COURSES.forEach(paintScore);
 }
@@ -973,7 +956,7 @@ function renderCalendar() {
 }
 function renderSelectedDay() {
   const summary = daySummary(selectedDate);
-  const items = summary.events.length ? summary.events.map((event) => '<article class="day-detail"><strong>' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</strong><div class="weight-label">' + esc(event.label) + '</div><p>' + esc(event.when) + ' · ' + esc(event.source) + '</p><p>' + esc(event.details) + '</p></article>').join('') : '<p class="small">No dated deadlines or events in the table.</p>';
+  const items = summary.events.length ? summary.events.map((event) => '<article class="day-detail"><strong>' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</strong><div class="weight-label">' + esc(event.label) + '</div><p>' + esc(event.when) + '</p><p>' + esc(event.details) + '</p></article>').join('') : '<p class="small">No dated deadlines or events in the table.</p>';
   $('#selected-day').innerHTML = '<div class="eyebrow">' + dateObj(selectedDate).toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' }) + '</div><h3>' + dateObj(selectedDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) + '</h3><p class="small">' + summary.count + ' deadline' + (summary.count === 1 ? '' : 's') + ' / assessment' + (summary.count === 1 ? '' : 's') + ' · ' + formatShare(summary.weight) + ' known weight points' + (summary.uncertain ? ' + unallocated weight' : '') + '</p>' + items;
 }
 function moveMonth(delta) {
@@ -1002,7 +985,7 @@ function renderAgenda() {
     const heading = monthLabel === month ? '' : '<div class="month">' + monthLabel + '</div>';
     month = monthLabel;
     const when = delta === 0 ? 'Today' : delta < 0 ? 'Past date' : delta === 1 ? 'Tomorrow' : 'in ' + delta + ' days';
-    return heading + '<article class="event"><div class="day">' + date.getUTCDate() + '<small>' + date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'UTC' }) + '</small></div><div><div class="event-title">' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</div><div class="event-info">' + esc(event.when) + ' · ' + when + '</div><div><span class="badge' + (event.source === 'Conflict' ? ' warn' : '') + '">' + esc(event.source) + '</span></div><details><summary>Details &amp; source</summary><p>' + esc(event.details) + '</p></details></div></article>';
+    return heading + '<article class="event"><div class="day">' + date.getUTCDate() + '<small>' + date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'UTC' }) + '</small></div><div><div class="event-title">' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</div><div class="event-info">' + esc(event.when) + ' · ' + when + '</div>' + (event.source === 'Conflict' ? '<div><span class="badge warn">Conflict</span></div>' : '') + '<details><summary>Details</summary><p>' + esc(event.details) + '</p></details></div></article>';
   }).join('') : '<p class="small">No dated assessments in this selection. Choose All upcoming to see later entries.</p>';
 }
 function buildWeeks() {
@@ -1115,7 +1098,7 @@ function renderLoad() {
   renderLoadDetail();
 }
 function applyStudent() {
-  EVENTS = BASE_EVENTS.concat(personalEvents(gisStudent));
+  EVENTS = BASE_EVENTS.concat(personalEvents(gisStudent)).sort(byDate);
   applyPools(EVENTS, COURSES);
   const openIds = [...document.querySelectorAll('details[open]')].map((el) => el.id).filter(Boolean);
   WEEKS = buildWeeks();
@@ -1134,7 +1117,7 @@ function applyStudent() {
 }
 function renderReview() {
   const notes = Array.isArray(data.notes) ? data.notes : [];
-  $('#review').innerHTML = '<h2>Source differences &amp; open dates</h2><div class="review-grid">' + notes.map((note) => '<div class="review-item"><strong>' + esc(note.title) + '</strong><p>' + esc(note.text) + '</p></div>').join('') + '</div>';
+  $('#review').innerHTML = '<h2>Notes &amp; open dates</h2><div class="review-grid">' + notes.map((note) => '<div class="review-item"><strong>' + esc(note.title) + '</strong><p>' + esc(note.text) + '</p></div>').join('') + '</div>';
 }
 function renderBanner() {
   if (!data.banner) { $('#notice').hidden = true; return; }
