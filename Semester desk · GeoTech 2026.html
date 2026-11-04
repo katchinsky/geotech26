@@ -324,6 +324,11 @@ p{margin:8px 0}
 .score{white-space:nowrap;text-align:right;font-size:23px;font-weight:550;letter-spacing:-.6px;font-variant-numeric:tabular-nums}
 .score small{font-size:11px;font-weight:400;letter-spacing:0}
 .score-label{font-size:10px;color:var(--muted);text-align:right;letter-spacing:.5px;text-transform:uppercase}
+.banked-bar{position:relative;display:flex;height:6px;margin-top:7px;border-radius:3px;background:var(--soft)}
+.banked-seg{background:var(--accent);border-radius:3px 0 0 3px}
+.lost-seg{background:#e2b8a8}
+.pass-tick{position:absolute;top:-2px;bottom:-2px;width:1px;background:var(--muted);opacity:.5}
+.banked-text{display:block;margin-top:4px;font-size:10px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
 .calc{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0}
 .fields{display:grid;grid-template-columns:1fr 1fr;column-gap:20px}
 .field{display:grid;grid-template-columns:1fr 52px 76px;align-items:center;gap:7px;margin:5px 0;font-size:12px}
@@ -402,7 +407,7 @@ p{margin:8px 0}
 .day-detail p{font-size:11px;color:var(--muted);margin:4px 0}
 .weight-label{font-size:11px;font-weight:600}
 .calendar-note{font-size:11px;color:var(--muted);max-width:940px;margin:10px 0 0}
-.load-panel{margin:0 0 24px;padding:18px 20px 16px;background:var(--paper);border:1px solid var(--line);border-radius:9px}
+.load-panel{margin:20px 0 24px;padding:18px 20px 16px;background:var(--paper);border:1px solid var(--line);border-radius:9px}
 .load-panel .section-head{align-items:flex-start;flex-wrap:wrap}
 .load-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 16px}
 .load-stat{background:#f5f5ee;border-radius:8px;padding:10px 12px;min-width:0}
@@ -432,8 +437,8 @@ p{margin:8px 0}
 .load-seg[data-course="pt"]{background:#65509a}
 .load-axis{height:24px;font-size:9px;line-height:1.15;text-align:center;color:var(--muted)}
 .load-col.is-now .load-axis,.load-col[aria-pressed="true"] .load-axis{color:var(--ink);font-weight:700}
-.load-legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:10px;color:var(--muted)}
-.load-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.load-legend{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--muted)}
+.load-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px}
 .load-detail{margin:10px 0 0;font-size:12px}
 .load-detail .small{margin:4px 0 0}
 .help{position:relative;display:inline-flex;vertical-align:1px;margin-left:6px}
@@ -511,7 +516,7 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <div class="layout">
 <section aria-labelledby="subjects-title">
 <div class="section-head">
-<h2 id="subjects-title">Courses<span class="help"><button type="button" class="help-mark" aria-label="About courses">?</button><span class="help-tip" role="tooltip">Open a course for the teaching team, rules and a grade check. Enter grades you already have; blank rows stay out of the average.</span></span></h2>
+<h2 id="subjects-title">Courses<span class="help"><button type="button" class="help-mark" aria-label="About courses">?</button><span class="help-tip" role="tooltip">Open a course for the teaching team, rules and a grade check. Enter grades you already have; blank rows stay out of the average. The bar under a score shows, out of 20, what you have banked (dark), what you have lost (pale red) and what is still open, with a tick at the 9.5 pass mark. Banked is your final grade if everything left scores 0.</span></span></h2>
 </div>
 <div class="scale">
 <h3>Grades in Portugal · 0–20</h3>
@@ -847,10 +852,13 @@ function storedValue(course, component) {
   if (!Number.isFinite(number) || number < 0 || number > course.max) return '';
   return String(raw);
 }
+const PASS_MARK = 9.5;
 function projection(course) {
   let points = 0;
   let weight = 0;
+  let sum = 0;
   for (const component of componentsFor(course)) {
+    sum += component.weight;
     const raw = storedValue(course, component);
     if (raw === '') continue;
     points += Number(raw) * component.weight;
@@ -858,7 +866,23 @@ function projection(course) {
   }
   if (!weight) return null;
   const average = points / weight;
-  return { average, weight, outOf20: average * 20 / course.max };
+  const to20 = 20 / course.max;
+  // banked: final grade if every component without a grade scores 0
+  return {
+    average,
+    weight,
+    outOf20: average * to20,
+    banked20: points / sum * to20,
+    graded20: weight / sum * 20,
+    best20: (points + (sum - weight) * course.max) / sum * to20
+  };
+}
+function bankedBar(result) {
+  const pct = (n) => (Math.max(0, n) / 20 * 100).toFixed(2) + '%';
+  const lost = result.graded20 - result.banked20;
+  const open = 20 - result.graded20;
+  const described = format(result.banked20) + ' of 20 banked, ' + format(lost) + ' lost, ' + format(open) + ' still open. Pass mark ' + PASS_MARK + '.';
+  return '<span class="banked-bar" role="img" aria-label="' + esc(described) + '" title="' + esc(described) + '"><span class="banked-seg" style="width:' + pct(result.banked20) + '"></span><span class="lost-seg" style="width:' + pct(lost) + '"></span><i class="pass-tick" style="left:' + pct(PASS_MARK) + '"></i></span>';
 }
 function paintScore(course) {
   const result = projection(course);
@@ -866,6 +890,8 @@ function paintScore(course) {
   const label = $('#score-label-' + course.id);
   const total = $('#total-' + course.id);
   const status = $('#status-' + course.id);
+  const banked = $('#banked-' + course.id);
+  banked.innerHTML = '';
   if (!componentsFor(course).length) {
     score.textContent = '—';
     label.textContent = 'Yet to come';
@@ -881,8 +907,10 @@ function paintScore(course) {
   score.innerHTML = format(result.outOf20) + '<small> /20</small>';
   label.textContent = course.max === 100 ? 'Provisional' : (weightsClose(result.weight, 100) ? 'Total' : 'So far');
   total.textContent = format(result.average) + ' /' + course.max;
+  const complete = weightsClose(result.graded20, 20);
+  banked.innerHTML = bankedBar(result) + (complete ? '' : '<span class="banked-text">' + format(result.banked20) + ' banked</span>');
   const sum = componentsFor(course).reduce((totalWeight, component) => totalWeight + component.weight, 0);
-  const entered = formatShare(result.weight) + '% of the weight has a grade.';
+  const entered = formatShare(result.weight) + '% of the weight has a grade.' + (complete ? '' : ' Zeros from here: ' + format(result.banked20) + ' /20. Best case: ' + format(result.best20) + ' /20.');
   status.textContent = weightsClose(sum, 100) ? entered : 'Component weights total ' + formatShare(sum) + '%, not 100%. ' + entered;
 }
 
@@ -930,7 +958,7 @@ function renderSubjects() {
     const ects = course.ects ? '<span class="ects">' + course.ects + ' ECTS</span>' : '';
     const note = course.note ? '<p class="small">' + esc(course.note) + '</p>' : '';
     const calc = components.length ? '<div class="calc"><h3>Grade check' + (course.max === 100 ? ' · 0–100 inputs' : '') + '</h3><p class="small">' + esc(gradeBlurb) + '</p><div class="fields">' + fields + '</div><div class="result"><span class="small">Weighted average of entered grades</span><strong id="total-' + course.id + '"></strong></div><div class="status" id="status-' + course.id + '" aria-live="polite"></div></div>' : '';
-    return '<details class="subject" id="course-' + course.id + '"><summary class="summary"><span class="code">' + esc(course.code) + '</span><div><div class="name">' + esc(course.name) + ects + '</div><div class="equation">' + esc(course.weights) + '</div><div class="date-line">' + esc(nextLine(course.id)) + '</div></div><div><div class="score" id="score-' + course.id + '"></div><div class="score-label" id="score-label-' + course.id + '"></div></div><span class="chev" aria-hidden="true"></span></summary><section class="teaching" aria-label="Teaching contacts"><h3>Teaching team &amp; consultation</h3><dl><dt>Professor</dt><dd>' + personLines(course.people) + '</dd>' + (course.room ? '<dt>Room</dt><dd>' + esc(course.room) + '</dd>' : '') + (course.consultation ? '<dt>Consultation</dt><dd>' + esc(course.consultation) + '</dd>' : '') + (course.schedule ? '<dt>Classes</dt><dd>' + esc(course.schedule) + '</dd>' : '') + '</dl>' + note + (course.sources && course.sources.length ? '<div class="source">' + sourceLinks(course.sources) + '</div>' : '') + '</section><details class="rule"><summary>Evaluation rules &amp; submission requirements</summary><ul class="rules">' + course.rules.map((rule) => '<li>' + esc(rule) + '</li>').join('') + '</ul></details>' + (course.warning ? '<p class="warning">' + esc(course.warning) + '</p>' : '') + calc + '</details>';
+    return '<details class="subject" id="course-' + course.id + '"><summary class="summary"><span class="code">' + esc(course.code) + '</span><div><div class="name">' + esc(course.name) + ects + '</div><div class="equation">' + esc(course.weights) + '</div><div class="date-line">' + esc(nextLine(course.id)) + '</div></div><div><div class="score" id="score-' + course.id + '"></div><div class="score-label" id="score-label-' + course.id + '"></div><div class="banked" id="banked-' + course.id + '"></div></div><span class="chev" aria-hidden="true"></span></summary><section class="teaching" aria-label="Teaching contacts"><h3>Teaching team &amp; consultation</h3><dl><dt>Professor</dt><dd>' + personLines(course.people) + '</dd>' + (course.room ? '<dt>Room</dt><dd>' + esc(course.room) + '</dd>' : '') + (course.consultation ? '<dt>Consultation</dt><dd>' + esc(course.consultation) + '</dd>' : '') + (course.schedule ? '<dt>Classes</dt><dd>' + esc(course.schedule) + '</dd>' : '') + '</dl>' + note + (course.sources && course.sources.length ? '<div class="source">' + sourceLinks(course.sources) + '</div>' : '') + '</section><details class="rule"><summary>Evaluation rules &amp; submission requirements</summary><ul class="rules">' + course.rules.map((rule) => '<li>' + esc(rule) + '</li>').join('') + '</ul></details>' + (course.warning ? '<p class="warning">' + esc(course.warning) + '</p>' : '') + calc + '</details>';
   }).join('');
   COURSES.forEach(paintScore);
 }
@@ -1093,7 +1121,7 @@ function renderLoad() {
     const described = 'Week of ' + weekRangeLabel(week.start, week.end) + ', ' + formatShare(week.weight) + ' points, ' + deadlinePhrase(week.count) + (names ? ': ' + names : '');
     return '<button type="button" class="load-col' + (week.start === weekStart(today) ? ' is-now' : '') + (week.count > 1 ? ' has-many' : '') + '" data-week="' + week.start + '" aria-pressed="' + pressed + '" aria-label="' + esc(described) + '"><span class="load-count">' + esc(countLabel) + '</span><span class="load-plot">' + stack + '</span><span class="load-axis">' + label + '</span></button>';
   }).join('');
-  $('#load-legend').innerHTML = COURSES.map((course) => '<span><i class="load-seg" data-course="' + esc(course.id) + '"></i>' + esc(course.code) + '</span>').join('') + '<span>Number = deadlines</span><span>? or a short mark = provisional or ungraded</span>';
+  $('#load-legend').innerHTML = COURSES.map((course) => '<span><i class="load-seg" data-course="' + esc(course.id) + '"></i>' + esc(course.code) + '</span>').join('');
   renderStudentMenu();
   renderLoadDetail();
 }
