@@ -1,0 +1,30 @@
+[project]
+name = "remote-sensing-labs"
+version = "0.1.0"
+description = "NOVA IMS Remote Sensing labs redone in Python (Sentinel-2 composites, spectral indices, burned-area mapping)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "rasterio>=1.4",        # raster I/O; wheels bundle GDAL with the JPEG 2000 driver
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "jinja2>=3.1",          # needed by pandas' table styling in the notebook
+    "matplotlib>=3.9",
+    "geopandas>=1.0",
+    "shapely>=2.0",
+    "pyproj>=3.6",
+    "contextily>=1.6",      # basemap tiles (needs internet)
+    "scikit-image>=0.24",   # Otsu thresholds
+    "scikit-learn>=1.5",    # ROC AUC
+    "ipympl>=0.10.0",
+]
+
+[dependency-groups]
+dev = [
+    "jupyterlab>=4.2",
+    "ipykernel>=6.29",
+    "ipympl>=0.9",          # optional: %matplotlib widget for hover/click pixel inspection
+]
+
+[tool.uv]
+package = false
