@@ -1,6 +1,6 @@
 # Remote Sensing labs in Python
 
-Remote Sensing labs by Daniel Morais in the form of Jupyter Notebooks.
+Remote Sensing labs by Daniel Morais, AI-ported into the form of Jupyter Notebooks. 
 
 | Notebook | Lab | Nbviewer |
 |---|---|---|
