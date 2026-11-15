@@ -1,10 +1,10 @@
 # Remote Sensing labs in Python
 
-The NOVA IMS Remote Sensing labs, redone in Python instead of ArcGIS Pro.
+Remote Sensing labs by Daniel Morais in the form of Jupyter Notebooks.
 
-| Notebook | Lab |
-|---|---|
-| `Lab1_python.ipynb` | [Lab 1](https://danielm09.github.io/remotesensing/labs/lab1/): image inspection, composites, export, true/false colour, NDVI/NDWI, burned-area exercise |
+| Notebook | Lab | Nbviewer |
+|---|---|---|
+| `Lab1_python.ipynb` | [Lab 1](https://danielm09.github.io/remotesensing/labs/lab1/): image inspection, composites, export, true/false colour, NDVI/NDWI, burned-area exercise | [take a peek](https://nbviewer.org/github/katchinsky/geotech26/blob/main/remote-sensing/Lab1_python.ipynb) |
 
 ## Setup
 
@@ -19,7 +19,7 @@ In VS Code, select `.venv` as the notebook kernel instead.
 
 ## Data layout
 
-The lab data (from the course SharePoint) sits next to the notebook:
+The lab data should be put next to the notebook:
 
 ```
 rs/
@@ -31,7 +31,7 @@ rs/
 └── outputs/     written by the notebook
 ```
 
-Use a different location by setting `LAB1_ROOT=/path/to/data` before starting Jupyter.
+To use a different location, set the `LAB1_ROOT=/path/to/data` before starting Jupyter.
 
 ## Running Lab 1
 
