@@ -24,7 +24,8 @@
   details     longer note
   pool        optional. quiz or presentation on a GIS row. Weight becomes that component's percentage divided by how many of your own rows share the pool. Leave blank otherwise. Term-paper presentation slots stay blank: you present once, so they are not extra slices of the 40%.
 
-  GIS presentations are not rows in this table. They come from the class roster in the script (GIS_WEEKS). Pick a name on the page; that person keeps their three dates, groups and subtopics.
+  RS project presentation days are not rows in this table. They come from the slot list in the script (RS_SLOTS). Pick a name on the page; that person keeps their day.
+  GIS presentations are not rows either. They come from the class roster in the script (GIS_WEEKS) and follow the same name; GIS_ALIASES maps a name spelled differently on the two lists.
 
   Courses (the script with id="courses-data"):
   Edit names, emails, rooms, consultation hours, component weights, rules, and the notes list.
@@ -57,7 +58,6 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-11-08","sdav","Final project paper","Time unspecified","Calendar + syllabus",40,1,"no","deadline","40% of SDAV final grade","40% · ≤5,000 words, conference/journal format. One calendar entry shows 7 Nov at 23:00, so submit by then to be safe."
 "2026-11-11","gis","Writing a literature review","18:00–19:45","Course introduction",0,0,"no","milestone","Class · no separate weight","No quiz and no group presentation this week."
 "2026-11-15","stats","Assignment 2","End of day · midnight","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · Individual PDF on Moodle."
-"2026-11-17","pt","Video 2 · festival or celebration","Time unspecified","Session 1 slides",5,1,"no","deadline","5% of PT A1 final grade","5% · 2–3 minutes on Moodle about a festival or celebration."
 "2026-11-18","gis","Quiz 6","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. The exam follows in the same class slot.","quiz"
 "2026-11-18","gis","Exam","18:00–20:00 class slot","Calendar + syllabus",20,1,"no","deadline","20% of GIS final grade","20% · Follows Quiz 6 in the same class slot."
 "2026-11-19","gis","Term-paper topic abstract","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Preparation for the 40% term paper · no separate weight","250 words with title, summary and initial references, on Moodle."
@@ -72,13 +72,10 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-12-03","pt","Final written exam","In class · 15:00–17:00","Session 1 slides",30,1,"no","deadline","30% of PT A1 final grade","30% · 90 minutes plus 30 minutes of tolerance."
 "2026-12-09","gis","Term-paper presentations · session 3","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
 "2026-12-10","gdm","Final exam","17:00–19:00","Calendar + syllabus",30,1,"no","deadline","30% of GDM final grade","30% · Exam grade must be at least 8/20."
-"2026-12-13","rs","Project presentation file","23:59","Assessments",50,1,"no","deadline","50% of RS final grade · presentation & discussion","50% · Submit the slides (PPT or similar) before the seminars. Graded on your talk and Q&A on 15 or 17 Dec."
 "2026-12-15","stats","Oral project presentation","17:00","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · All authors present. 7 minutes + 3 minutes discussion."
-"2026-12-15","rs","Project seminar · session 1","In class","Planning",0,0,"yes","slot","Possible slot · part of the 50% presentation component","Oral presentation and discussion of student projects. You present on 15 or 17 Dec."
 "2026-12-16","gis","Term-paper presentations · final session","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Last session. Final paper and slides are due the next day."
 "2026-12-17","gis","Final term paper & presentation file","Time unspecified","Calendar + syllabus rule",40,1,"no","deadline","40% of GIS final grade","40% · Literature review, ≤5,000 words, plus the presentation file."
-"2026-12-17","rs","Project seminar · session 2","In class","Planning",0,0,"yes","slot","Possible slot · part of the 50% presentation component","Oral presentation and discussion of student projects. Last class of the course."
-"2026-12-18","rs","Project report","23:59","Assessments",20,1,"no","deadline","20% of RS final grade","20% · Up to 10 pages: introduction (background and motivation), study area and data, methodology, results and discussion, conclusion. Submit through Turnitin."
+"2026-12-18","rs","Final project submission","23:59","Assessments",20,1,"no","deadline","20% of RS final grade · project report","20% · Due after the presentation days. Project report, up to 10 pages: introduction (background and motivation), study area and data, methodology, results and discussion, conclusion. Submit through Turnitin, together with the presentation file (PPT or similar)."
 "2026-12-27","stats","Project report","End of day · midnight","Calendar + syllabus",35,1,"no","deadline","35% of STAT final grade","35% · DOC/PDF on Moodle. No late reports."
 "2027-01-11","gis","Second-season exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit","Check the exam timetable."
 "2027-01-13","sdav","Second-period exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit · 100% replacement","100% replacement if continuous evaluation is failed."
@@ -112,10 +109,10 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         "Midterm, Tue 24 Nov, in class: paper-based true/false questions on fundamentals, image processing and machine learning.",
         "Assignment: land cover classification. Deliver the classification map in GeoTIFF format and a report of at most 2 pages describing the steps. Due Mon 30 Nov, 23:59. Late: minus 10% of the assignment grade per day; not accepted after 5 days. Orientation and Q&A in class on 19 Nov.",
         "Practical project: apply remote sensing to a real-world problem in a domain you choose, such as land cover, floods, wildfires, urban growth or agriculture. Choose imagery by spatial, spectral and temporal resolution, and a matching processing or machine-learning workflow. Orientation and Q&A in class on 12 Nov.",
-        "Presentation file (PPT or similar) due Sun 13 Dec, 23:59. Present on 15 or 17 Dec, then Q&A on the remote sensing and image-processing fundamentals your project uses.",
+        "Present on 15 or 17 Dec, then Q&A on the remote sensing and image-processing fundamentals your project uses. The presentation file (PPT or similar) is submitted with the final project on Fri 18 Dec, 23:59.",
         "Project report: up to 10 pages with introduction, study area and data, methodology, results and discussion, and conclusion. Due Fri 18 Dec, 23:59, through Turnitin.",
         "AI is allowed. The professor asks you to use it for English, code and studying, and never to outsource your thinking. Always cite sources.",
-        "Class plan: 3 Nov intro · 5 Nov fundamentals · 10 Nov image processing · 12 Nov ML basics · 17 Nov data preparation · 19 Nov Random Forest classification · 24 Nov midterm · 26 Nov deep learning I · Mon 30 Nov deep learning II · 3 Dec regression, post-processing, advanced ML · Mon 7 Dec change detection, time series, cloud platforms · 10 Dec MLOps and ethics · 15 and 17 Dec project seminars.",
+        "Class plan: 3 Nov intro · 5 Nov fundamentals · 10 Nov image processing · 12 Nov ML basics · 17 Nov data preparation · 19 Nov Random Forest classification · 24 Nov midterm · 26 Nov deep learning I · Mon 30 Nov deep learning II · 3 Dec regression, post-processing, advanced ML · Mon 7 Dec change detection, time series, cloud platforms · 10 Dec MLOps and ethics · 15 and 17 Dec project presentations.",
         "Books: Richards, Remote Sensing Digital Image Analysis, 6th ed. (2022); Giri, Remote Sensing of Land Use and Land Cover (2012); Jensen, Introductory Digital Image Processing (2016); Jensen, Remote Sensing of the Environment (2014). Tutorial: Natural Resources Canada, Fundamentals of Remote Sensing."
       ]
     },
@@ -263,7 +260,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         "Attendance: at least 88.9%; maximum 3 absences across 27 sessions. More than 3 makes you ineligible for final grading.",
         "Homework is weekly on Moodle. A missing assignment is zero and stays in the average.",
         "Engagement is assessed every two weeks from attendance and participation, and is 10%.",
-        "Video 2: a festival or celebration, 2–3 minutes, on Moodle by 17 Nov.",
+        "Video 2: a festival or celebration, 2–3 minutes, on Moodle. Date TBA (was 17 Nov).",
         "Oral presentation: 26 Nov, 5–7 minutes, expanding Video 2, without reading from notes or scripts.",
         "Midterm: 5 Nov, 1 hour, scored 0–100. Final: 3 Dec, 90 minutes plus 30 minutes of tolerance.",
         "No late submissions except instructor-approved exceptional circumstances. The syllabus prohibits copied or AI-generated assessment work."
@@ -277,7 +274,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
     },
     {
       "title": "Still undated",
-      "text": "GDM project 4 (25%), sometime in December."
+      "text": "GDM project 4 (25%), sometime in December. PT A1 Video 2 (5%), date TBA."
     }
   ]
 }
@@ -472,8 +469,8 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <div class="eyebrow">Assessment pressure</div>
 <h2 id="load-title">Weekly load<span class="help"><button type="button" class="help-mark" aria-label="About weekly load">?</button><span class="help-tip" role="tooltip">Each column is a week, Monday to Sunday. Height is known grade weight due that week, using the same points as the calendar. Ordinary class hours are left out. The figure above a bar is how many deadlines or assessments are due.</span></span></h2>
 </div>
-<label class="track-switch">Your GIS presentations
-<select id="gis-student" aria-label="Your GIS presentations"></select>
+<label class="track-switch">Your RS project presentation
+<select id="rs-student" aria-label="Your RS project presentation"></select>
 <span class="small" id="track-note"></span>
 </label>
 </div>
@@ -631,8 +628,13 @@ let data;
 let COURSES;
 let BASE_EVENTS;
 let EVENTS;
-const STUDENT_KEY = 'geotech-desk-gis-student';
-const DEFAULT_GIS_STUDENT = 'Ekaterina Chuprun';
+const STUDENT_KEY = 'geotech-desk-rs-student';
+const DEFAULT_STUDENT = 'Ekaterina Chuprun';
+const RS_SLOTS = [
+  { date: '2026-12-15', day: 1, students: ['Suren Chilingaryan', 'Carmen Benbow', 'Maria Correia', 'Adrian Därr', 'Sofiia Makhortova', 'Daniele Mastrosimone', 'Youssef Stini'] },
+  { date: '2026-12-17', day: 2, students: ['Francisco Branco', 'Brooke Kearney', 'Achraf Houari', 'Darian Weiß', 'Marco Winnendael', 'Ekaterina Chuprun', 'Michael Dresner'] }
+];
+const GIS_ALIASES = { 'Maria Correia': 'Maria Teresa Silva Correia' };
 const GIS_WEEKS = [
   { date: '2026-09-23', topic: 'What is geographic information and why is it important?', groups: [
     { id: 1, title: 'Definitions of geographic information', subtopic: 'Definitions of geographic data and information. Geographic information is ubiquitous.', students: ['Carmen Benbow', 'Achraf Houari', 'Marco Winnendael'] },
@@ -671,7 +673,7 @@ const GIS_WEEKS = [
     { id: 4, title: 'Data output', subtopic: 'Data output.', students: ['Michael Dresner', 'Ludovico Piras', 'Diego Fernandes'] }
   ]}
 ];
-let gisStudent = DEFAULT_GIS_STUDENT;
+let student = DEFAULT_STUDENT;
 function gisStudents() {
   const odd = [];
   const even = [];
@@ -695,20 +697,44 @@ function slotsFor(name) {
   });
   return slots;
 }
+function rsSlotFor(name) {
+  return RS_SLOTS.find((slot) => slot.students.includes(name));
+}
 const byDate = (a, b) => a.date.localeCompare(b.date);
 function loadStudent() {
   try {
     const saved = localStorage.getItem(STUDENT_KEY);
-    const lists = gisStudents();
-    if (saved && (lists.odd.includes(saved) || lists.even.includes(saved))) return saved;
+    if (saved && rsSlotFor(saved)) return saved;
   } catch (err) {}
-  return DEFAULT_GIS_STUDENT;
+  return DEFAULT_STUDENT;
 }
 function stampDate(iso) {
   const when = dateObj(iso);
   return when.getUTCDate() + ' ' + when.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
 }
+function rsEvents(name) {
+  const slot = rsSlotFor(name);
+  if (!slot) return [];
+  const other = RS_SLOTS.find((item) => item !== slot);
+  return [{
+    date: slot.date,
+    course: 'rs',
+    title: 'Project presentation · day ' + slot.day,
+    when: 'In class',
+    source: 'Presentation slots list',
+    weight: 50,
+    counts: 1,
+    uncertain: false,
+    kind: 'deadline',
+    label: '50% of RS final grade · presentation & discussion',
+    details: '50% · Your presentation day. Present your project, then Q&A on the remote sensing and image-processing fundamentals it uses. The final submission, with the report and presentation file, is due 18 Dec.' + (other ? ' The other presentation day is ' + stampDate(other.date) + '.' : ''),
+    pool: ''
+  }];
+}
 function personalEvents(name) {
+  return rsEvents(name).concat(gisEvents(GIS_ALIASES[name] || name));
+}
+function gisEvents(name) {
   return slotsFor(name).flatMap(({ week, group }) => {
     const stamp = stampDate(week.date);
     return [
@@ -749,6 +775,9 @@ function assertRoster() {
     const count = slotsFor(name).length;
     if (count !== 3) throw new Error(name + ' has ' + count + ' GIS presentations, not 3.');
   });
+  const rsNames = RS_SLOTS.flatMap((slot) => slot.students);
+  if (new Set(rsNames).size !== rsNames.length) throw new Error('A name appears in more than one RS presentation slot.');
+  if (!rsSlotFor(DEFAULT_STUDENT)) throw new Error(DEFAULT_STUDENT + ' has no RS presentation slot.');
 }
 try {
   data = JSON.parse($('#courses-data').textContent);
@@ -756,8 +785,8 @@ try {
   if (!Array.isArray(COURSES) || !COURSES.length) throw new Error('The courses block needs a courses list.');
   BASE_EVENTS = parseCSV($('#events-table').textContent);
   assertRoster();
-  gisStudent = loadStudent();
-  EVENTS = BASE_EVENTS.concat(personalEvents(gisStudent)).sort(byDate);
+  student = loadStudent();
+  EVENTS = BASE_EVENTS.concat(personalEvents(student)).sort(byDate);
   applyPools(EVENTS, COURSES);
 } catch (err) {
   showError(err.message || 'The events table or courses block could not be read.');
@@ -1049,15 +1078,16 @@ function loadStat(label, value, note, extraClass) {
   return '<div class="load-stat' + (extraClass ? ' ' + extraClass : '') + '"><span>' + esc(label) + '</span><strong>' + esc(value) + '</strong><em>' + esc(note) + '</em></div>';
 }
 function renderStudentMenu() {
-  const menu = $('#gis-student');
+  const menu = $('#rs-student');
+  const dayLabel = (slot) => 'Day ' + slot.day + ' · ' + dateObj(slot.date).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
   if (!menu.options.length) {
-    const lists = gisStudents();
     const options = (names) => names.map((name) => '<option value="' + esc(name) + '">' + esc(name) + '</option>').join('');
-    menu.innerHTML = '<optgroup label="Odd weeks · 23 Sep, 7 Oct, 21 Oct">' + options(lists.odd) + '</optgroup><optgroup label="Even weeks · 30 Sep, 14 Oct, 4 Nov">' + options(lists.even) + '</optgroup>';
+    menu.innerHTML = RS_SLOTS.map((slot) => '<optgroup label="' + esc(dayLabel(slot)) + '">' + options(slot.students) + '</optgroup>').join('');
   }
-  menu.value = gisStudent;
+  menu.value = student;
   const note = $('#track-note');
-  if (note) note.textContent = slotsFor(gisStudent).map(({ week, group }) => stampDate(week.date) + ' · Group ' + group.id + ' · ' + group.title).join('  ·  ');
+  const slot = rsSlotFor(student);
+  if (note) note.textContent = slot ? 'Presenting ' + dayLabel(slot) : '';
 }
 function deadlinePhrase(count) {
   return count + ' deadline' + (count === 1 ? '' : 's');
@@ -1126,7 +1156,7 @@ function renderLoad() {
   renderLoadDetail();
 }
 function applyStudent() {
-  EVENTS = BASE_EVENTS.concat(personalEvents(gisStudent)).sort(byDate);
+  EVENTS = BASE_EVENTS.concat(personalEvents(student)).sort(byDate);
   applyPools(EVENTS, COURSES);
   const openIds = [...document.querySelectorAll('details[open]')].map((el) => el.id).filter(Boolean);
   WEEKS = buildWeeks();
@@ -1173,9 +1203,9 @@ $('#calendar-current').addEventListener('click', () => {
   calendarMonth = selectedDate.slice(0, 7);
   renderCalendar();
 });
-$('#gis-student').addEventListener('change', (event) => {
-  gisStudent = event.target.value;
-  try { localStorage.setItem(STUDENT_KEY, gisStudent); } catch (err) {}
+$('#rs-student').addEventListener('change', (event) => {
+  student = event.target.value;
+  try { localStorage.setItem(STUDENT_KEY, student); } catch (err) {}
   applyStudent();
 });
 $('#load-chart').addEventListener('click', (event) => {
