@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semester Dashboard · GeoTech 2026</title>
+<meta name="description" content="Contacts, rooms, deadlines and a light grade check for GeoTech Fall 2026/27.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23214539'/%3E%3Cpath d='M8 10h16M8 16h10M8 22h14' stroke='%23e9f0ce' stroke-width='3'/%3E%3C/svg%3E">
+<!--
+  HOW TO EDIT
+
+  Events table (the script below with id="events-table"):
+  Add one row per event. Do not rename the header. Quote a field when it contains a comma.
+  date        YYYY-MM-DD
+  course      sdav, rs, stats, gis, gdm, pt, or conference
+  title       short name shown on the calendar and agenda
+  when        time or "Time unspecified"
+  source      where the date came from. Not shown on the page, except Conflict, which flags a disputed date.
+  weight      known grade points for the heat map. Use 0 when a pool column sets the weight, or when there is no separate weight.
+  counts      orange badge: 0, 1, or 2. Use 0 for milestones, slots, resits, and conference days.
+  uncertain   yes or no. yes draws the ? next to the points.
+  kind        deadline, quiz, milestone, slot, resit, or conference
+  label       one line on the selected day. Pool rows are rewritten when the page loads.
+  details     longer note
+  pool        optional. quiz or presentation on a GIS row. Weight becomes that component's percentage divided by how many of your own rows share the pool. Leave blank otherwise. Term-paper presentation slots stay blank: you present once, so they are not extra slices of the 40%.
+
+  RS project presentation days are not rows in this table. They come from the slot list in the script (RS_SLOTS). Pick a name on the page; that person keeps their day.
+  GIS presentations are not rows either. They come from the class roster in the script (GIS_WEEKS) and follow the same name; GIS_ALIASES maps a name spelled differently on the two lists.
+
+  Courses (the script with id="courses-data"):
+  Edit names, emails, rooms, consultation hours, component weights, rules, and the notes list.
+  room, consultation, note and sources are optional; leave them out when unknown.
+  Keep each course "weights" line in step with its components. Undated work belongs in notes, not as a fake date.
+-->
+<script type="text/csv" id="events-table">
+date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
+"2026-09-27","sdav","Hands-on exercise","Time unspecified","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Report on Moodle."
+"2026-09-30","gis","Quiz 1","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. 10 multiple-choice questions.","quiz"
+"2026-10-02","gdm","Assignment 1","17:00","Calendar",10,1,"no","deadline","10% of GDM final grade","10% · Essay."
+"2026-10-07","gis","Quiz 2","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
+"2026-10-08","sdav","In-class test","19:00–21:00 class slot","Calendar + syllabus",15,1,"no","deadline","15% of SDAV final grade","15% · Multiple-choice test on Moodle."
+"2026-10-11","stats","Assignment 1","End of day · midnight","Calendar + syllabus",15,1,"no","deadline","15% of STAT final grade","15% · Individual PDF on Moodle."
+"2026-10-11","pt","Quiz 1","21:23","Moodle",0,1,"yes","quiz","Quiz · no separate weight","Closes on Moodle at 21:23."
+"2026-10-14","gis","Quiz 3","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
+"2026-10-15","conference","GeoMundus welcome meetup","18:00–22:00","geomundus.org",0,0,"no","conference","Conference · ungraded","Welcome meetup the evening before the conference, in Castellón."
+"2026-10-16","conference","GeoMundus 2026 · day 1 of 2","All day","geomundus.org",0,0,"no","conference","Conference · ungraded","18th GeoMundus at Universitat Jaume I, Castellón. Theme: Geospatial Intelligence for Disaster Resilience."
+"2026-10-16","conference","GeoMundus conference dinner","Time to be confirmed","Calendar",0,0,"no","conference","Conference · ungraded","Conference dinner."
+"2026-10-17","conference","GeoMundus 2026 · day 2 of 2","All day","geomundus.org",0,0,"no","conference","Conference · ungraded","Second conference day, same venue."
+"2026-10-18","sdav","Project proposal","Time unspecified","Moodle · Ruoyu Wang, 8 Oct 2026",10,1,"no","deadline","10% of SDAV final grade","10% · Introduce the idea of the analysis; whether the method is correct is not assessed. Submit via Turnitin."
+"2026-10-20","pt","Video 1 · healthy recipe","Time unspecified","Session 1 slides",10,1,"no","deadline","10% of PT A1 final grade","10% · 2–3 minutes on Moodle, in Portuguese: a healthy recipe, with ingredients, preparation steps and a personal connection."
+"2026-10-20","sdav","Individual project discussion","In class · time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"no","milestone","In-class discussion · no separate weight","Discuss whether the project is feasible and how the work should be done."
+"2026-10-21","gis","Quiz 4","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
+"2026-10-22","gdm","Assignment 2","Time unspecified","Confirmed by you",10,1,"no","deadline","10% of GDM final grade","10% · Syllabus project 2."
+"2026-10-22","sdav","Project presentations","Time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"yes","slot","Presentation day · part of the 15% component","Present the proposal and some expected results. The other presentation day is 23 Oct."
+"2026-10-23","sdav","Project presentations","Time not stated","Moodle · Ruoyu Wang, 8 Oct 2026",0,0,"yes","slot","Presentation day · part of the 15% component","Present the proposal and some expected results. The other presentation day is 22 Oct."
+"2026-11-04","gis","Quiz 5","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes of class.","quiz"
+"2026-11-05","pt","Midterm written test","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 1 hour, scored 0–100."
+"2026-11-08","sdav","Final project paper","Time unspecified","Calendar + syllabus",40,1,"no","deadline","40% of SDAV final grade","40% · ≤5,000 words, conference/journal format. One calendar entry shows 7 Nov at 23:00, so submit by then to be safe."
+"2026-11-11","gis","Writing a literature review","18:00–19:45","Course introduction",0,0,"no","milestone","Class · no separate weight","No quiz and no group presentation this week."
+"2026-11-15","stats","Assignment 2","End of day · midnight","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · Individual PDF on Moodle."
+"2026-11-18","gis","Quiz 6","18:00","Calendar + syllabus",0,1,"no","quiz","equal share","First 10 minutes. The exam follows in the same class slot.","quiz"
+"2026-11-18","gis","Exam","18:00–20:00 class slot","Calendar + syllabus",20,1,"no","deadline","20% of GIS final grade","20% · Follows Quiz 6 in the same class slot."
+"2026-11-19","gis","Term-paper topic abstract","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Preparation for the 40% term paper · no separate weight","250 words with title, summary and initial references, on Moodle."
+"2026-11-22","gdm","Project 3","23:59","Confirmed by Sara",25,1,"no","deadline","25% of GDM final grade","25% · Syllabus project 3."
+"2026-11-24","rs","Midterm exam","In class","Assessments + Planning",15,1,"no","deadline","15% of RS final grade","15% · Paper-based true/false questions on fundamentals, image processing and machine learning."
+"2026-11-25","stats","Email project topic & group members","End of day · midnight","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Email the project topic and group members."
+"2026-11-25","gis","Term-paper presentations · session 1","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions. ≤15 minutes + 10 minutes discussion."
+"2026-11-26","pt","Individual oral presentation","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 5–7 minutes, expanding Video 2, without reading from notes or scripts."
+"2026-11-30","stats","Exam","17:00 · about 75 minutes","Calendar + syllabus",30,1,"no","deadline","30% of STAT final grade","30% · Followed by project work until 19:00. Replaces 1 Dec class."
+"2026-11-30","rs","Assignment · land cover classification","23:59","Assessments",15,1,"no","deadline","15% of RS final grade","15% · Classification map in GeoTIFF plus a report of at most 2 pages on the steps taken. Late: minus 10% of the assignment grade per day; not accepted after 5 days."
+"2026-12-02","gis","Term-paper presentations · session 2","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
+"2026-12-03","pt","Final written exam","In class · 15:00–17:00","Session 1 slides",30,1,"no","deadline","30% of PT A1 final grade","30% · 90 minutes plus 30 minutes of tolerance."
+"2026-12-09","gis","Term-paper presentations · session 3","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
+"2026-12-10","gdm","Final exam","17:00–19:00","Calendar + syllabus",30,1,"no","deadline","30% of GDM final grade","30% · Exam grade must be at least 8/20."
+"2026-12-15","stats","Oral project presentation","17:00","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · All authors present. 7 minutes + 3 minutes discussion."
+"2026-12-16","gis","Term-paper presentations · final session","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Last session. Final paper and slides are due the next day."
+"2026-12-17","gis","Final term paper & presentation file","Time unspecified","Calendar + syllabus rule",40,1,"no","deadline","40% of GIS final grade","40% · Literature review, ≤5,000 words, plus the presentation file."
+"2026-12-18","rs","Final project submission","23:59","Assessments",20,1,"no","deadline","20% of RS final grade · project report","20% · Due after the presentation days. Project report, up to 10 pages: introduction (background and motivation), study area and data, methodology, results and discussion, conclusion. Submit through Turnitin, together with the presentation file (PPT or similar)."
+"2026-12-27","stats","Project report","End of day · midnight","Calendar + syllabus",35,1,"no","deadline","35% of STAT final grade","35% · DOC/PDF on Moodle. No late reports."
+"2027-01-11","gis","Second-season exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit","Check the exam timetable."
+"2027-01-13","sdav","Second-period exam","Time to be announced","Calendar",0,0,"yes","resit","Possible resit · 100% replacement","100% replacement if continuous evaluation is failed."
+</script>
+<script type="application/json" id="courses-data">
+{
+  "courses": [
+    {
+      "id": "rs",
+      "code": "RS",
+      "name": "Remote Sensing",
+      "ects": 5,
+      "max": 20,
+      "weights": "Midterm 15 · Assignment 15 · Project report 20 · Presentation & discussion 50%",
+      "schedule": "Tuesday and Thursday, 3 Nov – 17 Dec, 14 classes. Monday 30 Nov and Monday 7 Dec are compensation classes for holidays.",
+      "components": [
+        {"id": "M", "name": "Midterm exam", "weight": 15},
+        {"id": "A", "name": "Assignment", "weight": 15},
+        {"id": "R", "name": "Project report", "weight": 20},
+        {"id": "O", "name": "Presentation & discussion", "weight": 50}
+      ],
+      "people": [{"name": "Daniel Moraes", "role": "professor", "email": "dmoraes@novaims.unl.pt"}],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "By email.",
+      "note": "Bring a laptop to practical sessions. Software: ArcGIS Pro, QGIS and Python.",
+      "sources": [
+        {"label": "NOVA IMS GeoTech study plan", "url": "https://novaims.unl.pt/en/education/programs/postgraduate-programs-and-master-degree-programs/master-degree-in-geospatial-technologies/"}
+      ],
+      "rules": [
+        "Pass mark: 9.5/20.",
+        "Midterm, Tue 24 Nov, in class: paper-based true/false questions on fundamentals, image processing and machine learning.",
+        "Assignment: land cover classification. Deliver the classification map in GeoTIFF format and a report of at most 2 pages describing the steps. Due Mon 30 Nov, 23:59. Late: minus 10% of the assignment grade per day; not accepted after 5 days. Orientation and Q&A in class on 19 Nov.",
+        "Practical project: apply remote sensing to a real-world problem in a domain you choose, such as land cover, floods, wildfires, urban growth or agriculture. Choose imagery by spatial, spectral and temporal resolution, and a matching processing or machine-learning workflow. Orientation and Q&A in class on 12 Nov.",
+        "Present on 15 or 17 Dec, then Q&A on the remote sensing and image-processing fundamentals your project uses. The presentation file (PPT or similar) is submitted with the final project on Fri 18 Dec, 23:59.",
+        "Project report: up to 10 pages with introduction, study area and data, methodology, results and discussion, and conclusion. Due Fri 18 Dec, 23:59, through Turnitin.",
+        "AI is allowed. The professor asks you to use it for English, code and studying, and never to outsource your thinking. Always cite sources.",
+        "Class plan: 3 Nov intro · 5 Nov fundamentals · 10 Nov image processing · 12 Nov ML basics · 17 Nov data preparation · 19 Nov Random Forest classification · 24 Nov midterm · 26 Nov deep learning I · Mon 30 Nov deep learning II · 3 Dec regression, post-processing, advanced ML · Mon 7 Dec change detection, time series, cloud platforms · 10 Dec MLOps and ethics · 15 and 17 Dec project presentations.",
+        "Books: Richards, Remote Sensing Digital Image Analysis, 6th ed. (2022); Giri, Remote Sensing of Land Use and Land Cover (2012); Jensen, Introductory Digital Image Processing (2016); Jensen, Remote Sensing of the Environment (2014). Tutorial: Natural Resources Canada, Fundamentals of Remote Sensing."
+      ]
+    },
+    {
+      "id": "sdav",
+      "code": "SDAV",
+      "name": "Spatial Data Analysis & Visualization",
+      "ects": 5,
+      "max": 20,
+      "weights": "Hands-on 15 · Proposal 10 · Test 15 · Presentation 15 · Paper 40 · Participation 5%",
+      "components": [
+        {"id": "H", "name": "Hands-on exercise", "weight": 15},
+        {"id": "P", "name": "Project proposal", "weight": 10},
+        {"id": "T", "name": "In-class test", "weight": 15},
+        {"id": "O", "name": "Project presentation", "weight": 15},
+        {"id": "F", "name": "Final project paper", "weight": 40},
+        {"id": "C", "name": "Participation", "weight": 5}
+      ],
+      "people": [{"name": "Ruoyu Wang", "role": "", "email": "rwang@novaims.unl.pt"}],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "By appointment via email.",
+      "rules": [
+        "Submit on Moodle, not by email.",
+        "Final project: one or two students; paper ≤5,000 words in conference/journal format.",
+        "Late deliverables: 2.5% per day. Enter grades after penalties.",
+        "If continuous evaluation is failed, the second-period exam on 13 Jan 2027 counts 100%. There is no first-period exam."
+      ]
+    },
+    {
+      "id": "stats",
+      "code": "STAT",
+      "name": "Spatial Statistics",
+      "ects": 5,
+      "max": 20,
+      "weights": "Assignment 1 15 · Assignment 2 10 · Exam 30 · Oral 10 · Report 35%",
+      "components": [
+        {"id": "A1", "name": "Assignment 1", "weight": 15},
+        {"id": "A2", "name": "Assignment 2", "weight": 10},
+        {"id": "E", "name": "Exam", "weight": 30},
+        {"id": "O", "name": "Oral presentation", "weight": 10},
+        {"id": "R", "name": "Project report", "weight": 35}
+      ],
+      "people": [
+        {"name": "Ana Cristina Costa", "role": "coordinator", "email": "cristina@novaims.unl.pt"},
+        {"name": "Sara Ribeiro", "role": "professor", "email": "sribeiro@novaims.unl.pt"}
+      ],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "Sara Ribeiro: by appointment, Teams or room 21 (floor 2, IMS). Cristina Costa: by appointment, Teams or room 235 (floor 2, CAN)",
+      "sources": [
+        {"label": "Ana Cristina Costa", "url": "https://novaims.unl.pt/en/nova-ims/teaching-staff/d/128"},
+        {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"}
+      ],
+      "rules": [
+        "Exam, oral presentation and project report are mandatory for approval; assignments are optional, but their weights remain in the final formula. Enter 0 for an omitted assignment.",
+        "Assignments: individual PDF reports on Moodle; penalty of 0.5 grade points per day late. Enter post-penalty grades.",
+        "Project: individual or preferably pairs. Oral presentation by all authors in English: 7 minutes + 3 minutes discussion.",
+        "Report: conference-paper format, Portuguese or English, DOC or PDF on Moodle by 27 Dec midnight. Late reports or reports outside Moodle are rejected.",
+        "Resit replaces only the 30% exam. Other grades carry over; the resit final grade prevails only if higher. NetPA exam enrolment required; improvement fee for previously approved students."
+      ]
+    },
+    {
+      "id": "gis",
+      "code": "GIS",
+      "name": "Geographic Information Systems & Science",
+      "ects": 5,
+      "schedule": "Wednesday 18:00–19:45.",
+      "max": 20,
+      "weights": "Participation 5 · Group presentations 20 · Quizzes 15 · Exam 20 · Term paper 40%",
+      "components": [
+        {"id": "C", "name": "Class participation", "weight": 5},
+        {"id": "P", "name": "Group presentations", "weight": 20, "pool": "presentation"},
+        {"id": "Q", "name": "Quizzes", "weight": 15, "pool": "quiz"},
+        {"id": "E", "name": "Exam", "weight": 20},
+        {"id": "F", "name": "Individual term paper", "weight": 40}
+      ],
+      "gradeNote": "Your three presentations share the 20%; each quiz is an equal share of the 15%.",
+      "people": [{"name": "Ruoyu Wang", "role": "", "email": "rwang@novaims.unl.pt"}],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "consultation": "Wednesday 17:00–18:00, or by appointment.",
+      "note": "Main textbook: Longley, Goodchild, Maguire and Rhind (2015), Geographic Information Systems and Science, 3rd ed.",
+      "sources": [
+        {"label": "Course introduction", "url": "https://elearning.novaims.unl.pt/pluginfile.php/328221/mod_resource/content/25/Course%20introduction.pdf"}
+      ],
+      "rules": [
+        "Quizzes at 18:00 sharp, first 10 minutes: 10 multiple-choice questions (8 on the previous class, 2 on earlier classes). The last one is 18 Nov, before the exam.",
+        "Term paper: individual literature review, ≤5,000 words, journal/conference format. Topic abstract by 19 Nov: 250 words with title, summary and initial references.",
+        "Term-paper presentations: 25 Nov, 2, 9 or 16 Dec; ≤15 minutes + 10 minutes discussion. Final paper and slides due 17 Dec.",
+        "Second-season exam: 11 Jan 2027."
+      ]
+    },
+    {
+      "id": "gdm",
+      "code": "GDM",
+      "name": "Geospatial Data Mining",
+      "ects": 5,
+      "max": 20,
+      "weights": "Project 1 10 · Project 2 10 · Project 3 25 · Project 4 25 · Exam 30%",
+      "components": [
+        {"id": "P1", "name": "Project 1", "weight": 10},
+        {"id": "P2", "name": "Project 2", "weight": 10},
+        {"id": "P3", "name": "Project 3", "weight": 25},
+        {"id": "P4", "name": "Project 4", "weight": 25},
+        {"id": "E", "name": "Final exam", "weight": 30}
+      ],
+      "people": [
+        {"name": "Roberto Henriques", "role": "responsible teacher", "email": "roberto@novaims.unl.pt"},
+        {"name": "Sara Ribeiro", "role": "teaching staff", "email": "sribeiro@novaims.unl.pt"}
+      ],
+      "consultation": "Friday 09:00 · appointment required.",
+      "sources": [
+        {"label": "NOVA contacts", "url": "https://novaims.unl.pt/en/nova-ims/contacts/"},
+        {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"}
+      ],
+      "rules": [
+        "Exam minimum: 8.0/20, regardless of the weighted total.",
+        "Project 3: 22 Nov at 23:59. Project 4: December, date to be announced.",
+        "Final exam: 10 Dec, 17:00–19:00."
+      ]
+    },
+    {
+      "id": "pt",
+      "code": "PT A1",
+      "name": "Portuguese A1",
+      "ects": 4,
+      "max": 100,
+      "weights": "Final 30 · Midterm 20 · Oral 20 · Video 1 10 · Video 2 5 · Homework 5 · Engagement 10%",
+      "schedule": "Tuesday to Thursday, 15:00–17:00, 27 sessions. Week 9 meets Monday 30 Nov, Wednesday 2 Dec and Thursday 3 Dec.",
+      "warning": "Homework and video 2 are 5% each on the detail slides but 10% each on the summary slide, which would total 110%. The grade check uses 5%. Confirm with the instructor.",
+      "components": [
+        {"id": "E", "name": "Final written exam", "weight": 30},
+        {"id": "M", "name": "Midterm written test", "weight": 20},
+        {"id": "O", "name": "In-class oral presentation", "weight": 20},
+        {"id": "V1", "name": "Video 1", "weight": 10},
+        {"id": "V2", "name": "Video 2", "weight": 5},
+        {"id": "H", "name": "Homework average", "weight": 5},
+        {"id": "C", "name": "In-class engagement", "weight": 10}
+      ],
+      "people": [{"name": "Miguel Magalhães", "role": "teacher", "email": "migmaglit@yahoo.com"}],
+      "room": "Room 9 · NOVA IMS (classroom)",
+      "note": "Administrative support: apoioaluno@novaims.unl.pt",
+      "sources": [
+        {"label": "Miguel Magalhães", "url": "https://novaresearch.unl.pt/en/persons/miguel-magalh%C3%A3es/"}
+      ],
+      "rules": [
+        "Attendance: at least 88.9%; maximum 3 absences across 27 sessions. More than 3 makes you ineligible for final grading.",
+        "Homework is weekly on Moodle. A missing assignment is zero and stays in the average.",
+        "Engagement is assessed every two weeks from attendance and participation, and is 10%.",
+        "Video 2: a festival or celebration, 2–3 minutes, on Moodle. Date TBA (was 17 Nov).",
+        "Oral presentation: 26 Nov, 5–7 minutes, expanding Video 2, without reading from notes or scripts.",
+        "Midterm: 5 Nov, 1 hour, scored 0–100. Final: 3 Dec, 90 minutes plus 30 minutes of tolerance.",
+        "No late submissions except instructor-approved exceptional circumstances. The syllabus prohibits copied or AI-generated assessment work."
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "title": "Remote Sensing · Monday classes",
+      "text": "Monday 30 Nov and Monday 7 Dec are compensation classes for holidays."
+    },
+    {
+      "title": "Still undated",
+      "text": "GDM project 4 (25%), sometime in December. PT A1 Video 2 (5%), date TBA."
+    }
+  ]
+}
+</script>
+<style>
+:root{color-scheme:light;--bg:#f4f3ed;--paper:#fffefa;--ink:#243a31;--muted:#647168;--line:#d6dcd2;--accent:#254d3d;--soft:#e5ebdf;--yellow:#f5e8bf;--warn:#745212;--bad:#993c2a;--good:#315f3b;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.45}
+button,input,select{font:inherit}
+button,select,summary{cursor:pointer}
+button,input,select{border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink)}
+button{padding:6px 10px}
+button:hover{background:var(--soft)}
+button:disabled{opacity:.45;cursor:default}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=number]{width:76px;padding:6px 7px;text-align:right;font-variant-numeric:tabular-nums}
+select{padding:6px;max-width:100%}
+a{color:var(--accent)}
+main{max-width:1500px;margin:auto;padding:28px 32px}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:11px;letter-spacing:1.7px;text-transform:uppercase;font-weight:650;color:var(--muted)}
+h1{font-size:28px;letter-spacing:-1px;line-height:1.1;margin:5px 0 0;font-weight:600}
+h2{font-size:18px;margin:0;font-weight:600}
+h3{font-size:15px;margin:0;font-weight:600}
+p{margin:8px 0}
+.small{font-size:12px;color:var(--muted)}
+.stamp{text-align:right}
+.stamp strong{font-size:12px;font-weight:600}
+.notice{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:12px 0 16px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;color:var(--muted);font-size:12px;line-height:1.4}
+.notice[hidden]{display:none}
+.notice strong{white-space:nowrap;font-weight:600}
+.notice a{color:var(--accent)}
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(340px,1fr);gap:32px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
+.subject{border-bottom:1px solid var(--line)}
+.subject>summary{list-style:none;display:grid;grid-template-columns:52px 1fr 96px 14px;gap:12px;align-items:center;padding:17px 0}
+.subject>summary::-webkit-details-marker{display:none}
+.code{background:var(--soft);border-radius:7px;min-width:42px;height:42px;padding:0 6px;display:grid;place-items:center;font-size:11px;font-weight:700;letter-spacing:.3px}
+.subject[open]>summary .code{background:var(--accent);color:var(--paper)}
+.subject>summary .chev::after{content:'+';font-size:22px;color:var(--muted)}
+.subject[open]>summary .chev::after{content:'−'}
+.name{font-size:14px;font-weight:600;margin-bottom:3px}
+.equation{font-size:11px;color:var(--muted)}
+.score{white-space:nowrap;text-align:right;font-size:23px;font-weight:550;letter-spacing:-.6px;font-variant-numeric:tabular-nums}
+.score small{font-size:11px;font-weight:400;letter-spacing:0}
+.score-label{font-size:10px;color:var(--muted);text-align:right;letter-spacing:.5px;text-transform:uppercase}
+.banked-bar{position:relative;display:flex;height:6px;margin-top:7px;border-radius:3px;background:var(--soft)}
+.banked-seg{background:var(--accent);border-radius:3px 0 0 3px}
+.lost-seg{background:#e2b8a8}
+.pass-tick{position:absolute;top:-2px;bottom:-2px;width:1px;background:var(--muted);opacity:.5}
+.banked-text{display:block;margin-top:4px;font-size:10px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.calc{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0}
+.fields{display:grid;grid-template-columns:1fr 1fr;column-gap:20px}
+.field{display:grid;grid-template-columns:1fr 52px 76px;align-items:center;gap:7px;margin:5px 0;font-size:12px}
+.weight{color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.result{font-size:12px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.result strong{font-size:17px;display:block;font-weight:550;font-variant-numeric:tabular-nums}
+.rule{font-size:12px;margin:12px 0 0}
+.scale{margin:0 0 16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px}
+.scale h3{font-size:13px;margin:0 0 4px}
+.scale li em{font-style:italic}
+.rules{padding-left:17px;margin:9px 0}
+.rules li{font-size:12px;margin:5px 0}
+.warning{color:var(--warn);background:var(--yellow);border-radius:5px;padding:9px 10px;font-size:12px;margin-top:12px}
+.status{font-size:12px;padding-top:8px;color:var(--muted)}
+.source{font-size:11px;color:var(--muted);margin-top:12px}
+.date-line{font-size:11px;margin-top:5px;color:var(--accent)}
+.badge{display:inline-block;border-radius:4px;background:var(--soft);padding:2px 5px;font-size:10px;white-space:nowrap}
+.badge.warn{background:var(--yellow);color:var(--warn)}
+.timeline{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:16px;align-self:start;position:sticky;top:16px}
+.timeline .section-head{margin-bottom:14px}
+.timeline-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.timeline-controls label{font-size:11px;color:var(--muted)}
+.timeline-controls select{display:block;width:100%;margin-top:4px;color:var(--ink)}
+.agenda{max-height:660px;overflow:auto;margin-top:15px;padding-right:5px}
+.month{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:14px 0 5px;color:var(--muted)}
+.month:first-child{padding-top:0}
+.event{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+.event:last-child{border-bottom:0}
+.day{font-size:22px;line-height:1.1;font-weight:500;letter-spacing:-.5px}
+.day small{display:block;font-size:10px;letter-spacing:.5px;margin-top:4px;text-transform:uppercase;color:var(--muted)}
+.event-title{font-size:12px;font-weight:600}
+.event-info{font-size:11px;color:var(--muted);margin-top:3px}
+.event details summary{font-size:11px;color:var(--muted);margin-top:5px}
+.event details p{font-size:11px;color:var(--muted);margin:5px 0}
+.review{margin-top:24px;border-top:1px solid var(--line);padding-top:20px}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.review-item{font-size:12px;padding-top:10px}
+.review-item strong{display:block;font-weight:600;margin-bottom:4px}
+.review-item p{color:var(--muted);margin:0}
+.foot{margin-top:25px;border-top:1px solid var(--line);padding-top:14px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:20px}
+.teaching{margin:4px 0 0;padding-top:4px}
+.teaching h3{font-size:13px;margin-bottom:8px}
+.teaching dl{display:grid;grid-template-columns:96px minmax(0,1fr);gap:7px 12px;font-size:12px;margin:0}
+.teaching dt{color:var(--muted)}
+.teaching dd{margin:0;overflow-wrap:anywhere}
+.teaching .source a{margin-right:10px}
+.calendar-panel{margin:0 0 28px;padding:20px;background:var(--paper);border:1px solid var(--line);border-radius:9px}
+.calendar-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.calendar-toolbar select{font-weight:600}
+.calendar-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.8fr);gap:24px;margin-top:14px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.weekday{text-align:center;font-size:10px;text-transform:uppercase;color:var(--muted);padding-bottom:5px}
+.date-block{min-height:72px;border-radius:6px;padding:7px;text-align:left;display:flex;flex-direction:column;gap:4px;position:relative;background:#f5f5ee;border-color:transparent}
+.date-block:hover{outline:1px solid var(--accent);background:#f5f5ee}
+.heat-1,.heat-1:hover{background:#e5edd6}
+.heat-2,.heat-2:hover{background:#bfd3a8}
+.heat-3,.heat-3:hover{background:#83a579}
+.heat-4,.heat-4:hover{background:#345c45;color:#fffefa}
+.date-block.selected{outline:2px solid var(--ink);outline-offset:1px}
+.date-block.today .date-num{text-decoration:underline;text-underline-offset:4px}
+.date-top{display:flex;align-items:center;justify-content:space-between;gap:2px}
+.date-num{font-size:13px;font-weight:600}
+.count-pill{display:inline-block;background:#f1d69c;color:#593c17;min-width:17px;height:17px;border-radius:50%;text-align:center;font-size:10px;line-height:17px;font-weight:700}
+.count-pill.multiple{background:#b95831;color:white}
+.day-weight{font-size:11px;font-weight:600;line-height:1.2}
+.day-mark{font-size:9px;line-height:1.2}
+.conference-mark{color:#65509a;font-weight:650}
+.heat-4 .conference-mark{color:#e4d8ff}
+.calendar-legend{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:14px;font-size:10px;color:var(--muted)}
+.swatch{width:15px;height:15px;border:1px solid #b4c0aa;border-radius:3px;display:inline-block;vertical-align:middle}
+.selected-day{border-left:1px solid var(--line);padding-left:22px;max-height:375px;overflow:auto}
+.selected-day h3{font-size:18px}
+.day-detail{padding:11px 0;border-bottom:1px solid var(--line)}
+.day-detail:last-child{border:0}
+.day-detail strong{display:block;font-size:12px}
+.day-detail p{font-size:11px;color:var(--muted);margin:4px 0}
+.weight-label{font-size:11px;font-weight:600}
+.calendar-note{font-size:11px;color:var(--muted);max-width:940px;margin:10px 0 0}
+.load-panel{margin:20px 0 24px;padding:18px 20px 16px;background:var(--paper);border:1px solid var(--line);border-radius:9px}
+.load-panel .section-head{align-items:flex-start;flex-wrap:wrap}
+.load-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 16px}
+.load-stat{background:#f5f5ee;border-radius:8px;padding:10px 12px;min-width:0}
+.load-stat span{display:block;font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);font-weight:650}
+.load-stat strong{display:block;margin-top:3px;font-size:20px;font-weight:550;letter-spacing:-.4px;font-variant-numeric:tabular-nums}
+.load-stat em{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px;font-style:normal;font-size:11px;color:var(--muted);line-height:1.35}
+.load-stat.behind{background:#e3e3de}
+.load-stat.behind span,.load-stat.behind strong,.load-stat.behind em{color:#8a9088}
+.track-switch{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right;font-size:12px;color:var(--muted)}
+.track-switch select{min-width:240px;max-width:320px;margin-top:2px}
+.load-chart{display:flex;align-items:flex-end;gap:4px;overflow-x:auto;padding-bottom:2px}
+.load-col{flex:1 0 36px;min-width:36px;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:transparent;padding:2px 0;border-radius:6px}
+.load-col:hover{background:#f3f4ee}
+.load-col[aria-pressed="true"]{background:var(--soft)}
+.load-count{min-height:14px;font-size:10px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;line-height:14px}
+.load-col.has-many .load-count{color:#b95831}
+.load-plot{height:104px;width:100%;display:flex;align-items:flex-end;justify-content:center;border-bottom:1px solid var(--line)}
+.load-col.is-now .load-plot{border-bottom:2px solid var(--ink)}
+.load-stack{width:16px;display:flex;flex-direction:column-reverse;overflow:hidden;border-radius:4px 4px 1px 1px}
+.load-stack.mark{height:6px;background:#d5ddd0}
+.load-seg{width:100%;min-height:2px}
+.load-seg[data-course="sdav"]{background:#1f4d3a}
+.load-seg[data-course="rs"]{background:#2f6f8f}
+.load-seg[data-course="stats"]{background:#7d9a62}
+.load-seg[data-course="gis"]{background:#c4a35a}
+.load-seg[data-course="gdm"]{background:#b95831}
+.load-seg[data-course="pt"]{background:#65509a}
+.load-axis{height:24px;font-size:9px;line-height:1.15;text-align:center;color:var(--muted)}
+.load-col.is-now .load-axis,.load-col[aria-pressed="true"] .load-axis{color:var(--ink);font-weight:700}
+.load-legend{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--muted)}
+.load-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px}
+.load-detail{margin:10px 0 0;font-size:12px}
+.load-detail .small{margin:4px 0 0}
+.help{position:relative;display:inline-flex;vertical-align:1px;margin-left:6px}
+button.help-mark{width:18px;height:18px;padding:0;border-radius:50%;font-size:11px;font-weight:700;line-height:16px;color:var(--muted);background:var(--soft);cursor:help}
+button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);color:var(--paper)}
+.help-tip{display:none;position:absolute;z-index:20;top:100%;left:0;width:min(420px,calc(100vw - 48px));margin-top:6px;padding:10px 12px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(36,58,49,.12);font-size:12px;font-weight:450;line-height:1.45;text-align:left}
+.help-tip:before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+.help:hover .help-tip,.help:focus-within .help-tip{display:block}
+@media(min-width:761px){.timeline .help-tip{left:auto;right:0}}
+.ects{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:99px;background:var(--soft);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.3px;vertical-align:1px}
+@media(max-width:1000px){main{padding:20px}.layout{grid-template-columns:minmax(0,1fr) 340px;gap:20px}.fields{grid-template-columns:1fr}.load-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){main{padding:20px 16px}.layout{display:flex;flex-direction:column}.timeline{position:static;width:100%;order:-1}.agenda{max-height:320px}.notice{display:block}.notice strong{display:block;margin-bottom:3px}.stamp{max-width:140px}.review-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr}.subject>summary{grid-template-columns:46px 1fr 82px 12px;gap:8px}.foot{display:block}h1{font-size:25px}.calendar-layout{grid-template-columns:1fr;gap:18px}.selected-day{border-left:0;border-top:1px solid var(--line);padding:15px 0 0;max-height:260px}.calendar-panel,.load-panel{padding:14px}.date-block{min-height:67px;padding:5px}.calendar-panel>.section-head{align-items:flex-start;flex-wrap:wrap}.calendar-toolbar{gap:5px}.load-stats{gap:6px}.load-stat{padding:8px}.load-stat strong{font-size:16px}.track-switch{align-items:flex-start;text-align:left}}
+@media(max-width:460px){.fields{grid-template-columns:1fr}.equation{font-size:10px}.score{font-size:20px}.calc{padding:12px}.stamp{font-size:10px}.name{font-size:13px}.calendar-grid{gap:3px}.date-block{min-height:62px;padding:4px}.day-weight{font-size:10px}.day-mark{font-size:8px}.date-num{font-size:12px}.count-pill{min-width:14px;height:14px;line-height:14px;font-size:9px}.calendar-toolbar select{max-width:180px}.teaching dl{grid-template-columns:80px minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<div class="eyebrow">NOVA IMS · GeoTech · Fall 2026 / 27</div>
+<h1>Semester Dashboard</h1>
+</div>
+<div class="stamp">
+<div class="small">snapshot as of 4 November 2026<br>Europe/Lisbon</div>
+</div>
+</header>
+<div class="notice" id="notice"></div>
+<section class="load-panel" aria-labelledby="load-title">
+<div class="section-head">
+<div>
+<div class="eyebrow">Assessment pressure</div>
+<h2 id="load-title">Weekly load<span class="help"><button type="button" class="help-mark" aria-label="About weekly load">?</button><span class="help-tip" role="tooltip">Each column is a week, Monday to Sunday. Height is known grade weight due that week, using the same points as the calendar. Ordinary class hours are left out. The figure above a bar is how many deadlines or assessments are due.</span></span></h2>
+</div>
+<label class="track-switch">Your RS project presentation
+<select id="rs-student" aria-label="Your RS project presentation"></select>
+<span class="small" id="track-note"></span>
+</label>
+</div>
+<div class="load-stats" id="load-stats"></div>
+<div class="load-chart" id="load-chart" role="group" aria-label="Weekly load"></div>
+<div class="load-legend" id="load-legend"></div>
+<p class="load-detail" id="load-detail"></p>
+</section>
+<section class="calendar-panel" aria-labelledby="calendar-title">
+<div class="section-head">
+<div>
+<div class="eyebrow">Your semester at a glance</div>
+<h2 id="calendar-title">Deadline calendar<span class="help"><button type="button" class="help-mark" aria-label="About the deadline calendar">?</button><span class="help-tip" role="tooltip">Darker blocks mean more grade weight. Orange badges count deadlines and assessments. Points are percentages of each course’s own grade, not a semester average. “?” marks a date or weight that is still provisional. Select a date for details.</span></span></h2>
+</div>
+<div class="calendar-toolbar">
+<button type="button" id="month-prev" aria-label="Previous month">←</button>
+<label><span class="gone" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Calendar month</span><select id="calendar-month" aria-label="Calendar month"></select></label>
+<button type="button" id="month-next" aria-label="Next month">→</button>
+<button type="button" id="calendar-current">Today</button>
+</div>
+</div>
+<div class="calendar-layout">
+<div>
+<div class="calendar-grid" id="calendar-grid"></div>
+<div class="calendar-legend">
+<span>Known weight:</span>
+<span><i class="swatch" style="background:#f5f5ee"></i> 0</span>
+<span><i class="swatch heat-1"></i> 1–10</span>
+<span><i class="swatch heat-2"></i> 11–20</span>
+<span><i class="swatch heat-3"></i> 21–35</span>
+<span><i class="swatch heat-4"></i> 36+ points</span>
+<span><b class="count-pill">1</b> one due</span>
+<span><b class="count-pill multiple">2</b> multiple due</span>
+<span class="conference-mark">◆ GeoMundus</span>
+</div>
+</div>
+<div class="selected-day" id="selected-day" aria-live="polite"></div>
+</div>
+</section>
+<div class="layout">
+<section aria-labelledby="subjects-title">
+<div class="section-head">
+<h2 id="subjects-title">Courses<span class="help"><button type="button" class="help-mark" aria-label="About courses">?</button><span class="help-tip" role="tooltip">Open a course for the teaching team, rules and a grade check. Enter grades you already have; blank rows stay out of the average. The bar under a score shows, out of 20, what you have banked (dark), what you have lost (pale red) and what is still open, with a tick at the 9.5 pass mark. Banked is your final grade if everything left scores 0.</span></span></h2>
+</div>
+<div class="scale">
+<h3>Grades in Portugal · 0–20</h3>
+<ul class="rules">
+<li><strong>18–20</strong> Excellent (<em>Excelente</em>)</li>
+<li><strong>16–17</strong> Very Good (<em>Muito Bom</em>)</li>
+<li><strong>14–15</strong> Good (<em>Bom</em>)</li>
+<li><strong>10–13</strong> Sufficient (<em>Suficiente</em>)</li>
+<li><strong>0–9</strong> Fail (<em>Reprovado</em>) — No ECTS credits are awarded for grades under 10.</li>
+</ul>
+</div>
+<div id="subjects"></div>
+</section>
+<aside class="timeline" aria-labelledby="agenda-title">
+<div class="section-head">
+<h2 id="agenda-title">Coming up</h2>
+<span class="small" id="today"></span>
+</div>
+<div class="timeline-controls">
+<label>Period<select id="period">
+<option value="14" selected>Next 14 days</option>
+<option value="30">Next 30 days</option>
+<option value="upcoming">All upcoming</option>
+<option value="semester">Full semester</option>
+</select></label>
+<label>Subject<select id="subject-filter" aria-label="Filter by subject"></select></label>
+</div>
+<div class="agenda" id="agenda"></div>
+</aside>
+</div>
+<section id="review" class="review"></section>
+</main>
+<script>
+'use strict';
+const STORAGE_KEY = 'geotech-desk-grades-v1';
+const KINDS = new Set(['deadline', 'quiz', 'milestone', 'slot', 'resit', 'conference']);
+const $ = (sel) => document.querySelector(sel);
+const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+const format = (n) => n.toFixed(2);
+const dateObj = (s) => new Date(s + 'T12:00:00Z');
+const dayDiff = (a, b) => Math.round((dateObj(a) - dateObj(b)) / 86400000);
+function shiftDate(iso, days) {
+  const d = dateObj(iso);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+function weekStart(iso) {
+  return shiftDate(iso, -((dateObj(iso).getUTCDay() + 6) % 7));
+}
+function weekRangeLabel(start, end) {
+  const a = dateObj(start);
+  const b = dateObj(end);
+  const ma = a.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+  const mb = b.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+  if (ma === mb) return a.getUTCDate() + '–' + b.getUTCDate() + ' ' + ma;
+  return a.getUTCDate() + ' ' + ma + ' – ' + b.getUTCDate() + ' ' + mb;
+}
+
+function showError(message) {
+  const notice = $('#notice');
+  notice.hidden = false;
+  notice.innerHTML = '<strong>Table needs a fix</strong><span>' + esc(message) + '</span>';
+}
+
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let field = '';
+  let quoted = false;
+  const src = text.replace(/^\uFEFF/, '');
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i];
+    if (quoted) {
+      if (ch === '"') {
+        if (src[i + 1] === '"') { field += '"'; i += 1; }
+        else quoted = false;
+      } else field += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === ',') { row.push(field); field = ''; }
+    else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && src[i + 1] === '\n') i += 1;
+      row.push(field);
+      field = '';
+      if (row.some((cell) => cell.trim() !== '')) rows.push(row);
+      row = [];
+    } else field += ch;
+  }
+  if (field.length || row.length) {
+    row.push(field);
+    if (row.some((cell) => cell.trim() !== '')) rows.push(row);
+  }
+  if (!rows.length) throw new Error('The events table is empty.');
+  const header = rows[0].map((cell) => cell.trim());
+  for (const name of ['date', 'course', 'title', 'when', 'source', 'weight', 'counts', 'uncertain', 'kind', 'label', 'details', 'pool']) {
+    if (!header.includes(name)) throw new Error('The events table is missing the ' + name + ' column.');
+  }
+  return rows.slice(1).map((cells, index) => {
+    const raw = Object.fromEntries(header.map((name, i) => [name, (cells[i] ?? '').trim()]));
+    const line = index + 2;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(raw.date)) throw new Error('Row ' + line + ' has a date that is not YYYY-MM-DD.');
+    const weight = Number(raw.weight);
+    const counts = Number(raw.counts);
+    if (!Number.isFinite(weight) || weight < 0) throw new Error('Row ' + line + ' has a weight that is not a number of 0 or more.');
+    if (!Number.isInteger(counts) || counts < 0) throw new Error('Row ' + line + ' has a counts value that is not a whole number of 0 or more.');
+    if (raw.uncertain !== 'yes' && raw.uncertain !== 'no') throw new Error('Row ' + line + ' must set uncertain to yes or no.');
+    if (!KINDS.has(raw.kind)) throw new Error('Row ' + line + ' has a kind outside deadline, quiz, milestone, slot, resit, conference.');
+    return Object.assign(raw, { weight, counts, uncertain: raw.uncertain === 'yes' });
+  });
+}
+
+let data;
+let COURSES;
+let BASE_EVENTS;
+let EVENTS;
+const STUDENT_KEY = 'geotech-desk-rs-student';
+const DEFAULT_STUDENT = 'Ekaterina Chuprun';
+const RS_SLOTS = [
+  { date: '2026-12-15', day: 1, students: ['Suren Chilingaryan', 'Carmen Benbow', 'Maria Correia', 'Adrian Därr', 'Sofiia Makhortova', 'Daniele Mastrosimone', 'Youssef Stini'] },
+  { date: '2026-12-17', day: 2, students: ['Francisco Branco', 'Brooke Kearney', 'Achraf Houari', 'Darian Weiß', 'Marco Winnendael', 'Ekaterina Chuprun', 'Michael Dresner'] }
+];
+const GIS_ALIASES = { 'Maria Correia': 'Maria Teresa Silva Correia' };
+const GIS_WEEKS = [
+  { date: '2026-09-23', topic: 'What is geographic information and why is it important?', groups: [
+    { id: 1, title: 'Definitions of geographic information', subtopic: 'Definitions of geographic data and information. Geographic information is ubiquitous.', students: ['Carmen Benbow', 'Achraf Houari', 'Marco Winnendael'] },
+    { id: 2, title: 'Primitives of spatial information', subtopic: 'Primitives of spatial information and core concepts.', students: ['Camila Bonassio', 'Brooke Kearney'] },
+    { id: 3, title: 'Describing geographic information', subtopic: 'Describing geographic information: fields, objects and attributes.', students: ['Nicolò Boscherini', 'Sofiia Makhortova'] },
+    { id: 4, title: 'Geographic information and society', subtopic: 'Importance of geographic information for society.', students: ['Francisco Branco', 'Stefano Marsala'] }
+  ]},
+  { date: '2026-09-30', topic: 'What are the particularities of geographic information?', groups: [
+    { id: 1, title: 'Spatial autocorrelation and Tobler’s law', subtopic: 'Spatial autocorrelation, spatial dependence and Tobler’s first law.', students: ['Suren Chilingaryan', 'Daniele Mastrosimone', 'Maria Taehtivaara'] },
+    { id: 2, title: 'Spatial heterogeneity', subtopic: 'Geographic space and spatial heterogeneity.', students: ['Ekaterina Chuprun', 'Ludovico Piras', 'Jose Vaz Serra Crespo'] },
+    { id: 3, title: 'Fractals and scale', subtopic: 'Fractal principle in geographic concepts and representations.', students: ['Adrian Därr', 'Maria Teresa Silva Correia', 'Diego Fernandes'] },
+    { id: 4, title: 'Uncertainty in geographic information', subtopic: 'Uncertainty in geographic information.', students: ['Michael Dresner', 'Youssef Stini'] }
+  ]},
+  { date: '2026-10-07', topic: 'The science behind the systems', groups: [
+    { id: 1, title: 'What GIScience is concerned about', subtopic: 'What is GIScience concerned about?', students: ['Carmen Benbow', 'Stefano Marsala'] },
+    { id: 2, title: 'Definitions of GIScience', subtopic: 'Definitions of Geographic Information Science.', students: ['Camila Bonassio', 'Achraf Houari'] },
+    { id: 3, title: 'Nature and cycle of GIScience', subtopic: 'The nature and cycle of Geographic Information Science.', students: ['Nicolò Boscherini', 'Brooke Kearney', 'Marco Winnendael'] },
+    { id: 4, title: 'Brief history of GIS', subtopic: 'Brief history of Geographic Information Systems and Science.', students: ['Francisco Branco', 'Sofiia Makhortova'] }
+  ]},
+  { date: '2026-10-14', topic: 'Components of Geographic Information Science (I)', groups: [
+    { id: 1, title: 'Ontologies, categories and models', subtopic: 'Geographic representation: ontologies, categories and models.', students: ['Suren Chilingaryan', 'Maria Teresa Silva Correia', 'Youssef Stini'] },
+    { id: 2, title: 'Topology, geometry and databases', subtopic: 'Computation: topology, geometry and databases.', students: ['Ekaterina Chuprun', 'Daniele Mastrosimone', 'Diego Fernandes'] },
+    { id: 3, title: 'Spatial statistics', subtopic: 'Spatial statistics.', students: ['Adrian Därr', 'Ludovico Piras'] },
+    { id: 4, title: 'Cognition and interaction', subtopic: 'Cognition: geographic concepts and human-computer interaction.', students: ['Michael Dresner', 'Maria Taehtivaara', 'Jose Vaz Serra Crespo'] }
+  ]},
+  { date: '2026-10-21', topic: 'Components of Geographic Information Science (II)', groups: [
+    { id: 1, title: 'GIS components', subtopic: 'Information system perspective: people, software, hardware, methods and data.', students: ['Carmen Benbow', 'Sofiia Makhortova'] },
+    { id: 2, title: 'Data quality', subtopic: 'Data quality: precision, accuracy, error and uncertainty.', students: ['Camila Bonassio', 'Stefano Marsala'] },
+    { id: 3, title: 'MAUP and ecological fallacy', subtopic: 'Modifiable areal unit problem (MAUP) and ecological fallacy.', students: ['Nicolò Boscherini', 'Achraf Houari'] },
+    { id: 4, title: 'Scale and time', subtopic: 'Scale and time: crosscutting research themes.', students: ['Francisco Branco', 'Brooke Kearney', 'Marco Winnendael'] }
+  ]},
+  { date: '2026-11-04', topic: 'Components of Geographic Information Science (II)', groups: [
+    { id: 1, title: 'Data input', subtopic: 'Data input.', students: ['Suren Chilingaryan', 'Youssef Stini', 'Jose Vaz Serra Crespo'] },
+    { id: 2, title: 'Data storage and management', subtopic: 'Data storage and management.', students: ['Ekaterina Chuprun', 'Maria Teresa Silva Correia', 'Maria Taehtivaara'] },
+    { id: 3, title: 'Data manipulation and analysis', subtopic: 'Data manipulation and analysis.', students: ['Adrian Därr', 'Daniele Mastrosimone'] },
+    { id: 4, title: 'Data output', subtopic: 'Data output.', students: ['Michael Dresner', 'Ludovico Piras', 'Diego Fernandes'] }
+  ]}
+];
+let student = DEFAULT_STUDENT;
+function gisStudents() {
+  const odd = [];
+  const even = [];
+  GIS_WEEKS.forEach((week, index) => {
+    const bucket = index % 2 === 0 ? odd : even;
+    week.groups.forEach((group) => {
+      group.students.forEach((name) => { if (!bucket.includes(name)) bucket.push(name); });
+    });
+  });
+  const byName = (a, b) => a.localeCompare(b, 'en');
+  odd.sort(byName);
+  even.sort(byName);
+  return { odd, even };
+}
+function slotsFor(name) {
+  const slots = [];
+  GIS_WEEKS.forEach((week) => {
+    week.groups.forEach((group) => {
+      if (group.students.includes(name)) slots.push({ week, group });
+    });
+  });
+  return slots;
+}
+function rsSlotFor(name) {
+  return RS_SLOTS.find((slot) => slot.students.includes(name));
+}
+const byDate = (a, b) => a.date.localeCompare(b.date);
+function loadStudent() {
+  try {
+    const saved = localStorage.getItem(STUDENT_KEY);
+    if (saved && rsSlotFor(saved)) return saved;
+  } catch (err) {}
+  return DEFAULT_STUDENT;
+}
+function stampDate(iso) {
+  const when = dateObj(iso);
+  return when.getUTCDate() + ' ' + when.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+}
+function rsEvents(name) {
+  const slot = rsSlotFor(name);
+  if (!slot) return [];
+  const other = RS_SLOTS.find((item) => item !== slot);
+  return [{
+    date: slot.date,
+    course: 'rs',
+    title: 'Project presentation · day ' + slot.day,
+    when: 'In class',
+    source: 'Presentation slots list',
+    weight: 50,
+    counts: 1,
+    uncertain: false,
+    kind: 'deadline',
+    label: '50% of RS final grade · presentation & discussion',
+    details: '50% · Your presentation day. Present your project, then Q&A on the remote sensing and image-processing fundamentals it uses. The final submission, with the report and presentation file, is due 18 Dec.' + (other ? ' The other presentation day is ' + stampDate(other.date) + '.' : ''),
+    pool: ''
+  }];
+}
+function personalEvents(name) {
+  return rsEvents(name).concat(gisEvents(GIS_ALIASES[name] || name));
+}
+function gisEvents(name) {
+  return slotsFor(name).flatMap(({ week, group }) => {
+    const stamp = stampDate(week.date);
+    return [
+      {
+        date: shiftDate(week.date, -2),
+        course: 'gis',
+        title: 'Bibliography for ' + stamp + ' presentation',
+        when: 'Time unspecified',
+        source: 'Presentation guidelines',
+        weight: 0,
+        counts: 1,
+        uncertain: false,
+        kind: 'deadline',
+        label: 'Administrative deadline · no separate weight',
+        details: 'Due the Monday before class. Upload four papers: the two references supplied for this subtopic and two you select. Subtopic: ' + group.subtopic,
+        pool: ''
+      },
+      {
+        date: week.date,
+        course: 'gis',
+        title: 'Group ' + group.id + ' · ' + group.title,
+        when: '18:00',
+        source: 'Presentation guidelines',
+        weight: 0,
+        counts: 1,
+        uncertain: false,
+        kind: 'deadline',
+        label: 'equal share',
+        details: week.topic + '. ' + group.subtopic + ' 15 minutes, then about 10 minutes of discussion. Upload slides to Moodle before class, including a slide on the papers you selected.',
+        pool: 'presentation'
+      }
+    ];
+  });
+}
+function assertRoster() {
+  const lists = gisStudents();
+  lists.odd.concat(lists.even).forEach((name) => {
+    const count = slotsFor(name).length;
+    if (count !== 3) throw new Error(name + ' has ' + count + ' GIS presentations, not 3.');
+  });
+  const rsNames = RS_SLOTS.flatMap((slot) => slot.students);
+  if (new Set(rsNames).size !== rsNames.length) throw new Error('A name appears in more than one RS presentation slot.');
+  if (!rsSlotFor(DEFAULT_STUDENT)) throw new Error(DEFAULT_STUDENT + ' has no RS presentation slot.');
+}
+try {
+  data = JSON.parse($('#courses-data').textContent);
+  COURSES = data.courses;
+  if (!Array.isArray(COURSES) || !COURSES.length) throw new Error('The courses block needs a courses list.');
+  BASE_EVENTS = parseCSV($('#events-table').textContent);
+  assertRoster();
+  student = loadStudent();
+  EVENTS = BASE_EVENTS.concat(personalEvents(student)).sort(byDate);
+  applyPools(EVENTS, COURSES);
+} catch (err) {
+  showError(err.message || 'The events table or courses block could not be read.');
+  throw err;
+}
+
+function formatShare(n) {
+  const rounded = Math.round(n * 100) / 100;
+  if (Number.isInteger(rounded)) return String(rounded);
+  return rounded.toFixed(2).replace(/0$/, '');
+}
+function applyPools(events, courses) {
+  for (const event of events) {
+    if (!event.pool) continue;
+    const course = courses.find((item) => item.id === event.course);
+    const component = course && course.components.find((item) => item.pool === event.pool);
+    if (!component) throw new Error(event.date + ' ' + event.title + ' uses pool "' + event.pool + '", and that course has no matching component.');
+  }
+  for (const course of courses) {
+    for (const component of course.components) {
+      if (!component.pool) continue;
+      const matching = events.filter((event) => event.course === course.id && event.pool === component.pool);
+      if (!matching.length) continue;
+      const share = component.weight / matching.length;
+      const label = formatShare(share) + '% of ' + course.code + ' · ' + component.weight + '% ' + component.name.toLowerCase() + ' ÷ ' + matching.length;
+      matching.forEach((event) => { event.weight = share; event.label = label; });
+    }
+  }
+}
+function componentsFor(course) {
+  const rows = [];
+  for (const component of course.components) {
+    if (!component.pool) { rows.push(component); continue; }
+    const matching = EVENTS.filter((event) => event.course === course.id && event.pool === component.pool);
+    const share = matching.length ? component.weight / matching.length : component.weight;
+    matching.forEach((event) => {
+      const when = dateObj(event.date);
+      const stamp = when.getUTCDate() + ' ' + when.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+      rows.push({ id: component.pool + ':' + event.date, name: event.title + ' · ' + stamp, weight: share });
+    });
+  }
+  return rows;
+}
+function weightsClose(a, b) { return Math.abs(a - b) < 0.05; }
+
+const courseById = Object.fromEntries(COURSES.map((course) => [course.id, course]));
+function courseCode(id) {
+  if (id === 'conference') return 'EVENT';
+  return courseById[id] ? courseById[id].code : id;
+}
+function monthsBetween(events) {
+  const keys = events.map((event) => event.date.slice(0, 7)).sort();
+  let year = Number(keys[0].slice(0, 4));
+  let month = Number(keys[0].slice(5, 7));
+  const endYear = Number(keys[keys.length - 1].slice(0, 4));
+  const endMonth = Number(keys[keys.length - 1].slice(5, 7));
+  const months = [];
+  while (year < endYear || (year === endYear && month <= endMonth)) {
+    months.push(year + '-' + String(month).padStart(2, '0'));
+    month += 1;
+    if (month === 13) { month = 1; year += 1; }
+  }
+  return months;
+}
+const CALENDAR_MONTHS = monthsBetween(EVENTS);
+const isoToday = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Lisbon', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+const today = /^\d{4}-\d{2}-\d{2}$/.test(isoToday) ? isoToday : '2026-10-07';
+const rangeStart = CALENDAR_MONTHS[0] + '-01';
+const lastMonth = CALENDAR_MONTHS[CALENDAR_MONTHS.length - 1];
+const rangeEnd = lastMonth + '-' + String(new Date(Date.UTC(Number(lastMonth.slice(0, 4)), Number(lastMonth.slice(5, 7)), 0)).getUTCDate()).padStart(2, '0');
+let selectedDate = today >= rangeStart && today <= rangeEnd ? today : (today >= '2026-09-01' && today <= '2027-01-31' ? '2026-10-07' : EVENTS[0].date);
+if (selectedDate < rangeStart || selectedDate > rangeEnd) selectedDate = EVENTS[0].date;
+let calendarMonth = selectedDate.slice(0, 7);
+
+function loadGrades() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    return saved && typeof saved === 'object' ? saved : {};
+  } catch (err) {
+    return {};
+  }
+}
+const grades = loadGrades();
+function saveGrades() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(grades)); } catch (err) {}
+}
+function storedValue(course, component) {
+  const bag = grades[course.id];
+  const raw = bag ? bag[component.id] : undefined;
+  if (raw === undefined || raw === '') return '';
+  const number = Number(raw);
+  if (!Number.isFinite(number) || number < 0 || number > course.max) return '';
+  return String(raw);
+}
+const PASS_MARK = 9.5;
+function projection(course) {
+  let points = 0;
+  let weight = 0;
+  let sum = 0;
+  for (const component of componentsFor(course)) {
+    sum += component.weight;
+    const raw = storedValue(course, component);
+    if (raw === '') continue;
+    points += Number(raw) * component.weight;
+    weight += component.weight;
+  }
+  if (!weight) return null;
+  const average = points / weight;
+  const to20 = 20 / course.max;
+  // banked: final grade if every component without a grade scores 0
+  return {
+    average,
+    weight,
+    outOf20: average * to20,
+    banked20: points / sum * to20,
+    graded20: weight / sum * 20,
+    best20: (points + (sum - weight) * course.max) / sum * to20
+  };
+}
+function bankedBar(result) {
+  const pct = (n) => (Math.max(0, n) / 20 * 100).toFixed(2) + '%';
+  const lost = result.graded20 - result.banked20;
+  const open = 20 - result.graded20;
+  const described = format(result.banked20) + ' of 20 banked, ' + format(lost) + ' lost, ' + format(open) + ' still open. Pass mark ' + PASS_MARK + '.';
+  return '<span class="banked-bar" role="img" aria-label="' + esc(described) + '" title="' + esc(described) + '"><span class="banked-seg" style="width:' + pct(result.banked20) + '"></span><span class="lost-seg" style="width:' + pct(lost) + '"></span><i class="pass-tick" style="left:' + pct(PASS_MARK) + '"></i></span>';
+}
+function paintScore(course) {
+  const result = projection(course);
+  const score = $('#score-' + course.id);
+  const label = $('#score-label-' + course.id);
+  const total = $('#total-' + course.id);
+  const status = $('#status-' + course.id);
+  const banked = $('#banked-' + course.id);
+  banked.innerHTML = '';
+  if (!componentsFor(course).length) {
+    score.textContent = '—';
+    label.textContent = 'Yet to come';
+    return;
+  }
+  if (!result) {
+    score.textContent = '—';
+    label.textContent = 'No grades';
+    total.textContent = '—';
+    status.textContent = 'No grades entered.';
+    return;
+  }
+  score.innerHTML = format(result.outOf20) + '<small> /20</small>';
+  label.textContent = course.max === 100 ? 'Provisional' : (weightsClose(result.weight, 100) ? 'Total' : 'So far');
+  total.textContent = format(result.average) + ' /' + course.max;
+  const complete = weightsClose(result.graded20, 20);
+  banked.innerHTML = bankedBar(result) + (complete ? '' : '<span class="banked-text">' + format(result.banked20) + ' banked</span>');
+  const sum = componentsFor(course).reduce((totalWeight, component) => totalWeight + component.weight, 0);
+  const entered = formatShare(result.weight) + '% of the weight has a grade.' + (complete ? '' : ' Zeros from here: ' + format(result.banked20) + ' /20. Best case: ' + format(result.best20) + ' /20.');
+  status.textContent = weightsClose(sum, 100) ? entered : 'Component weights total ' + formatShare(sum) + '%, not 100%. ' + entered;
+}
+
+function daySummary(date) {
+  const events = EVENTS.filter((event) => event.date === date);
+  return {
+    events,
+    count: events.reduce((sum, event) => sum + event.counts, 0),
+    weight: events.reduce((sum, event) => sum + event.weight, 0),
+    uncertain: events.some((event) => event.uncertain),
+    conference: events.some((event) => event.kind === 'conference')
+  };
+}
+function nextLine(courseId) {
+  const event = EVENTS.find((item) => item.course === courseId && item.date >= today);
+  if (!event) return 'Nothing dated ahead';
+  const date = dateObj(event.date);
+  const stamp = date.getUTCDate() + ' ' + date.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+  const when = event.when === 'Time unspecified' ? '' : ' · ' + event.when;
+  return event.title + ' · ' + stamp + when;
+}
+function personLines(people) {
+  if (!people.length) return 'Not named in the supplied sources';
+  return people.map((person) => {
+    const name = esc(person.role ? person.name + ' · ' + person.role : person.name);
+    const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(person.email)
+      ? '<br><a href="mailto:' + esc(person.email) + '">' + esc(person.email) + '</a>'
+      : '';
+    return name + email;
+  }).join('<br>');
+}
+function sourceLinks(sources) {
+  return (sources || []).map((source) => {
+    if (source.url && /^https:\/\//.test(source.url)) {
+      return '<a href="' + esc(source.url) + '" target="_blank" rel="noopener noreferrer">' + esc(source.label) + ' ↗</a>';
+    }
+    return esc(source.label);
+  }).join(' · ');
+}
+function renderSubjects() {
+  $('#subjects').innerHTML = COURSES.map((course) => {
+    const components = componentsFor(course);
+    const fields = components.map((component) => '<label class="field"><span>' + esc(component.name) + '</span><span class="weight">' + formatShare(component.weight) + '%</span><input aria-label="' + esc(course.code + ' ' + component.name + ' grade') + '" data-grade="' + esc(component.id) + '" data-course="' + esc(course.id) + '" type="number" min="0" max="' + course.max + '" step="0.1" placeholder="—" autocomplete="off" value="' + esc(storedValue(course, component)) + '"></label>').join('');
+    const gradeBlurb = (course.max === 100 ? 'Enter grades out of 100. The header shows that average out of 20.' : 'Enter grades out of 20.') + (course.gradeNote ? ' ' + course.gradeNote : '');
+    const ects = course.ects ? '<span class="ects">' + course.ects + ' ECTS</span>' : '';
+    const note = course.note ? '<p class="small">' + esc(course.note) + '</p>' : '';
+    const calc = components.length ? '<div class="calc"><h3>Grade check' + (course.max === 100 ? ' · 0–100 inputs' : '') + '</h3><p class="small">' + esc(gradeBlurb) + '</p><div class="fields">' + fields + '</div><div class="result"><span class="small">Weighted average of entered grades</span><strong id="total-' + course.id + '"></strong></div><div class="status" id="status-' + course.id + '" aria-live="polite"></div></div>' : '';
+    return '<details class="subject" id="course-' + course.id + '"><summary class="summary"><span class="code">' + esc(course.code) + '</span><div><div class="name">' + esc(course.name) + ects + '</div><div class="equation">' + esc(course.weights) + '</div><div class="date-line">' + esc(nextLine(course.id)) + '</div></div><div><div class="score" id="score-' + course.id + '"></div><div class="score-label" id="score-label-' + course.id + '"></div><div class="banked" id="banked-' + course.id + '"></div></div><span class="chev" aria-hidden="true"></span></summary><section class="teaching" aria-label="Teaching contacts"><h3>Teaching team &amp; consultation</h3><dl><dt>Professor</dt><dd>' + personLines(course.people) + '</dd>' + (course.room ? '<dt>Room</dt><dd>' + esc(course.room) + '</dd>' : '') + (course.consultation ? '<dt>Consultation</dt><dd>' + esc(course.consultation) + '</dd>' : '') + (course.schedule ? '<dt>Classes</dt><dd>' + esc(course.schedule) + '</dd>' : '') + '</dl>' + note + (course.sources && course.sources.length ? '<div class="source">' + sourceLinks(course.sources) + '</div>' : '') + '</section><details class="rule"><summary>Evaluation rules &amp; submission requirements</summary><ul class="rules">' + course.rules.map((rule) => '<li>' + esc(rule) + '</li>').join('') + '</ul></details>' + (course.warning ? '<p class="warning">' + esc(course.warning) + '</p>' : '') + calc + '</details>';
+  }).join('');
+  COURSES.forEach(paintScore);
+}
+function renderCalendar() {
+  $('#calendar-month').value = calendarMonth;
+  $('#month-prev').disabled = calendarMonth === CALENDAR_MONTHS[0];
+  $('#month-next').disabled = calendarMonth === CALENDAR_MONTHS[CALENDAR_MONTHS.length - 1];
+  const first = dateObj(calendarMonth + '-01');
+  const offset = (first.getUTCDay() + 6) % 7;
+  const days = new Date(Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0)).getUTCDate();
+  let cells = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => '<span class="weekday">' + day + '</span>').join('') + '<span aria-hidden="true"></span>'.repeat(offset);
+  for (let day = 1; day <= days; day++) {
+    const date = calendarMonth + '-' + String(day).padStart(2, '0');
+    const summary = daySummary(date);
+    const heat = summary.weight > 35 ? 4 : summary.weight > 20 ? 3 : summary.weight > 10 ? 2 : summary.weight > 0 ? 1 : 0;
+    const full = dateObj(date).toLocaleDateString('en-GB', { dateStyle: 'full', timeZone: 'UTC' });
+    const weightHtml = (summary.weight || summary.uncertain) ? '<span class="day-weight">' + (summary.weight ? formatShare(summary.weight) + ' pts' : '') + (summary.uncertain ? ' ?' : '') + '</span>' : '';
+    const markHtml = summary.conference ? '<span class="day-mark conference-mark">◆ GeoMundus</span>' : (summary.events.length && !summary.count && !summary.uncertain ? '<span class="day-mark">Milestone</span>' : '');
+    cells += '<button type="button" class="date-block heat-' + heat + (date === selectedDate ? ' selected' : '') + (date === today ? ' today' : '') + '" data-date="' + date + '" aria-pressed="' + (date === selectedDate) + '" aria-label="' + esc(full) + ': ' + summary.count + ' deadlines or assessments, ' + formatShare(summary.weight) + ' known course-grade points' + (summary.uncertain ? ', additional weight or slot uncertain' : '') + (summary.conference ? ', GeoMundus' : '') + '"><span class="date-top"><span class="date-num">' + day + '</span>' + (summary.count ? '<span class="count-pill' + (summary.count > 1 ? ' multiple' : '') + '">' + summary.count + '</span>' : '') + '</span>' + weightHtml + markHtml + '</button>';
+  }
+  $('#calendar-grid').innerHTML = cells;
+  renderSelectedDay();
+}
+function renderSelectedDay() {
+  const summary = daySummary(selectedDate);
+  const items = summary.events.length ? summary.events.map((event) => '<article class="day-detail"><strong>' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</strong><div class="weight-label">' + esc(event.label) + '</div><p>' + esc(event.when) + '</p><p>' + esc(event.details) + '</p></article>').join('') : '<p class="small">No dated deadlines or events in the table.</p>';
+  $('#selected-day').innerHTML = '<div class="eyebrow">' + dateObj(selectedDate).toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' }) + '</div><h3>' + dateObj(selectedDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) + '</h3><p class="small">' + summary.count + ' deadline' + (summary.count === 1 ? '' : 's') + ' / assessment' + (summary.count === 1 ? '' : 's') + ' · ' + formatShare(summary.weight) + ' known weight points' + (summary.uncertain ? ' + unallocated weight' : '') + '</p>' + items;
+}
+function moveMonth(delta) {
+  const index = CALENDAR_MONTHS.indexOf(calendarMonth) + delta;
+  if (index < 0 || index >= CALENDAR_MONTHS.length) return;
+  calendarMonth = CALENDAR_MONTHS[index];
+  selectedDate = calendarMonth + '-01';
+  renderCalendar();
+}
+function renderAgenda() {
+  const period = $('#period').value;
+  const subject = $('#subject-filter').value;
+  const events = EVENTS.filter((event) => {
+    if (subject !== 'all' && event.course !== subject) return false;
+    const delta = dayDiff(event.date, today);
+    if (period === 'semester') return true;
+    if (delta < 0) return false;
+    if (period === 'upcoming') return true;
+    return delta <= Number(period);
+  });
+  let month = '';
+  $('#agenda').innerHTML = events.length ? events.map((event) => {
+    const date = dateObj(event.date);
+    const monthLabel = date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+    const delta = dayDiff(event.date, today);
+    const heading = monthLabel === month ? '' : '<div class="month">' + monthLabel + '</div>';
+    month = monthLabel;
+    const when = delta === 0 ? 'Today' : delta < 0 ? 'Past date' : delta === 1 ? 'Tomorrow' : 'in ' + delta + ' days';
+    return heading + '<article class="event"><div class="day">' + date.getUTCDate() + '<small>' + date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'UTC' }) + '</small></div><div><div class="event-title">' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</div><div class="event-info">' + esc(event.when) + ' · ' + when + '</div>' + (event.source === 'Conflict' ? '<div><span class="badge warn">Conflict</span></div>' : '') + '<details><summary>Details</summary><p>' + esc(event.details) + '</p></details></div></article>';
+  }).join('') : '<p class="small">No dated assessments in this selection. Choose All upcoming to see later entries.</p>';
+}
+function buildWeeks() {
+  const dates = EVENTS.map((event) => event.date).sort();
+  let cursor = weekStart(dates[0]);
+  const last = weekStart(dates[dates.length - 1]);
+  const weeks = [];
+  while (cursor <= last) {
+    const end = shiftDate(cursor, 6);
+    const events = EVENTS.filter((event) => event.date >= cursor && event.date <= end)
+      .slice()
+      .sort((a, b) => a.date.localeCompare(b.date) || a.title.localeCompare(b.title));
+    weeks.push({
+      start: cursor,
+      end,
+      events,
+      weight: events.reduce((sum, event) => sum + event.weight, 0),
+      count: events.reduce((sum, event) => sum + event.counts, 0),
+      uncertain: events.some((event) => event.uncertain),
+      conference: events.some((event) => event.kind === 'conference')
+    });
+    cursor = shiftDate(cursor, 7);
+  }
+  return weeks;
+}
+let WEEKS = buildWeeks();
+let loadWeek = weekStart(today);
+if (!WEEKS.some((week) => week.start === loadWeek)) {
+  const later = WEEKS.find((week) => week.start >= loadWeek);
+  loadWeek = later ? later.start : WEEKS[WEEKS.length - 1].start;
+}
+function loadStat(label, value, note, extraClass) {
+  return '<div class="load-stat' + (extraClass ? ' ' + extraClass : '') + '"><span>' + esc(label) + '</span><strong>' + esc(value) + '</strong><em>' + esc(note) + '</em></div>';
+}
+function renderStudentMenu() {
+  const menu = $('#rs-student');
+  const dayLabel = (slot) => 'Day ' + slot.day + ' · ' + dateObj(slot.date).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+  if (!menu.options.length) {
+    const options = (names) => names.map((name) => '<option value="' + esc(name) + '">' + esc(name) + '</option>').join('');
+    menu.innerHTML = RS_SLOTS.map((slot) => '<optgroup label="' + esc(dayLabel(slot)) + '">' + options(slot.students) + '</optgroup>').join('');
+  }
+  menu.value = student;
+  const note = $('#track-note');
+  const slot = rsSlotFor(student);
+  if (note) note.textContent = slot ? 'Presenting ' + dayLabel(slot) : '';
+}
+function deadlinePhrase(count) {
+  return count + ' deadline' + (count === 1 ? '' : 's');
+}
+function eventLoadLabel(event, withWeight) {
+  const name = event.course === 'conference' ? event.title : courseCode(event.course) + ' · ' + event.title;
+  return name + (withWeight && event.weight ? ' (' + formatShare(event.weight) + ' pts)' : '');
+}
+function courseSegments(week) {
+  const totals = {};
+  for (const event of week.events) {
+    if (!event.weight) continue;
+    totals[event.course] = (totals[event.course] || 0) + event.weight;
+  }
+  return COURSES.map((course) => course.id).filter((id) => totals[id]).map((id) => '<span class="load-seg" data-course="' + esc(id) + '" style="flex:' + totals[id] + '"></span>').join('');
+}
+function renderLoadDetail() {
+  const week = WEEKS.find((item) => item.start === loadWeek);
+  const box = $('#load-detail');
+  if (!week) { box.textContent = ''; return; }
+  const when = 'Week of ' + weekRangeLabel(week.start, week.end);
+  if (!week.events.length) {
+    box.innerHTML = '<strong>' + esc(when) + '.</strong> No dated deadlines.';
+    return;
+  }
+  const items = week.events.map((event) => esc(eventLoadLabel(event, true))).join('<br>');
+  const summary = deadlinePhrase(week.count) + ' · ' + formatShare(week.weight) + ' pts' + (week.uncertain ? ' · includes a provisional date' : '');
+  box.innerHTML = '<strong>' + esc(when) + '</strong> · ' + esc(summary) + '<div class="small">' + items + '</div>';
+}
+function renderLoad() {
+  const maxWeight = Math.max(...WEEKS.map((week) => week.weight), 1);
+  const peak = WEEKS.reduce((best, week) => (week.weight > best.weight ? week : best), WEEKS[0]);
+  const ahead = EVENTS.filter((event) => event.date >= today);
+  const aheadWeight = ahead.reduce((sum, event) => sum + event.weight, 0);
+  const aheadCount = ahead.reduce((sum, event) => sum + event.counts, 0);
+  const behind = EVENTS.filter((event) => event.date < today);
+  const behindWeight = behind.reduce((sum, event) => sum + event.weight, 0);
+  const behindCount = behind.reduce((sum, event) => sum + event.counts, 0);
+  const current = WEEKS.find((week) => week.start === weekStart(today));
+  const currentValue = current && current.weight ? formatShare(current.weight) + ' pts' : 'Quiet';
+  const currentNote = current && current.count ? deadlinePhrase(current.count) + ' this week' : 'Nothing dated this week';
+  const aheadNote = aheadCount ? deadlinePhrase(aheadCount) + ' from today' : 'Dated work from today is clear';
+  const behindValue = behindWeight ? formatShare(behindWeight) + ' pts' : '0 pts';
+  const behindNote = behindCount ? deadlinePhrase(behindCount) + ' already due' : 'Nothing dated has passed';
+  $('#load-stats').innerHTML = [
+    loadStat('This week', currentValue, currentNote),
+    loadStat('Heaviest week', formatShare(peak.weight) + ' pts', weekRangeLabel(peak.start, peak.end)),
+    loadStat('Still ahead', formatShare(aheadWeight) + ' pts', aheadNote),
+    loadStat('Already behind', behindValue, behindNote, 'behind')
+  ].join('');
+  $('#load-chart').innerHTML = WEEKS.map((week) => {
+    const height = week.weight ? Math.max(4, Math.round(week.weight / maxWeight * 100)) : 0;
+    const stack = week.weight
+      ? '<span class="load-stack" style="height:' + height + '%">' + courseSegments(week) + '</span>'
+      : (week.events.length ? '<span class="load-stack mark"></span>' : '');
+    const countLabel = week.count ? String(week.count) : (week.conference ? '◆' : (week.uncertain ? '?' : ''));
+    const axis = dateObj(week.start);
+    const label = axis.getUTCDate() + '<br>' + axis.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+    const names = week.events.map((event) => eventLoadLabel(event, false)).join(', ');
+    const pressed = week.start === loadWeek;
+    const described = 'Week of ' + weekRangeLabel(week.start, week.end) + ', ' + formatShare(week.weight) + ' points, ' + deadlinePhrase(week.count) + (names ? ': ' + names : '');
+    return '<button type="button" class="load-col' + (week.start === weekStart(today) ? ' is-now' : '') + (week.count > 1 ? ' has-many' : '') + '" data-week="' + week.start + '" aria-pressed="' + pressed + '" aria-label="' + esc(described) + '"><span class="load-count">' + esc(countLabel) + '</span><span class="load-plot">' + stack + '</span><span class="load-axis">' + label + '</span></button>';
+  }).join('');
+  $('#load-legend').innerHTML = COURSES.map((course) => '<span><i class="load-seg" data-course="' + esc(course.id) + '"></i>' + esc(course.code) + '</span>').join('');
+  renderStudentMenu();
+  renderLoadDetail();
+}
+function applyStudent() {
+  EVENTS = BASE_EVENTS.concat(personalEvents(student)).sort(byDate);
+  applyPools(EVENTS, COURSES);
+  const openIds = [...document.querySelectorAll('details[open]')].map((el) => el.id).filter(Boolean);
+  WEEKS = buildWeeks();
+  if (!WEEKS.some((week) => week.start === loadWeek)) {
+    const later = WEEKS.find((week) => week.start >= loadWeek);
+    loadWeek = later ? later.start : WEEKS[WEEKS.length - 1].start;
+  }
+  renderSubjects();
+  renderAgenda();
+  renderCalendar();
+  renderLoad();
+  openIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.open = true;
+  });
+}
+function renderReview() {
+  const notes = Array.isArray(data.notes) ? data.notes : [];
+  $('#review').innerHTML = '<h2>Notes &amp; open dates</h2><div class="review-grid">' + notes.map((note) => '<div class="review-item"><strong>' + esc(note.title) + '</strong><p>' + esc(note.text) + '</p></div>').join('') + '</div>';
+}
+function renderBanner() {
+  if (!data.banner) { $('#notice').hidden = true; return; }
+  $('#notice').innerHTML = '<strong>' + esc(data.banner.title) + '</strong><span>' + esc(data.banner.text) + ' <a href="#review">See source differences ↓</a></span>';
+}
+
+$('#today').textContent = dateObj(today).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+$('#subject-filter').innerHTML = '<option value="all">All subjects</option>' + COURSES.map((course) => '<option value="' + esc(course.id) + '">' + esc(course.code) + '</option>').join('') + '<option value="conference">GeoMundus</option>';
+$('#calendar-month').innerHTML = CALENDAR_MONTHS.map((month) => '<option value="' + month + '">' + dateObj(month + '-01').toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }) + '</option>').join('');
+renderBanner();
+renderSubjects();
+renderAgenda();
+renderCalendar();
+renderLoad();
+renderReview();
+$('#month-prev').addEventListener('click', () => moveMonth(-1));
+$('#month-next').addEventListener('click', () => moveMonth(1));
+$('#calendar-month').addEventListener('change', (event) => {
+  calendarMonth = event.target.value;
+  selectedDate = calendarMonth + '-01';
+  renderCalendar();
+});
+$('#calendar-current').addEventListener('click', () => {
+  selectedDate = today >= rangeStart && today <= rangeEnd ? today : EVENTS[0].date;
+  calendarMonth = selectedDate.slice(0, 7);
+  renderCalendar();
+});
+$('#rs-student').addEventListener('change', (event) => {
+  student = event.target.value;
+  try { localStorage.setItem(STUDENT_KEY, student); } catch (err) {}
+  applyStudent();
+});
+$('#load-chart').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-week]');
+  if (!button) return;
+  loadWeek = button.dataset.week;
+  const week = WEEKS.find((item) => item.start === loadWeek);
+  const first = week && week.events.length ? week.events[0].date : loadWeek;
+  if (first >= rangeStart && first <= rangeEnd) {
+    selectedDate = first;
+    calendarMonth = selectedDate.slice(0, 7);
+    renderCalendar();
+  }
+  document.querySelectorAll('#load-chart [data-week]').forEach((item) => {
+    item.setAttribute('aria-pressed', item.dataset.week === loadWeek ? 'true' : 'false');
+  });
+  renderLoadDetail();
+});
+$('#calendar-grid').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-date]');
+  if (!button) return;
+  selectedDate = button.dataset.date;
+  renderCalendar();
+});
+$('#period').addEventListener('change', renderAgenda);
+$('#subject-filter').addEventListener('change', renderAgenda);
+document.addEventListener('input', (event) => {
+  const input = event.target;
+  if (!input.dataset || !input.dataset.grade) return;
+  const course = courseById[input.dataset.course];
+  if (!course) return;
+  if (!grades[course.id]) grades[course.id] = {};
+  if (input.value === '') {
+    delete grades[course.id][input.dataset.grade];
+    input.setCustomValidity('');
+    saveGrades();
+    paintScore(course);
+    return;
+  }
+  const number = Number(input.value);
+  if (!Number.isFinite(number) || number < 0 || number > course.max) {
+    input.setCustomValidity('Use a grade from 0 to ' + course.max);
+    input.reportValidity();
+    return;
+  }
+  input.setCustomValidity('');
+  grades[course.id][input.dataset.grade] = input.value;
+  saveGrades();
+  paintScore(course);
+});
+</script>
+</body>
+</html>
