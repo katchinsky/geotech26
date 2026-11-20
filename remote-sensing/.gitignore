@@ -10,6 +10,7 @@ __pycache__/
 .virtual_documents/
 
 # Lab data (large, from the course SharePoint) and generated rasters
+data/
 Images/
 Exercise/
 *.zip
