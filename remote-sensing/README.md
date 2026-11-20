@@ -52,30 +52,23 @@ remote-sensing/
 `data/Lab_2` can be a symlink to wherever the `.SAFE` products live. The Lab 2 notebook downloads them from CDSE
 into that folder.
 
-Each notebook reads its folders from environment variables. Lab 3's defaults already match the layout above, but Lab 1
-and Lab 2 need theirs set before Jupyter starts:
-
-```bash
-export LAB1_ROOT=data/Lab_1 LAB2_DATA=data/Lab_2 LAB2_OUT=outputs/Lab_2
-uv run jupyter lab
-```
+The notebooks use this layout by default, with paths relative to the notebook. To keep the data somewhere else, set
+these environment variables before starting Jupyter:
 
 | Variable | Default | What it is |
 |---|---|---|
-| `LAB1_ROOT` | `.` (next to the notebook) | folder with `Images/` and `Exercise/`; Lab 1 writes to `<LAB1_ROOT>/outputs` |
-| `LAB2_DATA` | `~/Documents/shared_win/rs/data/Lab_2` | folder with `study_area.kml` and the `.SAFE` products |
-| `LAB2_OUT` | `<LAB2_DATA>/outputs` | where Lab 2 writes its composites |
+| `LAB1_ROOT` | `data/Lab_1` | folder with `Images/` and `Exercise/` |
+| `LAB1_OUT` | `outputs/Lab_1` | where Lab 1 writes its rasters |
+| `LAB2_DATA` | `data/Lab_2` | folder with `study_area.kml` and the `.SAFE` products |
+| `LAB2_OUT` | `outputs/Lab_2` | where Lab 2 writes its composites |
 | `LAB3_DATA` | `data/Lab_3` | reference sample and the course's composites |
 | `LAB3_COMPOSITES` | `LAB3_DATA` | composites to classify; set to `outputs/Lab_2` to use your own Lab 2 results |
 | `LAB3_OUT` | `outputs/Lab_3` | where Lab 3 writes maps, samples and the model |
 
-Lab 1 has no separate output variable, so with `LAB1_ROOT=data/Lab_1` its files land in `data/Lab_1/outputs`. Move
-them to `outputs/Lab_1` if you want to keep them with the rest.
-
 ## Running Lab 1
 
 - A full run takes a few minutes and peaks at about 3 GB of RAM (whole 10980 × 10980 tiles).
-- `outputs/` grows to about 2.8 GB of GeoTIFFs: the composites, NDVI/NDWI and the burned-area maps. Keep it out of git.
+- `outputs/Lab_1` grows to about 2.8 GB of GeoTIFFs: the composites, NDVI/NDWI and the burned-area maps. Keep it out of git.
 - Indices are computed on **reflectance** = (DN − 1000) / 10 000, i.e. with the L2A offset removed. Set
   `BOA_ADD_OFFSET = 0` in the first code cell to reproduce ArcGIS's raw-DN values.
 - The basemap cell (§2) needs internet access for the OpenStreetMap tiles.
