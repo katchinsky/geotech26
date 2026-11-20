@@ -24,19 +24,53 @@ In VS Code, select `.venv` as the notebook kernel instead.
 
 ## Data layout
 
-The lab data should be put next to the notebook:
+Lab materials (from the course SharePoint) go in `data/`, one folder per lab. Generated files go in `outputs/`, also
+one folder per lab. Both folders stay out of git.
 
 ```
-rs/
-├── Lab1_python.ipynb
-├── Images/      T29SMC_20260403T112109_B0{2,3,4,8}_10m.jp2   (Lisbon, 2026-04-03)
-├── Exercise/    T29TNE_20250823T112131_B0{2,3,4,8}_10m.jp2
-│                T29TNE_20250823T112131_B12_20m.jp2           (central Portugal, 2025-08-23)
-│                burned_areas_2025.shp (+ .dbf .shx .prj)     (ICNF perimeters)
-└── outputs/     written by the notebook
+remote-sensing/
+├── Lab1_python.ipynb  Lab2_python.ipynb  Lab3_python.ipynb
+├── data/
+│   ├── Lab_1/
+│   │   ├── Images/      T29SMC_20260403T112109_B0{2,3,4,8}_10m.jp2   (Lisbon, 2026-04-03)
+│   │   └── Exercise/    T29TNE_20250823T112131_B0{2,3,4,8}_10m.jp2
+│   │                    T29TNE_20250823T112131_B12_20m.jp2           (central Portugal, 2025-08-23)
+│   │                    burned_areas_2025.shp (+ .dbf .shx .prj)     (ICNF perimeters)
+│   ├── Lab_2/           study_area.kml
+│   │                    S2*_MSIL2A_20260627T…_T29TPE_….SAFE/         (cloudy date, ~1.1 GB unzipped)
+│   │                    S2*_MSIL2A_20260629T…_T29TPE_….SAFE/         (gap-filling date)
+│   │                    S2*_MSIL2A_20260222T…_T29TPE_….SAFE/         (exercise: winter image, optional)
+│   └── Lab_3/           reference_sample.shp (+ .dbf .shx .prj .cpg)
+│                        Composite_Baseline.tif  Composite_NDVI.tif   (the course's Lab 2 composites)
+│                        Lab_3_Toolbox.atbx                           (ArcGIS only, not needed here)
+└── outputs/
+    ├── Lab_1/           composites, NDVI/NDWI, burned-area maps
+    ├── Lab_2/           Composite_Baseline.tif  Composite_NDVI.tif  Composite_temporal.tif
+    └── Lab_3/           class maps, train/test samples (.gpkg), trained model (.joblib)
 ```
 
-To use a different location, set the `LAB1_ROOT=/path/to/data` before starting Jupyter.
+`data/Lab_2` can be a symlink to wherever the `.SAFE` products live. The Lab 2 notebook downloads them from CDSE
+into that folder.
+
+Each notebook reads its folders from environment variables. Lab 3's defaults already match the layout above, but Lab 1
+and Lab 2 need theirs set before Jupyter starts:
+
+```bash
+export LAB1_ROOT=data/Lab_1 LAB2_DATA=data/Lab_2 LAB2_OUT=outputs/Lab_2
+uv run jupyter lab
+```
+
+| Variable | Default | What it is |
+|---|---|---|
+| `LAB1_ROOT` | `.` (next to the notebook) | folder with `Images/` and `Exercise/`; Lab 1 writes to `<LAB1_ROOT>/outputs` |
+| `LAB2_DATA` | `~/Documents/shared_win/rs/data/Lab_2` | folder with `study_area.kml` and the `.SAFE` products |
+| `LAB2_OUT` | `<LAB2_DATA>/outputs` | where Lab 2 writes its composites |
+| `LAB3_DATA` | `data/Lab_3` | reference sample and the course's composites |
+| `LAB3_COMPOSITES` | `LAB3_DATA` | composites to classify; set to `outputs/Lab_2` to use your own Lab 2 results |
+| `LAB3_OUT` | `outputs/Lab_3` | where Lab 3 writes maps, samples and the model |
+
+Lab 1 has no separate output variable, so with `LAB1_ROOT=data/Lab_1` its files land in `data/Lab_1/outputs`. Move
+them to `outputs/Lab_1` if you want to keep them with the rest.
 
 ## Running Lab 1
 
