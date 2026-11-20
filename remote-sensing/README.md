@@ -5,6 +5,11 @@ Remote Sensing labs by Daniel Morais, AI-ported into the form of Jupyter Noteboo
 | Notebook | Lab | Nbviewer |
 |---|---|---|
 | `Lab1_python.ipynb` | [Lab 1](https://danielm09.github.io/remotesensing/labs/lab1/): image inspection, composites, export, true/false colour, NDVI/NDWI, burned-area exercise | [take a peek](https://nbviewer.org/github/katchinsky/geotech26/blob/main/remote-sensing/Lab1_python.ipynb) |
+| `Lab2_python.ipynb` | [Lab 2](https://danielm09.github.io/remotesensing/labs/lab2/): Sentinel-2 download from CDSE, SCL cloud masking, gap filling, Baseline/NDVI/temporal composites | [take a peek](https://nbviewer.org/github/katchinsky/geotech26/blob/main/remote-sensing/Lab2_python.ipynb) |
+| `Lab3_python.ipynb` | [Lab 3](https://danielm09.github.io/remotesensing/labs/lab3/): reference sampling, random/stratified train-test split, Random Forest classification, confusion matrix, NDVI/bi-temporal exercise | [take a peek](https://nbviewer.org/github/katchinsky/geotech26/blob/main/remote-sensing/Lab3_python.ipynb) |
+
+Each notebook quotes the lab's ArcGIS steps word for word, followed by a short note on how the step is done in Python
+and where Python offers a better way.
 
 ## Setup
 
@@ -42,3 +47,10 @@ To use a different location, set the `LAB1_ROOT=/path/to/data` before starting J
 - The basemap cell (§2) needs internet access for the OpenStreetMap tiles.
 - `.gitignore` keeps the data, `outputs/` and `.venv/` out of git.
 - Exercise settings you are meant to change: `THRESHOLDS`, `APPLY_MASKS`, `EXCLUDE_LATER_FIRES`.
+
+## Running Lab 3
+
+- Put the Lab 3 materials (`reference_sample.shp`, `Composite_Baseline.tif`, `Composite_NDVI.tif`) in `data/Lab_3`,
+  or set `LAB3_DATA`. Set `LAB3_COMPOSITES=outputs/Lab_2` to classify your own Lab 2 composites instead.
+- A full run takes about a minute; outputs (class maps, samples, model) go to `outputs/Lab_3`.
+- The bi-temporal part of the exercise runs once `Composite_temporal.tif` from the Lab 2 exercise exists.
