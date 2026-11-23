@@ -62,12 +62,14 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-11-18","gis","Exam","18:00–20:00 class slot","Calendar + syllabus",20,1,"no","deadline","20% of GIS final grade","20% · Follows Quiz 6 in the same class slot."
 "2026-11-19","gis","Term-paper topic abstract","Time unspecified","Calendar + syllabus",0,1,"no","deadline","Preparation for the 40% term paper · no separate weight","250 words with title, summary and initial references, on Moodle."
 "2026-11-22","gdm","Project 3","23:59","Confirmed by Sara",25,1,"no","deadline","25% of GDM final grade","25% · Syllabus project 3."
+"2026-11-24","pt","Video 2 · festival or celebration","04:00 on Moodle · submit tonight","Moodle · Oral presentation #2",5,1,"no","deadline","5% of PT A1 final grade","5% · 2–3 minutes on Moodle, in Portuguese: a festival or celebration. Moodle closes at 04:00 on 24 Nov, so upload by the evening of 23 Nov."
+"2026-11-24","gis","Term-paper proposal presentation","23:59","Moodle (Turnitin Assignment 2)",0,1,"no","deadline","Part of the 40% term-paper component · no separate weight","Upload the presentation file via Turnitin before the presentation sessions start on 25 Nov."
 "2026-11-24","rs","Midterm exam","In class","Assessments + Planning",15,1,"no","deadline","15% of RS final grade","15% · Paper-based true/false questions on fundamentals, image processing and machine learning."
 "2026-11-25","stats","Email project topic & group members","End of day · midnight","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Email the project topic and group members."
 "2026-11-25","gis","Term-paper presentations · session 1","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions. ≤15 minutes + 10 minutes discussion."
-"2026-11-26","pt","Individual oral presentation","In class · 15:00–17:00","Session 1 slides",20,1,"no","deadline","20% of PT A1 final grade","20% · 5–7 minutes, expanding Video 2, without reading from notes or scripts."
 "2026-11-30","stats","Exam","17:00 · about 75 minutes","Calendar + syllabus",30,1,"no","deadline","30% of STAT final grade","30% · Followed by project work until 19:00. Replaces 1 Dec class."
 "2026-11-30","rs","Assignment · land cover classification","23:59","Assessments",15,1,"no","deadline","15% of RS final grade","15% · Classification map in GeoTIFF plus a report of at most 2 pages on the steps taken. Late: minus 10% of the assignment grade per day; not accepted after 5 days."
+"2026-11-30","pt","Individual oral presentation","In class · 15:00–17:00","Moved by instructor",20,1,"no","deadline","20% of PT A1 final grade","20% · 5–7 minutes, expanding Video 2, without reading from notes or scripts. Moved from 26 Nov."
 "2026-12-02","gis","Term-paper presentations · session 2","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
 "2026-12-03","pt","Final written exam","In class · 15:00–17:00","Session 1 slides",30,1,"no","deadline","30% of PT A1 final grade","30% · 90 minutes plus 30 minutes of tolerance."
 "2026-12-09","gis","Term-paper presentations · session 3","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
@@ -260,8 +262,8 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
         "Attendance: at least 88.9%; maximum 3 absences across 27 sessions. More than 3 makes you ineligible for final grading.",
         "Homework is weekly on Moodle. A missing assignment is zero and stays in the average.",
         "Engagement is assessed every two weeks from attendance and participation, and is 10%.",
-        "Video 2: a festival or celebration, 2–3 minutes, on Moodle. Date TBA (was 17 Nov).",
-        "Oral presentation: 26 Nov, 5–7 minutes, expanding Video 2, without reading from notes or scripts.",
+        "Video 2: a festival or celebration, 2–3 minutes, on Moodle. Due 24 Nov, 04:00 on Moodle.",
+        "Oral presentation: Mon 30 Nov (moved from 26 Nov), 5–7 minutes, expanding Video 2, without reading from notes or scripts.",
         "Midterm: 5 Nov, 1 hour, scored 0–100. Final: 3 Dec, 90 minutes plus 30 minutes of tolerance.",
         "No late submissions except instructor-approved exceptional circumstances. The syllabus prohibits copied or AI-generated assessment work."
       ]
@@ -274,7 +276,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
     },
     {
       "title": "Still undated",
-      "text": "GDM project 4 (25%), sometime in December. PT A1 Video 2 (5%), date TBA."
+      "text": "GDM project 4 (25%), sometime in December."
     }
   ]
 }
@@ -459,7 +461,7 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <h1>Semester Dashboard</h1>
 </div>
 <div class="stamp">
-<div class="small">snapshot as of 4 November 2026<br>Europe/Lisbon</div>
+<div class="small"><span id="last-edited">last edited 23 November 2026</span><br>Europe/Lisbon</div>
 </div>
 </header>
 <div class="notice" id="notice"></div>
@@ -1182,6 +1184,12 @@ function renderBanner() {
   $('#notice').innerHTML = '<strong>' + esc(data.banner.title) + '</strong><span>' + esc(data.banner.text) + ' <a href="#review">See source differences ↓</a></span>';
 }
 
+(() => {
+  const edited = new Date(document.lastModified);
+  if (Number.isNaN(edited.getTime())) return;
+  const stamp = edited.toLocaleString('en-GB', { timeZone: 'Europe/Lisbon', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  $('#last-edited').textContent = 'last edited ' + stamp.replace(/, (?=\d{2}:\d{2}$)/, ' at ');
+})();
 $('#today').textContent = dateObj(today).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
 $('#subject-filter').innerHTML = '<option value="all">All subjects</option>' + COURSES.map((course) => '<option value="' + esc(course.id) + '">' + esc(course.code) + '</option>').join('') + '<option value="conference">GeoMundus</option>';
 $('#calendar-month').innerHTML = CALENDAR_MONTHS.map((month) => '<option value="' + month + '">' + dateObj(month + '-01').toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }) + '</option>').join('');
