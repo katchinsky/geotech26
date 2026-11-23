@@ -461,7 +461,7 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <h1>Semester Dashboard</h1>
 </div>
 <div class="stamp">
-<div class="small">snapshot as of 4 November 2026<br>Europe/Lisbon</div>
+<div class="small"><span id="last-edited">last edited 23 November 2026</span><br>Europe/Lisbon</div>
 </div>
 </header>
 <div class="notice" id="notice"></div>
@@ -1184,6 +1184,12 @@ function renderBanner() {
   $('#notice').innerHTML = '<strong>' + esc(data.banner.title) + '</strong><span>' + esc(data.banner.text) + ' <a href="#review">See source differences ↓</a></span>';
 }
 
+(() => {
+  const edited = new Date(document.lastModified);
+  if (Number.isNaN(edited.getTime())) return;
+  const stamp = edited.toLocaleString('en-GB', { timeZone: 'Europe/Lisbon', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  $('#last-edited').textContent = 'last edited ' + stamp.replace(/, (?=\d{2}:\d{2}$)/, ' at ');
+})();
 $('#today').textContent = dateObj(today).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
 $('#subject-filter').innerHTML = '<option value="all">All subjects</option>' + COURSES.map((course) => '<option value="' + esc(course.id) + '">' + esc(course.code) + '</option>').join('') + '<option value="conference">GeoMundus</option>';
 $('#calendar-month').innerHTML = CALENDAR_MONTHS.map((month) => '<option value="' + month + '">' + dateObj(month + '-01').toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }) + '</option>').join('');
