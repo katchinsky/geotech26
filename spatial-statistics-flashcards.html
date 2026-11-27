@@ -1,0 +1,608 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Spatial Statistics Flashcards</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one centred column, a unit filter and progress meter above a single flip card. */
+:root{
+  --bg:#EDF2F3; --surface:#FFFFFF; --ink:#13262B; --muted:#586D73; --line:#D2DCDF;
+  --accent:#1D6B88; --accent-ink:#FFFFFF;
+  --true:#17784F; --true-bg:#E3F3EB;
+  --false:#B23F37; --false-bg:#F9E6E4;
+  --learn:#C58A1B; --shadow:0 1px 2px rgba(19,38,43,.06),0 10px 30px -12px rgba(19,38,43,.18);
+  --f-display:"Space Grotesk",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1618; --surface:#142428; --ink:#E3EEF0; --muted:#8CA4AA; --line:#25393F;
+    --accent:#5BB8D6; --accent-ink:#06151A;
+    --true:#4CC592; --true-bg:#123227;
+    --false:#F27D72; --false-bg:#3A1C1A;
+    --learn:#E0AE49; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1618; --surface:#142428; --ink:#E3EEF0; --muted:#8CA4AA; --line:#25393F;
+  --accent:#5BB8D6; --accent-ink:#06151A;
+  --true:#4CC592; --true-bg:#123227;
+  --false:#F27D72; --false-bg:#3A1C1A;
+  --learn:#E0AE49; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -12px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body);
+  padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+h1{font:600 clamp(1.5rem,4.5vw,2rem)/1.15 var(--f-display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{margin:6px 0 0;color:var(--muted);font-size:.95rem}
+.mono{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* scope chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:.9rem;line-height:1.2;min-height:38px}
+.chip small{color:var(--muted);font-family:var(--f-mono);font-size:.72rem;margin-left:6px}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip[aria-pressed="true"] small{color:inherit;opacity:.8}
+
+/* progress meter */
+.meter{display:flex;flex-direction:column;gap:8px}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line)}
+.bar i{display:block;height:100%;transition:width .4s}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend b{width:10px;height:10px;border-radius:3px;display:inline-block}
+.c-solid{background:var(--true)} .c-learn{background:var(--learn)} .c-miss{background:var(--false)} .c-new{background:var(--line)}
+
+/* flip card */
+.stage{perspective:1400px}
+.flipper{display:grid;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.7,.2,1)}
+.flipper.flipped{transform:rotateY(180deg)}
+.face{grid-area:1/1;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+  padding:22px clamp(18px,4vw,32px) 26px;display:flex;flex-direction:column;gap:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:340px}
+.back{transform:rotateY(180deg)}
+.back.ok{border-color:var(--true)} .back.no{border-color:var(--false)}
+.tag{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--muted)}
+.tag .status{margin-left:auto;color:var(--accent)}
+.statement{font:500 clamp(1.15rem,3.4vw,1.45rem)/1.4 var(--f-display);margin:0;flex:1;display:flex;align-items:center;text-wrap:pretty}
+.statement.small{font-size:1rem;color:var(--muted);flex:0;font-weight:500}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ans{border:2px solid var(--line);background:var(--bg);border-radius:12px;min-height:58px;font:600 1.1rem var(--f-display);display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .1s,border-color .15s}
+.ans:hover{transform:translateY(-1px)}
+.ans.t:hover{border-color:var(--true);color:var(--true)}
+.ans.f:hover{border-color:var(--false);color:var(--false)}
+kbd{font:500 .7rem var(--f-mono);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--muted);background:var(--surface)}
+@media (hover:none){kbd{display:none}}
+.verdict{display:flex;align-items:center;gap:10px;font:600 1.3rem var(--f-display)}
+.verdict .pill{font:500 .74rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+.ok .verdict{color:var(--true)} .ok .pill{background:var(--true-bg)}
+.no .verdict{color:var(--false)} .no .pill{background:var(--false-bg)}
+.why{margin:0;font-size:1.02rem}
+.src{margin:0;color:var(--muted)}
+.note{margin:0;color:var(--muted);font-size:.9rem;border-top:1px dashed var(--line);padding-top:12px}
+.next{margin-top:auto;align-self:flex-start;background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:12px 20px;font-weight:600;display:inline-flex;gap:10px;align-items:center}
+.next kbd{background:transparent;color:inherit;border-color:currentColor;opacity:.75}
+
+/* interlude */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px clamp(18px,4vw,32px);display:flex;flex-direction:column;gap:16px}
+.panel h2{font:600 1.4rem var(--f-display);margin:0}
+.panel p{margin:0}
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:minmax(0,9rem) 1fr auto;gap:12px;align-items:center;font-size:.92rem}
+.row .track{height:8px;border-radius:4px;background:var(--false-bg);overflow:hidden}
+.row .track i{display:block;height:100%;background:var(--true)}
+.row span:last-child{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+/* footer */
+.foot{display:flex;flex-direction:column;gap:12px;color:var(--muted);font-size:.9rem}
+details summary{cursor:pointer;color:var(--ink);font-weight:500}
+details p{margin:8px 0 0;max-width:62ch}
+.ghost{border:1px solid var(--line);background:transparent;border-radius:8px;padding:8px 14px;font-size:.88rem}
+.danger{border-color:var(--false);color:var(--false)}
+.reset-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media (prefers-reduced-motion:reduce){.flipper,.bar i,.ans{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Spatial Statistics Flashcards</h1>
+    <p class="sub" id="sub">True or false from your LU1 to LU4 quizzes. Made by Teresa.</p>
+  </header>
+
+  <div class="chips" id="chips" role="group" aria-label="Choose learning units"></div>
+
+  <section class="meter" aria-label="Progress">
+    <div class="bar" id="bar"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <div class="stage" id="stage">
+    <div class="flipper" id="flipper">
+      <section class="face front" id="front" aria-live="polite">
+        <div class="tag mono"><span id="tClass"></span><span id="tTopic"></span><span class="status" id="tStatus"></span></div>
+        <p class="statement" id="stmt"></p>
+        <div class="answers">
+          <button class="ans t" id="btnT" type="button">True <kbd>T</kbd></button>
+          <button class="ans f" id="btnF" type="button">False <kbd>F</kbd></button>
+        </div>
+      </section>
+      <section class="face back" id="back">
+        <div class="verdict"><span class="pill" id="pill"></span><span id="vText"></span></div>
+        <p class="statement small" id="stmt2"></p>
+        <p class="why" id="why"></p>
+        <p class="src mono" id="src"></p>
+        <p class="note" id="note"></p>
+        <button class="next" id="btnNext" type="button">Next card <kbd>Enter</kbd></button>
+      </section>
+    </div>
+  </div>
+
+  <section class="panel" id="inter" hidden>
+    <h2>First pass complete</h2>
+    <p id="interText"></p>
+    <div class="rows" id="interRows"></div>
+    <p id="interHow"></p>
+    <button class="next" id="btnGo" type="button" style="margin-top:4px">Start review</button>
+  </section>
+
+  <footer class="foot">
+    <details>
+      <summary>How the deck works</summary>
+      <p>Your first pass shows every card once, in random order. After that, review has three levels. A card is Missed after a wrong answer, Learning after one correct answer, and Solid after two correct answers in a row. About 85% of review cards come from Missed and Learning, with Missed cards three times as likely as Learning ones. The other 15% are Solid cards, and each time the one you have not seen for the longest comes up, so the same ones do not keep repeating. A wrong answer sends a Solid card straight back to Missed. Nothing ever leaves the deck. The same card is never shown twice within a few draws.</p>
+      <p>Keys: T for true, F for false, Enter for the next card. Progress is saved in this browser.</p>
+    </details>
+    <div class="reset-row" id="resetRow"></div>
+  </footer>
+</div>
+
+<script>
+/* [lu, unused, topic, statement, answer (1 true / 0 false), note] */
+const Q = [
+[1,0,"Voronoi","In a simple Voronoi map (Thiessen polygons), areas with large polygons indicate lack of samples.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Moran's I","A statistically significant negative value of the Local Moran's I statistic indicates the location of a local outlier.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Moran's I","A non-significant value of the Global Moran's I indicates that the observed pattern of values is random.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Variable types","The time it takes to get to work is a discrete variable.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","An attribute has an anisotropic behaviour if the spatial dependence is proportional to the local mean.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","A proportional effect has no impact on the accuracy of spatial interpolation.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Interpolation basics","Spatial interpolation can estimate the weight of individuals at city locations without observed data.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","An attribute has an isotropic behaviour if the spatial autocorrelation does not depend on the direction.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Autocorrelation","When similar values cluster together on a map there is evidence of positive local spatial autocorrelation.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Interpolation basics","Spatial interpolation is the process of creating a surface based on values at isolated sample points.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Interpolation basics","Spatial interpolation can estimate the number of cheeseburgers consumed per household at households' locations without recorded data.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Describing data","The histogram is useful to analyse the type and strength of the relationship between two variables.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","A geographical attribute exhibits a trend pattern when the values increase (or decrease) in some direction.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Moran's I","A statistically significant positive value of the Local Moran's I statistic indicates the location of a local cluster.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Describing data","The regional histogram is useful to highlight extreme values location and outliers.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Autocorrelation","When dissimilar values cluster together on a map there is evidence of positive local spatial autocorrelation.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Variable types","Humidity is a continuous variable.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","Spatial description tools are useful to identify anisotropic patterns, in particular the directions of spatial continuity.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Interpolation basics","Sample points are locations where we collect data on some phenomenon and record the spatial coordinates.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Interpolation basics","Spatial interpolation is the process of using points with known values for an attribute, to predict the attribute values at locations where there are no data.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Describing data","The mean can be highly affected by extreme values in the tail of the distribution (skewed distributions).",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","An attribute has an isotropic behaviour if the spatial autocorrelation is proportional to the local mean.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Variable types","Sound (measurements in dB) is a discrete variable.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Interpolation basics","Spatial interpolation can estimate the number of mobile phones per household at households' locations without recorded data.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","An attribute has an anisotropic behaviour if the spatial dependence is proportional to the local variance.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Moran's I","A statistically significant negative value of the Local Moran's I statistic indicates the location of a local cluster.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","An attribute has an anisotropic behaviour only if it exhibits a spatial trend.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Describing data","An extreme value is only one value, so it may not greatly affect the mean (average value).",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Describing data","The histogram is useful to identify the occurrence of extreme values.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Variable types","The number of mobile phones per household is a discrete variable.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","An attribute has an isotropic behaviour if it exhibits a spatial trend.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Describing data","Spatial description tools are useful to identify the location of extreme values.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Variable types","The weight of individuals is a continuous variable.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Voronoi","In a simple Voronoi map (Thiessen polygons), areas with small polygons indicate lack of samples.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Variable types","The underwater depth of a lake (bathymetry) is a discrete variable.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Moran's I","A statistically significant positive value of the Local Moran's I statistic indicates the location of a local outlier.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","A proportional effect is characterized by a relationship between the local mean and the local variability.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Describing data","The scatterplot is useful to analyse the type and strength of the relationship between the two variables.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Autocorrelation","A phenomenon with a high degree of spatial autocorrelation may change abruptly over a short distance.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Autocorrelation","Spatial autocorrelation quantifies a basic principle of geography: things that are closer are more alike than things farther apart.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Autocorrelation","When similar values cluster together on a map there is evidence of negative local spatial autocorrelation.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Voronoi","Simple Voronoi maps (Thiessen polygons) are useful to identify spatial trends.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Moran's I","The Global Moran's I value measures spatial autocorrelation based on sample values only.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Autocorrelation","Spatial autocorrelation is the correlation of a variable with itself in space.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Moran's I","The Global Moran's I statistic can be used to assess the spatial autocorrelation of discrete attributes such as the number of pine trees within a park.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Autocorrelation","Spatial autocorrelation depends on data locations but not on the attribute values.",0,"Answer taken from your LU1 quiz result."],
+[1,0,"Anisotropy and trend","An attribute has an anisotropic behaviour if the spatial autocorrelation depends on the direction.",1,"Answer taken from your LU1 quiz result."],
+[1,0,"Spatial description","A feature [point or polygon] is part of a local cluster when it has neighbouring features with similarly high or low attribute values.",1,"Answer taken from your LU1 quiz result."],
+[2,0,"IDW","The Inverse Distance Weighting is a stochastic interpolator.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"IDW","The Inverse Distance Weighting interpolator assumes that each input point has a local influence that diminishes with distance.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","The prediction errors depend on the effectiveness of the interpolation model and the actual spatial distribution (but unknown) of the underlying phenomenon.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Stochastic interpolators associate a probability distribution to each location.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Local interpolators are always exact interpolators.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","The surface predicted by exact interpolators does not pass by the data values.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Deterministic interpolators perform well when the data set has clustered samples.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Deterministic interpolators associate a probability distribution to each location.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Global interpolators associate a deterministic value to each location.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"IDW","The Inverse Distance Weighting interpolator is exact, local and stochastic.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolation basics","The interpolation is more accurate if samples are closer to the location being estimated.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"IDW","In Inverse Distance Weighting interpolation, the observed values closest to the prediction location will have more influence on the predicted value than those farther away.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Local interpolators calculate predictions from samples within neighbourhoods.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"IDW","The Inverse Distance Weighting, the Splines and the Thiessen Polygons are all deterministic interpolators.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Global interpolators calculate predictions from samples within neighbourhoods.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Uncertainties can be associated to the estimations if a stochastic interpolator is used.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Deterministic interpolators associate a unique value to each location.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Global interpolators calculate predictions using all sample values.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"IDW","The Inverse Distance Weighting interpolator assumes that each input point has a local influence that increases with distance.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Deterministic interpolators account for the spatial correlation between observations.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"IDW","In Inverse Distance Weighting interpolation, a higher power parameter places less weight on the nearer points.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","One disadvantage of cross-validation is that it is susceptible to clustering of observations.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","The value estimated by an exact interpolator is equal to the observed sample value for each sampled location.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","The validation and cross-validation allow comparing the impact of different modeling strategies in the results.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Local interpolators associate a deterministic value to each location.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","The statistics of prediction errors called Mean Error and Mean Absolute Error allow verifying the accuracy of the model.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolation basics","All interpolators allow us to estimate the values for variables at point locations (or instants in time), belonging to the domain of the sample from which the model is derived, and for which there are no values.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","The statistics of prediction errors obtained through validation or cross-validation are limited to locations where there are samples.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Local interpolators associate a probability distribution to each location.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","The surface predicted by local interpolators only shows general tendencies, filtering the details.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Global interpolators associate a probability distribution to each location.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"IDW","The Inverse Distance Weighting interpolator is exact, global and deterministic.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","The statistic of prediction errors called Root Mean Square Error allows verifying the accuracy of the model.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","One advantage of cross-validation is that it is not susceptible to clustering of observations.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Uncertainties can be associated to the estimations if a deterministic interpolator is used.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","The statistic of prediction errors called Root Mean Square Error allows verifying if the estimation is biased.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Deterministic interpolators are always exact interpolators.",0,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","Ideally, the distribution of prediction errors is centred on zero.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Interpolator types","Deterministic interpolators are always useful because, even with sparse data, they can be easily applied and provide a first look at the attribute's spatial pattern in the study region.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"IDW","The Inverse Distance Weighting interpolator is exact, local and deterministic.",1,"Answer taken from your LU2 quiz result."],
+[2,0,"Validation and errors","The statistics of prediction errors called Mean Error and Mean Absolute Error allow verifying if the estimation is biased.",1,"Answer taken from your LU2 quiz result."],
+[3,0,"Kriging","Kriging is a group of geostatistics techniques to interpolate the value Z(x0) of a random field Z(x).",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","In a variogram, the sill parameter represents the variability in the absence of spatial correlation.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Unlike the weights associated to the sample values of the Inverse Distance Weighting, the kriging weights have a declustering effect.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","In a variogram, the sill parameter is the distance from which there is no longer spatial dependence.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Kriging methods are deterministic interpolators.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","In Ordinary kriging, the prediction standard error map is not a spatial uncertainty map, because it only depends on the variogram model and the samples geometry.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The methods of Kriging and Inverse Distance Weighting are both local interpolators, because they use a local neighbourhood to search for samples that will be used in the interpolation.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","Cross-validation is a useful tool to evaluate the goodness-of-fit of a variogram model.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"h-scatterplot and correlogram","The correlogram summarises the variability of the points of the h-scatterplots for a specific direction and various (lag) distances |h|.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"h-scatterplot and correlogram","The cloud of points of an h-scatterplot becomes fatter and more diffuse for less similar values.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging weights associated to observed values closest to the prediction location will be lower than those weights associated to farther away values.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","Kriging weights depend on the variogram model.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The interpolation methods called kriging do not require that the collected data are correlated in space.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The semivariogram is a measure of the degree of spatial dependence between measurements located in space.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","If the variable's behaviour of spatial dependence is a function that depends on the direction, it is natural that its variogram presents a different shape depending on the direction. In this case, it is said that the regionalised variable is anisotropic.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Anisotropy","An attribute has an anisotropic behaviour if it exhibits a spatial trend.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Geostatistical modelling is based on the principle: nearby points in space tend to have values less similar than more distant points.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The nugget effect only occurs when there are measurement errors.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Interpolation typically leads to an overestimation of small values and an underestimation of large ones, but this smoothing effect decreases with decreasing sampling density.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The function that returns the semi-variance as a function of the distance between the points is called the semivariogram.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Kriging is similar to Inverse Distance Weighting in the sense that it weights the surrounding measured values to derive a prediction for an unmeasured location.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging types","In Universal kriging, the trend component is modelled as a linear combination of functions of the spatial coordinates.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging weights associated to the sample values are determined so that the kriging estimator is unbiased and has minimum estimation variance.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging types","In Ordinary kriging, the prediction standard error map is a spatial uncertainty map.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging types","Ordinary kriging assumes stationarity within local neighbourhoods.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Kriging interpolation is less accurate if samples are closer to the location being estimated.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging types","Ordinary kriging weights are always positive.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The semivariogram measures the spatial variability between points as a function of the distance between points, thus as the distance increases the semivariogram values increase.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Similarly to the Inverse Distance Weighting, kriging interpolation is more accurate if samples are not clustered.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Defining a large search neighbourhood to select more samples always leads to better kriging predictions.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"h-scatterplot and correlogram","The correlogram decreases with increasing (lag) distance |h| in a specific direction.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging estimator is mathematically closely related to cluster analysis.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Generally, kriging methods are exact, local and stochastic interpolators.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","In a variogram, the range parameter represents the variability in the absence of spatial correlation.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","One of the main advantages of kriging is that, once we have a model that characterises how the variable occurs in the space, it is able to use this specific information for interpolation purposes.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging variance depends on the covariance model, but does not depend on data values.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"h-scatterplot and correlogram","The correlogram measures the spatial correlation between points as a function of the distance between points, thus as the distance increases the correlogram values increase.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging types","In Simple kriging, the trend component is modelled as a linear combination of functions of the spatial coordinates.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"h-scatterplot and correlogram","The cloud of points of an h-scatterplot will plot points close to the line x=y for greater (lag) distances |h|.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Anisotropy","An attribute has an isotropic behaviour if the spatial dependence does not depend on the direction.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The interpolation method called kriging requires that the collected data are correlated in space, and we take this information from the variogram analysis.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Anisotropy","An attribute has an isotropic behaviour if the spatial dependence is proportional to the local mean.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The semivariogram measures the spatial variability between points as a function of the distance between points, thus as the distance increases the semivariogram values decrease.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Interpolation algorithms are usually low-pass filters, meaning that they tend to smooth local spatial variation.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The methods of Kriging and Inverse Distance Weighting are both global interpolators, because they use all available samples in the interpolation of each unsampled location.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","In a variogram, the range parameter is the distance beyond which the evidence of spatial dependence vanishes.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","When the attribute exhibits geometric anisotropy, the semivariograms for two perpendicular directions have different sill values.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The Exponential variogram model presents a parabolic behaviour near the origin.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging variance is independent of data values.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","In a variogram, the range parameter represents great dispersion over short distances.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"h-scatterplot and correlogram","The correlogram measures the spatial correlation between points as a function of the distance between points, thus as the distance increases the correlogram values decrease.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging types","In Universal kriging, the mean is considered known and constant throughout the study area.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","If a variable is spatially independent, this behaviour can be identified from the variogram provided that the mesh of points is sufficiently dense.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Kriging interpolators assume that the local mean is constant (local stationarity).",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging estimator is based on the weighted sum of sample values, so that the weights assigned to the samples are calculated in order to minimize the estimation variance under the constraint of the estimation errors unbiasedness.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","Interpolation typically leads to an overestimation of small values and an underestimation of large ones. This smoothing effect increases with increasing relative nugget effect.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging interpolator is a biased estimator.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging variance does not depend on the geometry of the data values.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Kriging is a group of geostatistics techniques to interpolate the value Z(x0) of a deterministic variable Z(x).",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Kriging is a geostatistical interpolation technique that considers both the distance and the degree of variation between known data points when estimating values in unknown areas.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Generally, kriging methods are exact, global and stochastic interpolators.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","Among variogram models with a sill, the most common is the logarithmic model that presents a linear behaviour near the origin.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","When the attribute is anisotropic, the semivariograms for two perpendicular directions have the same model function, the same sill and different range values.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","Interpolation typically leads to an overestimation of small values and an underestimation of large ones. This smoothing effect increases with decreasing sampling density.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","If the variable's behaviour of spatial dependence is a function that depends on the direction, it is natural that its variogram presents a different shape depending on the direction. In this case, it is said that the regionalised variable is isotropic.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging variance is the minimized error variance.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging types","In Simple kriging, the mean is considered known and constant throughout the study area.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The Spherical variogram model presents a linear behaviour near the origin.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The nugget effect can be attributed to measurement errors or spatial sources of variation at distances smaller than the sampling interval, or both.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","A pure nugget effect model corresponds to the total absence of spatial autocorrelation.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The nugget represents great dispersion over short distances.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"h-scatterplot and correlogram","The cloud of points of an h-scatterplot becomes fatter and more diffuse for greater (lag) distance |h|.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging","The kriging estimator is mathematically closely related to linear regression.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Kriging types","The Ordinary kriging method assumes that local means are relatively constant and very similar to the value of the population mean that is known. The population mean is therefore used for each local estimation, together with the neighbouring points established as needed for the estimation.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","In a variogram, the sill parameter represents little dispersion over short distances.",0,"Answer taken from your LU3 quiz result."],
+[3,0,"h-scatterplot and correlogram","The shape of the cloud of points on an h-scatterplot tells us how similar/dissimilar are the data values separated by a vector h.",1,"Answer taken from your LU3 quiz result."],
+[3,0,"Variogram","The nugget represents little dispersion over short distances.",0,"Answer taken from your LU3 quiz result."],
+[4,0,"Residuals","Large residuals indicate a good model fit.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"MGWR","Multiscale Geographically Weighted Regression (MGWR) assumes that the spatial scales of all variables are the same across the entire study area.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"VIF and collinearity","The value of the Variance Inflation Factor (VIF) of each explanatory variable should be high to guarantee that the corresponding explanatory variable is a significant predictor of the dependent variable.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","Ordinary Least Squares (OLS) and Geographically Weighted Regression are used to understand, or predict, linear relationships among variables.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","Geographically Weighted Regression fits a spatial kernel to the data (i.e., requires a spatial weights matrix).",1,"Answer taken from your LU4 quiz result."],
+[4,0,"VIF and collinearity","The Variance Inflation Factor (VIF) of each explanatory variable is used to diagnose the possible existence of multicollinearity.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","Geographically Weighted Regression allows for different relationships to exist at different points in space.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","In Geographically Weighted Regression, the use of a fixed spatial kernel may lead to inaccurate estimates in areas with few data points.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","The residuals are the difference between the observed values of the study variable (y) and the values of y that are predicted with a regression model.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","In Geographically Weighted Regression, the use of a fixed spatial kernel may lead to biased parameter estimates in areas with many data points.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"VIF and collinearity","In Ordinary Least Squares (OLS), multicollinearity leads to unreliable regression results.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"VIF and collinearity","Local multicollinearity is a severe problem in Geographically Weighted Regression because it may bias the results.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","The Geographically Weighted Regression residuals should not exhibit spatial autocorrelation.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","Adaptive spatial kernels have larger bandwidths in areas with many data points and have smaller bandwidths in areas with few data points.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","In Ordinary Least Squares (OLS), the residuals variance is not constant when the phenomena is non-stationary.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","Adaptive spatial kernels have larger bandwidths in areas with few data points and they have smaller bandwidths in areas with many data points.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","The residuals of the Geographically Weighted Regression should exhibit spatial autocorrelation.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","When a regression model is properly specified, the residuals cluster together spatially.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"OLS","In Ordinary Least Squares (OLS), the explanatory variables should be correlated with each other.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","In Geographically Weighted Regression, the parameters are allowed to vary in space.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Model fit","The Akaike's Information Criterion (AIC) is a statistical test used to verify the goodness of fit of each model.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","When a regression model is properly specified, the residuals are spatially autocorrelated.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Model fit","The Akaike's Information Criterion (AIC) can assist in the selection of the best regression model by measuring the overall goodness of fit of each model.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"MGWR","The Multiscale Geographically Weighted Regression (MGWR) model is calibrated using a backfitting algorithm.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","Geographically Weighted Regression is a technique that deals with spatial non-stationarity.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"VIF and collinearity","The value of the Variance Inflation Factor (VIF) of each explanatory variable should be very small to guarantee that the corresponding explanatory variable is a significant predictor of the dependent variable.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"MGWR","In Multiscale Geographically Weighted Regression (MGWR), each explanatory variable can have its own bandwidth.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","The hypothesis of constant variance of the residuals can be tested using the Global Moran's I statistic.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","In Ordinary Least Squares (OLS), heteroscedasticity (non-constant variance) of the residuals has serious consequences for the interpretation of the regression results.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","In Geographically Weighted Regression, a regression model is fitted within a search window, giving most weight to the points that are closest to the one at the centre of the window.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","The residuals of the Geographically Weighted Regression should not exhibit spatial autocorrelation.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","When a regression model is properly specified, the residuals are spatially random.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"OLS","In Ordinary Least Squares (OLS), the parameters are not allowed to vary in space.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","The statistical tests used to diagnose the Ordinary Least Squares (OLS) model can also be used to diagnose the Geographically Weighted Regression model.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Model fit","The Coefficient of Determination (R-Squared) indicates whether there is a significant overall good fit of the regression model to the data.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"OLS","One of the most important assumptions of Ordinary Least Squares (OLS) is that the observations should be independent of each other, which is not usually the case of geographical data.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","If the variogram model of the residuals is not a pure nugget effect, then the observations are not independent, which violates an Ordinary Least Squares (OLS) assumption.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","In Ordinary Least Squares (OLS), spatially autocorrelated residuals lead to unreliable regression results.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","If the Ordinary Least Squares (OLS) assumption of constant variance of the residuals is not met, the researcher should use a spatial regression model.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"OLS","In Ordinary Least Squares (OLS), the p-values of the t-statistics indicate whether the corresponding explanatory variable is a significant predictor of the dependent variable.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","In Geographically Weighted Regression, the explanatory variables should be correlated with each other.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"VIF and collinearity","The Variance Inflation Factor (VIF) of each explanatory variable is used to diagnose non-constant residuals.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"OLS","In Ordinary Least Squares (OLS), the parameters are allowed to vary in space.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Model fit","The Coefficient of Determination (R-Squared) measures the proportion of variability in the dataset that is accounted for by the regression model.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","In Geographically Weighted Regression, the use of a fixed spatial kernel may lead to inaccurate estimates in areas with many data points.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","Adaptive spatial kernels should always be preferred to fixed spatial kernels.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","If the explanatory variables are correlated with each other, then the Geographically Weighted Regression model is appropriate.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","The Global Moran's I statistic should be used to analyse the standardized residuals of Geographically Weighted Regression models.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","Where data points are dense, Geographically Weighted Regression with a large fixed spatial kernel might not capture relationships over relatively small distances.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","Geographically Weighted Regression is a technique that deals with spatial autocorrelation.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","The independence of the residuals values can be tested using the Global Moran's I statistic.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","Spatial non-stationarity occurs when the relationships between the dependent and explanatory variables are inconsistent across the study area (e.g., one variable has strong explanatory power in region A, but is insignificant in region B).",1,"Answer taken from your LU4 quiz result."],
+[4,0,"Residuals","The Geographically Weighted Regression residuals should exhibit spatial autocorrelation.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"Spatial kernels","Geographically Weighted Regression with a fixed spatial kernel always provides reliable estimates.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","Geographically Weighted Regression is used to understand, or predict, non-linear relationships among variables.",0,"Answer taken from your LU4 quiz result."],
+[4,0,"GWR","In Geographically Weighted Regression, the p-values of t-statistics should be used to verify the significance of the explanatory variables.",1,"Answer taken from your LU4 quiz result."],
+[4,0,"OLS","If the explanatory variables are correlated with each other, then the Ordinary Least Squares (OLS) model is appropriate.",0,"Answer taken from your LU4 quiz result."],
+];
+/* ---------- state ---------- */
+const hash = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36); };
+const CARDS = Q.map(([c, sl, t, q, a, e]) => ({ id: hash(q), c, sl, t, q, a: !!a, e }));
+const KEY = 'ss-flashcards-v1';
+const CLASS_NAMES = { 1: 'Description and autocorrelation', 2: 'Interpolation', 3: 'Kriging and variograms', 4: 'Regression (OLS, GWR)' };
+const NEED_SHARE = 0.85;          // share of review draws from missed + learning cards
+const MISS_W = 3;                 // a missed card is 3x as likely as a learning card
+
+let S = {};                       // id -> {s seen, r right, w wrong, k streak, wt weight, f first attempt correct}
+try { S = (JSON.parse(localStorage.getItem(KEY) || '{}').cards) || {}; } catch (e) { S = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ cards: S })); } catch (e) {} };
+
+let scope = new Set([1, 2, 3, 4]);
+let phase = 'first';              // first | review | interlude
+let queue = [], firstTotal = 0, current = null, answered = false;
+let recent = [], sess = { n: 0, ok: 0 };
+
+const $ = id => document.getElementById(id);
+const inScope = c => scope.has(c.c);
+const seen = c => !!(S[c.id] && S[c.id].s);
+const lastSeen = c => (S[c.id] && S[c.id].t) || 0;
+const status = c => { const s = S[c.id]; if (!s || !s.s) return 'new'; if (s.k >= 2) return 'solid'; if (s.k === 1) return 'learn'; return 'miss'; };
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+function startScope() {
+  const pool = CARDS.filter(inScope);
+  queue = shuffle(pool.filter(c => !seen(c)));
+  firstTotal = queue.length;
+  phase = queue.length ? 'first' : 'review';
+  recent = []; sess = { n: 0, ok: 0 };
+  nextCard(false);
+}
+
+/* Review picking: most draws go to cards that still need work (missed or
+   learning). Solid cards get a small share, and when one is drawn it is the
+   one not seen for the longest, so the same solid cards do not keep returning. */
+function pickWeighted() {
+  const pool = CARDS.filter(inScope);
+  const need = pool.filter(c => status(c) !== 'solid');
+  const solid = pool.filter(c => status(c) === 'solid');
+  const fresh = (list, keep) => {
+    const n = Math.min(keep, list.length - 1);
+    const skip = new Set(recent.slice(Math.max(0, recent.length - n)));
+    const out = list.filter(c => !skip.has(c.id));
+    return out.length ? out : list;
+  };
+  const pNeed = need.length >= 6 ? NEED_SHARE : Math.min(NEED_SHARE, 0.5);
+  if (need.length && (!solid.length || Math.random() < pNeed)) {
+    const cand = fresh(need, 4);
+    const w = c => status(c) === 'miss' ? MISS_W : 1;
+    let r = Math.random() * cand.reduce((a, c) => a + w(c), 0);
+    for (const c of cand) { r -= w(c); if (r <= 0) return c; }
+    return cand[cand.length - 1];
+  }
+  const cand = fresh(solid, 8);
+  let best = null;
+  for (let i = 0; i < 3; i++) {
+    const c = cand[Math.floor(Math.random() * cand.length)];
+    if (!best || lastSeen(c) < lastSeen(best)) best = c;
+  }
+  return best;
+}
+
+function nextCard(animate = true) {
+  if (phase === 'first') {
+    if (!queue.length) { phase = 'interlude'; render(); return; }
+    current = queue.shift();
+  } else {
+    current = pickWeighted();
+  }
+  recent.push(current.id);
+  answered = false;
+  render(animate);
+}
+
+function answer(val) {
+  if (answered || phase === 'interlude' || !current) return;
+  answered = true;
+  const ok = val === current.a;
+  const st = S[current.id] || (S[current.id] = { s: 0, r: 0, w: 0, k: 0, wt: 1, f: null });
+  if (st.f === null) st.f = ok;
+  st.s++;
+  st.t = Date.now();
+  if (ok) { st.r++; st.k++; sess.ok++; }
+  else { st.w++; st.k = 0; }
+  sess.n++;
+  save();
+  const note = !ok ? 'Marked as missed. It will come back soon and often until you get it right twice in a row.'
+    : st.k >= 2 ? 'Solid now. It moves to the back of the line and only returns occasionally.'
+    : 'Right once. One more correct answer in a row makes it solid.';
+  $('back').className = 'face back ' + (ok ? 'ok' : 'no');
+  $('pill').textContent = ok ? 'Correct' : 'Wrong';
+  $('vText').textContent = 'This statement is ' + (current.a ? 'TRUE' : 'FALSE');
+  $('stmt2').textContent = current.q;
+  $('why').textContent = current.e;
+  $('src').textContent = 'LU' + current.c + ' quiz';
+  $('note').textContent = note;
+  setFace(true);
+  renderMeter();
+  renderStatus();
+  setTimeout(() => $('btnNext').focus({ preventScroll: true }), 60);
+}
+
+function setFace(flipped) {
+  $('flipper').classList.toggle('flipped', flipped);
+  const f = $('front'), b = $('back');
+  if (flipped) { f.setAttribute('inert', ''); b.removeAttribute('inert'); }
+  else { b.setAttribute('inert', ''); f.removeAttribute('inert'); }
+}
+
+/* ---------- rendering ---------- */
+function renderStatus() {
+  $('tStatus').textContent = phase === 'first'
+    ? 'First pass ' + Math.min(firstTotal, firstTotal - queue.length) + ' / ' + firstTotal
+    : 'Review · ' + sess.n + ' answered' + (sess.n ? ' · ' + Math.round(100 * sess.ok / sess.n) + '% right' : '');
+}
+
+function renderChips() {
+  const box = $('chips'); box.innerHTML = '';
+  const all = scope.size === 4;
+  const mk = (label, count, pressed, fn) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.setAttribute('aria-pressed', pressed);
+    b.innerHTML = label + '<small>' + count + '</small>';
+    b.addEventListener('click', fn); box.appendChild(b);
+  };
+  mk('All units', CARDS.length, all, () => { scope = new Set([1, 2, 3, 4]); startScope(); });
+  [1, 2, 3, 4].forEach(c => {
+    const n = CARDS.filter(x => x.c === c).length;
+    mk('LU' + c + ' · ' + CLASS_NAMES[c], n, !all && scope.has(c), () => {
+      if (all) scope = new Set([c]);
+      else if (scope.has(c)) { scope.delete(c); if (!scope.size) scope = new Set([1, 2, 3, 4]); }
+      else scope.add(c);
+      startScope();
+    });
+  });
+}
+
+function renderMeter() {
+  const pool = CARDS.filter(inScope);
+  const n = { solid: 0, learn: 0, miss: 0, new: 0 };
+  pool.forEach(c => n[status(c)]++);
+  const pct = k => (100 * n[k] / pool.length).toFixed(2) + '%';
+  $('bar').innerHTML = ['solid', 'learn', 'miss', 'new'].map(k => '<i class="c-' + k + '" style="width:' + pct(k) + '"></i>').join('');
+  const lbl = { solid: 'Solid', learn: 'Learning', miss: 'Missed', new: 'New' };
+  $('legend').innerHTML = ['solid', 'learn', 'miss', 'new'].map(k => '<span><b class="c-' + k + '"></b>' + lbl[k] + ' ' + n[k] + '</span>').join('')
+    + '<span>of ' + pool.length + ' cards</span>';
+  $('bar').setAttribute('role', 'img');
+  $('bar').setAttribute('aria-label', n.solid + ' solid, ' + n.learn + ' learning, ' + n.miss + ' missed, ' + n.new + ' new');
+}
+
+function renderInterlude() {
+  const pool = CARDS.filter(inScope);
+  const firsts = pool.filter(c => S[c.id] && S[c.id].f !== null && S[c.id].f !== undefined);
+  const right = firsts.filter(c => S[c.id].f).length, wrong = firsts.length - right;
+  $('interText').textContent = 'You answered ' + firsts.length + ' cards. First try: ' + right + ' right and ' + wrong + ' wrong.';
+  const rows = $('interRows'); rows.innerHTML = '';
+  [...scope].sort().forEach(c => {
+    const f = firsts.filter(x => x.c === c); if (!f.length) return;
+    const ok = f.filter(x => S[x.id].f).length;
+    const row = document.createElement('div'); row.className = 'row';
+    row.innerHTML = '<span>LU' + c + ' · ' + CLASS_NAMES[c] + '</span><div class="track"><i style="width:' + (100 * ok / f.length) + '%"></i></div><span>' + ok + '/' + f.length + '</span>';
+    rows.appendChild(row);
+  });
+  $('interHow').textContent = wrong
+    ? 'Review now focuses on the ' + wrong + ' you missed and any card still learning. Solid cards stay in the deck but come back only occasionally.'
+    : 'You got them all right. Review mode keeps cycling through every card, oldest first.';
+}
+
+function render(animate = true) {
+  renderChips(); renderMeter();
+  const inter = phase === 'interlude';
+  $('stage').hidden = inter; $('inter').hidden = !inter;
+  if (inter) { renderInterlude(); return; }
+  const f = $('flipper');
+  if (!animate) f.style.transition = 'none';
+  setFace(false);
+  $('tClass').textContent = 'LU' + current.c;
+  $('tTopic').textContent = current.t;
+  $('stmt').textContent = current.q;
+  renderStatus();
+  if (!animate) { void f.offsetWidth; f.style.transition = ''; }
+}
+
+/* ---------- reset ---------- */
+function renderReset(confirming) {
+  const r = $('resetRow'); r.innerHTML = '';
+  if (!confirming) {
+    const b = document.createElement('button'); b.className = 'ghost'; b.type = 'button'; b.textContent = 'Reset all progress';
+    b.addEventListener('click', () => renderReset(true)); r.appendChild(b);
+  } else {
+    const t = document.createElement('span'); t.textContent = 'This clears every answer you have given.';
+    const y = document.createElement('button'); y.className = 'ghost danger'; y.type = 'button'; y.textContent = 'Yes, reset';
+    y.addEventListener('click', () => { S = {}; save(); renderReset(false); startScope(); });
+    const n = document.createElement('button'); n.className = 'ghost'; n.type = 'button'; n.textContent = 'Cancel';
+    n.addEventListener('click', () => renderReset(false));
+    r.append(t, y, n);
+  }
+}
+
+/* ---------- events ---------- */
+$('btnT').addEventListener('click', () => answer(true));
+$('btnF').addEventListener('click', () => answer(false));
+$('btnNext').addEventListener('click', () => { if (answered) { nextCard(); $('btnT').focus({ preventScroll: true }); } });
+$('btnGo').addEventListener('click', () => { phase = 'review'; recent = []; sess = { n: 0, ok: 0 }; nextCard(false); });
+document.addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (k === 't') answer(true);
+  else if (k === 'f') answer(false);
+});
+
+renderReset(false);
+startScope();
+</script>
+
+</body></html>
