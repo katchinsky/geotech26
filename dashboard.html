@@ -66,7 +66,7 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-11-24","gis","Term-paper proposal presentation","23:59","Moodle (Turnitin Assignment 2)",0,1,"no","deadline","Part of the 40% term-paper component · no separate weight","Upload the presentation file via Turnitin before the presentation sessions start on 25 Nov."
 "2026-11-24","rs","Midterm exam","In class","Assessments + Planning",15,1,"no","deadline","15% of RS final grade","15% · Paper-based true/false questions on fundamentals, image processing and machine learning."
 "2026-11-25","stats","Email project topic & group members","End of day · midnight","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Email the project topic and group members."
-"2026-11-30","stats","Exam","17:00 · about 75 minutes","Calendar + syllabus",30,1,"no","deadline","30% of STAT final grade","30% · Followed by project work until 19:00. Replaces 1 Dec class."
+"2026-11-30","stats","Exam","17:00 · about 75 minutes","Calendar + syllabus",30,1,"no","deadline","30% of STAT final grade","30% · Followed by project work until 19:00. Replaces 1 Dec class. Practice: [true/false flashcards from the LU1 to LU4 quizzes, made by Teresa](spatial-statistics-flashcards.html)."
 "2026-11-30","pt","Individual oral presentation","In class · 15:00–17:00","Moved by instructor",20,1,"no","deadline","20% of PT A1 final grade","20% · 5–7 minutes, expanding Video 2, without reading from notes or scripts. Moved from 26 Nov."
 "2026-12-03","pt","Final written exam","In class · 15:00–17:00","Session 1 slides",30,1,"no","deadline","30% of PT A1 final grade","30% · 90 minutes plus 30 minutes of tolerance."
 "2026-12-03","rs","Assignment · land cover classification","23:59","Moved by instructor",15,1,"no","deadline","15% of RS final grade","15% · Classification map in GeoTIFF plus a report of at most 2 pages on the steps taken. Late: minus 10% of the assignment grade per day; not accepted after 5 days. Moved from 30 Nov."
@@ -163,7 +163,8 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
       "consultation": "Sara Ribeiro: by appointment, Teams or room 21 (floor 2, IMS). Cristina Costa: by appointment, Teams or room 235 (floor 2, CAN)",
       "sources": [
         {"label": "Ana Cristina Costa", "url": "https://novaims.unl.pt/en/nova-ims/teaching-staff/d/128"},
-        {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"}
+        {"label": "Sara Ribeiro", "url": "https://novaims.unl.pt/pt/a-nova-ims/docentes/d/59"},
+        {"label": "Quiz flashcards by Teresa", "url": "spatial-statistics-flashcards.html"}
       ],
       "rules": [
         "Exam, oral presentation and project report are mandatory for approval; assignments are optional, but their weights remain in the final formula. Enter 0 for an omitted assignment.",
@@ -1005,9 +1006,12 @@ function personLines(people) {
     return name + email;
   }).join('<br>');
 }
+function detailText(text) {
+  return esc(text).replace(/\[([^\]]+)\]\(((?:https:\/\/[^\s)]+)|(?:[\w-]+\.html))\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1 ↗</a>');
+}
 function sourceLinks(sources) {
   return (sources || []).map((source) => {
-    if (source.url && /^https:\/\//.test(source.url)) {
+    if (source.url && /^(https:\/\/|[\w-]+\.html$)/.test(source.url)) {
       return '<a href="' + esc(source.url) + '" target="_blank" rel="noopener noreferrer">' + esc(source.label) + ' ↗</a>';
     }
     return esc(source.label);
@@ -1047,7 +1051,7 @@ function renderCalendar() {
 }
 function renderSelectedDay() {
   const summary = daySummary(selectedDate);
-  const items = summary.events.length ? summary.events.map((event) => '<article class="day-detail"><strong>' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</strong><div class="weight-label">' + esc(event.label) + '</div><p>' + esc(event.when) + '</p><p>' + esc(event.details) + '</p></article>').join('') : '<p class="small">No dated deadlines or events in the table.</p>';
+  const items = summary.events.length ? summary.events.map((event) => '<article class="day-detail"><strong>' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</strong><div class="weight-label">' + esc(event.label) + '</div><p>' + esc(event.when) + '</p><p>' + detailText(event.details) + '</p></article>').join('') : '<p class="small">No dated deadlines or events in the table.</p>';
   $('#selected-day').innerHTML = '<div class="eyebrow">' + dateObj(selectedDate).toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' }) + '</div><h3>' + dateObj(selectedDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) + '</h3><p class="small">' + summary.count + ' deadline' + (summary.count === 1 ? '' : 's') + ' / assessment' + (summary.count === 1 ? '' : 's') + ' · ' + formatShare(summary.weight) + ' known weight points' + (summary.uncertain ? ' + unallocated weight' : '') + '</p>' + items;
 }
 function moveMonth(delta) {
@@ -1076,7 +1080,7 @@ function renderAgenda() {
     const heading = monthLabel === month ? '' : '<div class="month">' + monthLabel + '</div>';
     month = monthLabel;
     const when = delta === 0 ? 'Today' : delta < 0 ? 'Past date' : delta === 1 ? 'Tomorrow' : 'in ' + delta + ' days';
-    return heading + '<article class="event"><div class="day">' + date.getUTCDate() + '<small>' + date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'UTC' }) + '</small></div><div><div class="event-title">' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</div><div class="event-info">' + esc(event.when) + ' · ' + when + '</div>' + (event.source === 'Conflict' ? '<div><span class="badge warn">Conflict</span></div>' : '') + '<details><summary>Details</summary><p>' + esc(event.details) + '</p></details></div></article>';
+    return heading + '<article class="event"><div class="day">' + date.getUTCDate() + '<small>' + date.toLocaleDateString('en-GB', { weekday: 'short', timeZone: 'UTC' }) + '</small></div><div><div class="event-title">' + esc(courseCode(event.course)) + ' · ' + esc(event.title) + '</div><div class="event-info">' + esc(event.when) + ' · ' + when + '</div>' + (event.source === 'Conflict' ? '<div><span class="badge warn">Conflict</span></div>' : '') + '<details><summary>Details</summary><p>' + detailText(event.details) + '</p></details></div></article>';
   }).join('') : '<p class="small">No dated assessments in this selection. Choose All upcoming to see later entries.</p>';
 }
 function buildWeeks() {
