@@ -1129,7 +1129,7 @@ function renderStudentMenu() {
     const gis = gisSessionFor(student);
     const gisDate = gis ? dateObj(gis.date).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }) : '';
     const parts = [];
-    parts.push(slot ? 'RS ' + dayLabel(slot) : 'RS: no slot listed');
+    parts.push(slot ? 'RS ' + dayLabel(slot).replace(' · ', ', ') : 'RS: no slot listed');
     parts.push(gis ? 'GIS ' + gisDate : 'GIS: not signed up yet');
     note.textContent = 'Presenting ' + parts.join(' · ');
   }
