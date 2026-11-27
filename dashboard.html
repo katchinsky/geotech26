@@ -25,7 +25,7 @@
   pool        optional. quiz or presentation on a GIS row. Weight becomes that component's percentage divided by how many of your own rows share the pool. Leave blank otherwise. Term-paper presentation slots stay blank: you present once, so they are not extra slices of the 40%.
 
   RS project presentation days are not rows in this table. They come from the slot list in the script (RS_SLOTS). Pick a name on the page; that person keeps their day.
-  GIS presentations are not rows either. They come from the class roster in the script (GIS_WEEKS) and follow the same name; GIS_ALIASES maps a name spelled differently on the two lists.
+  GIS presentations are not rows either. They come from the class roster in the script (GIS_WEEKS) and follow the same name; GIS term-paper presentation sessions come from GIS_SESSIONS (who signed up for which date); GIS_ALIASES maps a name spelled differently on the two lists.
 
   Courses (the script with id="courses-data"):
   Edit names, emails, rooms, consultation hours, component weights, rules, and the notes list.
@@ -66,16 +66,12 @@ date,course,title,when,source,weight,counts,uncertain,kind,label,details,pool
 "2026-11-24","gis","Term-paper proposal presentation","23:59","Moodle (Turnitin Assignment 2)",0,1,"no","deadline","Part of the 40% term-paper component · no separate weight","Upload the presentation file via Turnitin before the presentation sessions start on 25 Nov."
 "2026-11-24","rs","Midterm exam","In class","Assessments + Planning",15,1,"no","deadline","15% of RS final grade","15% · Paper-based true/false questions on fundamentals, image processing and machine learning."
 "2026-11-25","stats","Email project topic & group members","End of day · midnight","Calendar + syllabus",0,1,"no","deadline","Administrative deadline · no separate weight","Email the project topic and group members."
-"2026-11-25","gis","Term-paper presentations · session 1","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions. ≤15 minutes + 10 minutes discussion."
 "2026-11-30","stats","Exam","17:00 · about 75 minutes","Calendar + syllabus",30,1,"no","deadline","30% of STAT final grade","30% · Followed by project work until 19:00. Replaces 1 Dec class."
 "2026-11-30","pt","Individual oral presentation","In class · 15:00–17:00","Moved by instructor",20,1,"no","deadline","20% of PT A1 final grade","20% · 5–7 minutes, expanding Video 2, without reading from notes or scripts. Moved from 26 Nov."
-"2026-12-02","gis","Term-paper presentations · session 2","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
 "2026-12-03","pt","Final written exam","In class · 15:00–17:00","Session 1 slides",30,1,"no","deadline","30% of PT A1 final grade","30% · 90 minutes plus 30 minutes of tolerance."
 "2026-12-03","rs","Assignment · land cover classification","23:59","Moved by instructor",15,1,"no","deadline","15% of RS final grade","15% · Classification map in GeoTIFF plus a report of at most 2 pages on the steps taken. Late: minus 10% of the assignment grade per day; not accepted after 5 days. Moved from 30 Nov."
-"2026-12-09","gis","Term-paper presentations · session 3","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","One of four sessions."
 "2026-12-10","gdm","Final exam","17:00–19:00","Calendar + syllabus",30,1,"no","deadline","30% of GDM final grade","30% · Exam grade must be at least 8/20."
 "2026-12-15","stats","Oral project presentation","17:00","Calendar + syllabus",10,1,"no","deadline","10% of STAT final grade","10% · All authors present. 7 minutes + 3 minutes discussion."
-"2026-12-16","gis","Term-paper presentations · final session","18:00–20:00","Calendar + syllabus",0,0,"yes","slot","Possible slot · part of the 40% term-paper component","Last session. Final paper and slides are due the next day."
 "2026-12-17","gis","Final term paper & presentation file","Time unspecified","Calendar + syllabus rule",40,1,"no","deadline","40% of GIS final grade","40% · Literature review, ≤5,000 words, plus the presentation file."
 "2026-12-18","rs","Final project submission","23:59","Assessments",20,1,"no","deadline","20% of RS final grade · project report","20% · Due after the presentation days. Project report, up to 10 pages: introduction (background and motivation), study area and data, methodology, results and discussion, conclusion. Submit through Turnitin, together with the presentation file (PPT or similar)."
 "2026-12-27","stats","Project report","End of day · midnight","Calendar + syllabus",35,1,"no","deadline","35% of STAT final grade","35% · DOC/PDF on Moodle. No late reports."
@@ -471,8 +467,8 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <div class="eyebrow">Assessment pressure</div>
 <h2 id="load-title">Weekly load<span class="help"><button type="button" class="help-mark" aria-label="About weekly load">?</button><span class="help-tip" role="tooltip">Each column is a week, Monday to Sunday. Height is known grade weight due that week, using the same points as the calendar. Ordinary class hours are left out. The figure above a bar is how many deadlines or assessments are due.</span></span></h2>
 </div>
-<label class="track-switch">Your RS project presentation
-<select id="rs-student" aria-label="Your RS project presentation"></select>
+<label class="track-switch">Your presentations (RS and GIS)
+<select id="rs-student" aria-label="Your presentations (RS and GIS)"></select>
 <span class="small" id="track-note"></span>
 </label>
 </div>
@@ -637,6 +633,12 @@ const RS_SLOTS = [
   { date: '2026-12-17', day: 2, students: ['Francisco Branco', 'Brooke Kearney', 'Achraf Houari', 'Darian Weiß', 'Marco Winnendael', 'Ekaterina Chuprun', 'Michael Dresner'] }
 ];
 const GIS_ALIASES = { 'Maria Correia': 'Maria Teresa Silva Correia' };
+const GIS_SESSIONS = [
+  { date: '2026-11-25', limit: 6, students: ['Adrian Därr', 'Francisco Branco'] },
+  { date: '2026-12-02', limit: 6, students: ['Daniele Mastrosimone', 'Brooke Kearney', 'Maria Correia', 'Youssef Stini', 'Achraf Houari', 'Carmen Benbow'] },
+  { date: '2026-12-09', limit: 6, students: ['Marco Winnendael', 'Michael Dresner', 'Diego Fernandes', 'Ekaterina Chuprun', 'Suren Chilingaryan'] },
+  { date: '2026-12-16', limit: 6, students: ['Ludovico Piras', 'Nicolò Boscherini'] }
+];
 const GIS_WEEKS = [
   { date: '2026-09-23', topic: 'What is geographic information and why is it important?', groups: [
     { id: 1, title: 'Definitions of geographic information', subtopic: 'Definitions of geographic data and information. Geographic information is ubiquitous.', students: ['Carmen Benbow', 'Achraf Houari', 'Marco Winnendael'] },
@@ -699,6 +701,9 @@ function slotsFor(name) {
   });
   return slots;
 }
+function gisSessionFor(name) {
+  return GIS_SESSIONS.find((session) => session.students.includes(name));
+}
 function rsSlotFor(name) {
   return RS_SLOTS.find((slot) => slot.students.includes(name));
 }
@@ -706,7 +711,7 @@ const byDate = (a, b) => a.date.localeCompare(b.date);
 function loadStudent() {
   try {
     const saved = localStorage.getItem(STUDENT_KEY);
-    if (saved && rsSlotFor(saved)) return saved;
+    if (saved && (rsSlotFor(saved) || gisSessionFor(saved))) return saved;
   } catch (err) {}
   return DEFAULT_STUDENT;
 }
@@ -733,8 +738,37 @@ function rsEvents(name) {
     pool: ''
   }];
 }
+function gisSessionEvents(name) {
+  const mine = GIS_SESSIONS.find((session) => session.students.includes(name));
+  const base = { course: 'gis', when: '18:00–20:00', weight: 0 };
+  if (mine) {
+    const mates = mine.students.filter((n) => n !== name).length;
+    return [Object.assign({}, base, {
+      date: mine.date,
+      title: 'Term-paper presentation',
+      source: 'Moodle sign-up table',
+      counts: 1,
+      uncertain: false,
+      kind: 'deadline',
+      label: 'Part of the 40% term-paper component · no separate weight',
+      details: 'Your signed-up session. ' + mine.students.length + ' of ' + mine.limit + ' places taken' + (mates ? ', ' + mates + ' other presenter' + (mates === 1 ? '' : 's') : '') + '. Up to 15 minutes plus 10 minutes of discussion. Final paper and slides are due 17 Dec.',
+      pool: ''
+    })];
+  }
+  return GIS_SESSIONS.filter((session) => session.students.length < session.limit).map((session) => Object.assign({}, base, {
+    date: session.date,
+    title: 'Term-paper presentations · possible slot',
+    source: 'Moodle sign-up table',
+    counts: 0,
+    uncertain: true,
+    kind: 'slot',
+    label: 'Possible slot · part of the 40% term-paper component',
+    details: 'You are not on the sign-up table yet. ' + (session.limit - session.students.length) + ' places left on this date. Up to 15 minutes plus 10 minutes of discussion.',
+    pool: ''
+  }));
+}
 function personalEvents(name) {
-  return rsEvents(name).concat(gisEvents(GIS_ALIASES[name] || name));
+  return rsEvents(name).concat(gisEvents(GIS_ALIASES[name] || name), gisSessionEvents(name));
 }
 function gisEvents(name) {
   return slotsFor(name).flatMap(({ week, group }) => {
@@ -1084,12 +1118,21 @@ function renderStudentMenu() {
   const dayLabel = (slot) => 'Day ' + slot.day + ' · ' + dateObj(slot.date).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
   if (!menu.options.length) {
     const options = (names) => names.map((name) => '<option value="' + esc(name) + '">' + esc(name) + '</option>').join('');
-    menu.innerHTML = RS_SLOTS.map((slot) => '<optgroup label="' + esc(dayLabel(slot)) + '">' + options(slot.students) + '</optgroup>').join('');
+    const rsNames = RS_SLOTS.flatMap((slot) => slot.students);
+    const gisOnly = GIS_SESSIONS.flatMap((session) => session.students).filter((name) => !rsNames.includes(name));
+    menu.innerHTML = RS_SLOTS.map((slot) => '<optgroup label="' + esc(dayLabel(slot)) + '">' + options(slot.students) + '</optgroup>').join('') + (gisOnly.length ? '<optgroup label="Not on the RS list">' + options(gisOnly) + '</optgroup>' : '');
   }
   menu.value = student;
   const note = $('#track-note');
-  const slot = rsSlotFor(student);
-  if (note) note.textContent = slot ? 'Presenting ' + dayLabel(slot) : '';
+  if (note) {
+    const slot = rsSlotFor(student);
+    const gis = gisSessionFor(student);
+    const gisDate = gis ? dateObj(gis.date).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }) : '';
+    const parts = [];
+    parts.push(slot ? 'RS ' + dayLabel(slot).replace(' · ', ', ') : 'RS: no slot listed');
+    parts.push(gis ? 'GIS ' + gisDate : 'GIS: not signed up yet');
+    note.textContent = 'Presenting ' + parts.join(' · ');
+  }
 }
 function deadlinePhrase(count) {
   return count + ' deadline' + (count === 1 ? '' : 's');
