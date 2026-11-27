@@ -467,8 +467,8 @@ button.help-mark:hover,button.help-mark:focus-visible{background:var(--accent);c
 <div class="eyebrow">Assessment pressure</div>
 <h2 id="load-title">Weekly load<span class="help"><button type="button" class="help-mark" aria-label="About weekly load">?</button><span class="help-tip" role="tooltip">Each column is a week, Monday to Sunday. Height is known grade weight due that week, using the same points as the calendar. Ordinary class hours are left out. The figure above a bar is how many deadlines or assessments are due.</span></span></h2>
 </div>
-<label class="track-switch">Your RS project presentation
-<select id="rs-student" aria-label="Your RS project presentation"></select>
+<label class="track-switch">Your presentations (RS and GIS)
+<select id="rs-student" aria-label="Your presentations (RS and GIS)"></select>
 <span class="small" id="track-note"></span>
 </label>
 </div>
@@ -701,6 +701,9 @@ function slotsFor(name) {
   });
   return slots;
 }
+function gisSessionFor(name) {
+  return GIS_SESSIONS.find((session) => session.students.includes(name));
+}
 function rsSlotFor(name) {
   return RS_SLOTS.find((slot) => slot.students.includes(name));
 }
@@ -708,7 +711,7 @@ const byDate = (a, b) => a.date.localeCompare(b.date);
 function loadStudent() {
   try {
     const saved = localStorage.getItem(STUDENT_KEY);
-    if (saved && rsSlotFor(saved)) return saved;
+    if (saved && (rsSlotFor(saved) || gisSessionFor(saved))) return saved;
   } catch (err) {}
   return DEFAULT_STUDENT;
 }
@@ -1115,12 +1118,21 @@ function renderStudentMenu() {
   const dayLabel = (slot) => 'Day ' + slot.day + ' · ' + dateObj(slot.date).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
   if (!menu.options.length) {
     const options = (names) => names.map((name) => '<option value="' + esc(name) + '">' + esc(name) + '</option>').join('');
-    menu.innerHTML = RS_SLOTS.map((slot) => '<optgroup label="' + esc(dayLabel(slot)) + '">' + options(slot.students) + '</optgroup>').join('');
+    const rsNames = RS_SLOTS.flatMap((slot) => slot.students);
+    const gisOnly = GIS_SESSIONS.flatMap((session) => session.students).filter((name) => !rsNames.includes(name));
+    menu.innerHTML = RS_SLOTS.map((slot) => '<optgroup label="' + esc(dayLabel(slot)) + '">' + options(slot.students) + '</optgroup>').join('') + (gisOnly.length ? '<optgroup label="Not on the RS list">' + options(gisOnly) + '</optgroup>' : '');
   }
   menu.value = student;
   const note = $('#track-note');
-  const slot = rsSlotFor(student);
-  if (note) note.textContent = slot ? 'Presenting ' + dayLabel(slot) : '';
+  if (note) {
+    const slot = rsSlotFor(student);
+    const gis = gisSessionFor(student);
+    const gisDate = gis ? dateObj(gis.date).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }) : '';
+    const parts = [];
+    parts.push(slot ? 'RS ' + dayLabel(slot) : 'RS: no slot listed');
+    parts.push(gis ? 'GIS ' + gisDate : 'GIS: not signed up yet');
+    note.textContent = 'Presenting ' + parts.join(' · ');
+  }
 }
 function deadlinePhrase(count) {
   return count + ' deadline' + (count === 1 ? '' : 's');
